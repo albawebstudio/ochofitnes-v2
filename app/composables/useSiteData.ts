@@ -14,37 +14,37 @@ import type {
 export function useSiteData() {
     const addresses = ref<Address[]> ([
         {
-            label: "office",
-            address1: "",
+            label: "work",
+            address1: "794 Wilfred Road",
             address2: null,
-            city: "Apple Valley",
-            state: "MN",
-            zip: "55124",
+            city: "Hudson",
+            state: "WI",
+            postal_code: "54016",
         },
         {
             label: "legal",
-            address1: "202 N Cedar Ave",
-            address2: "Suite #1",
-            city: "Owatonna",
-            state: "MN",
-            zip: "55060",
+            address1: "794 Wilfred Road",
+            address2: null,
+            city: "Hudson",
+            state: "WI",
+            postal_code: "54016",
         }
     ])
     const emails = ref<Email[]> ([
         {
-            display_name: "Support",
-            account: "subppport",
-            domain: "albaweb.studio"
+            display_name: "Business",
+            account: "jovani",
+            domain: "ochofitness.com"
         },
         {
             display_name: "Privacy",
             account: "privacy",
-            domain: "albaweb.studio"
+            domain: "ochofitness.com"
         }
     ])
     const phone = ref<Phone> ({
-        raw: "+16124406349",
-        formatted: "(612) 440-6349"
+        raw: "+17157056361",
+        formatted: "(715) 705-6361"
     })
     const navigation = ref<Link[]> ([
         {
@@ -62,11 +62,18 @@ export function useSiteData() {
             displayText: "About Us"
         },
         {
-            title: "Portfolio",
-            to: "/#portfolio",
+            title: "Services",
+            to: "/#services",
             external: false,
             icon: null,
-            displayText: "Portfolio"
+            displayText: "Services"
+        },
+        {
+            title: "Testimonials",
+            to: "/#testimonials",
+            external: false,
+            icon: null,
+            displayText: "Testimonials"
         },
         {
             title: "Contact Us",
@@ -78,25 +85,25 @@ export function useSiteData() {
     ])
     const social_links = ref<SocialLink[]> ([
         {
-            label: "linkedin",
-            name: "LinkedIn",
-            display_title: "company/alba-web-studio",
-            icon: "fab fa-linkedin",
-            href: "https://www.linkedin.com/company/alba-web-studio/"
+            label: "facebook",
+            name: "Facebook",
+            display_title: "jovani.morales.142",
+            icon: "fa-brands fa-facebook",
+            href: "https://www.facebook.com/jovani.morales.142"
         },
         {
             label: "instagram",
             name: "Instagram",
-            display_title: "instagram.com/albawebstudio",
-            icon: "fab fa-instagram",
-            href: "https://instagram.com/albawebstudio/"
+            display_title: "instagram.com/ocho_fitness_8",
+            icon: "fa-brands fa-instagram",
+            href: "https://www.instagram.com/ocho_fitness_8/"
         },
         {
-            label: "github",
-            name: "Github",
-            display_title: "github.com/albawebstudio",
-            icon: "fab fa-github",
-            href: "https://github.com/albawebstudio"
+            label: "x",
+            name: "X",
+            display_title: "x.com/ocho_fitness_8",
+            icon: "fa-brands fa-x-twitter",
+            href: "https://x.com/ocho_fitness_8/"
         }
     ])
     const useful_links = ref<Link[]>([
@@ -114,22 +121,8 @@ export function useSiteData() {
             icon: null,
             displayText: "Blog"
         },
-        {
-            title: "Our Github Repos",
-            to: "https://github.com/albawebstudio",
-            external: false,
-            icon: null,
-            displayText: "Github"
-        }
     ]);
     const other_resources = ref<Link[]>([
-        {
-            title: "Check out our license",
-            to: "https://github.com/albawebstudio/albaweb.studio/blob/main/LICENSE.md?ref=aws-profile",
-            external: true,
-            icon: null,
-            displayText: "MIT License"
-        },
         {
             title: "Check out our terms and conditions",
             to: "/terms",
@@ -153,10 +146,10 @@ export function useSiteData() {
         }
     ]);
     const site = ref<Site>({
-        title: "Alba Web Studio",
-        legalName: "Alba Web Studio LLC",
-        tagLine: "",
-        url: "https://www.albaweb.studio",
+        title: "Ocho Fitness",
+        legalName: "Ocho Fitness LLC",
+        tagLine: "Train Smart, Live Strong.",
+        url: "https://www.ochofitness.com",
         addresses: addresses.value,
         email: emails.value,
         phone: phone.value,
