@@ -1,0 +1,14 @@
+{
+  "name": "ochofitness-email",
+  "version": "0.0.1",
+  "main": "index.js",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "mjml": "^4.12.0"
+  },
+  "scripts": {
+    "email:build": "mjml ./src/*.mjml -o ./dist",
+    "email:watch": "mjml -w ./src/*.mjml -o ./dist"
+  },
+  "private": true
+}

@@ -1,0 +1,40 @@
+service: ohchofitness-api
+
+plugins:
+  - serverless-dotenv-plugin
+  - '@haftahave/serverless-ses-template'
+
+provider:
+  name: aws
+  profile: ${self:custom.profiles.${opt:stage, self:provider.stage, 'staging'}}
+  stage: ${opt:stage, 'development'}
+  runtime: nodejs16.x
+  iam:
+    role: arn:aws:iam::401327758731:role/ocho-fitness-api
+
+functions:
+  scheduleSession:
+    handler: handler.scheduleSession
+    events:
+      - http:
+          path: schedule-session
+          method: post
+          cors: true
+  contactForm:
+    handler: handler.contactForm
+    events:
+      - http:
+          path: contact-form
+          method: post
+          cors: true
+
+custom:
+  profiles:
+    development: default
+    staging: default
+    production: default
+  sesTemplates:
+    addStage: true                             # Specifies whether to add stage to template name (default false)
+    configFile: './email-templates.js' # Config file path (default './ses-email-templates/index.js')
+    disableAutoDeploy: true                    # Specifies whether to sync templates while sls deploy (default false)
+    region: 'us-east-1'                        # Specifies AWS region for SES templates (not required)

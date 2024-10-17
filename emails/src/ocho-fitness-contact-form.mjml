@@ -1,0 +1,38 @@
+<mjml>
+  <mj-head>
+    <mj-font name="Montserrat" href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700"/>
+    <mj-attributes>
+      <mj-all font-family="Montserrat"/>
+    </mj-attributes>
+    <mj-preview>
+      <!-- TODO Add mail preview -->
+    </mj-preview>
+  </mj-head>
+  <mj-body>
+    <mj-section padding="40px">
+      <mj-column>
+        <mj-text font-size="29px" font-weight="700" color="#222222" padding-bottom="30px">
+          New Message
+        </mj-text>
+        <mj-text font-size="18px" color="#9798A4" font-weight="700" line-height="27px" padding-bottom="60px">
+          {{ name }} has sent you a message.
+        </mj-text>
+        <mj-text font-size="18px" color="#9798A4" font-weight="400" line-height="27px" padding-bottom="60px">
+          {{ message }}
+        </mj-text>
+        <mj-text font-size="18px" color="#9798A4" font-weight="400">{{#if phone}}Phone: <a
+          href="tel:{{ phone }}">{{ phone }}</a>{{/if}}
+        </mj-text>
+        <mj-text font-size="18px" color="#9798A4" font-weight="400" padding-bottom="60px">Email:
+          <a href="mailto:{{ email }}">{{ email }}</a>
+        </mj-text>
+        <mj-button href="mailto:{{ email }}" width="100%" inner-padding="25px" border-radius="6px"
+                   background-color="#005BF2" font-size="22px" font-weight="500" color="#fff">Reply to message
+        </mj-button>
+        <mj-text font-size="11px" color="#9798A4" font-weight="500" padding-top="30px">This email was generated from
+          https://ochofitness.com/
+        </mj-text>
+      </mj-column>
+    </mj-section>
+  </mj-body>
+</mjml>

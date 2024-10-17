@@ -1,0 +1,21 @@
+{
+  "name": "ocho-fitness-api",
+  "version": "0.0.1",
+  "main": "index.js",
+  "author": "Alba Web Studio <support@albawebstudio.com>",
+  "license": "UNLICENSED",
+  "private": true,
+  "scripts": {
+    "deploy:development": "sls deploy --stage development",
+    "deploy:production": "sls deploy --stage production",
+    "sesTemplate:deploy:development": "sls ses-template deploy --stage development",
+    "sesTemplate:deploy:production": "sls ses-template deploy --stage production"
+  },
+  "devDependencies": {
+    "@haftahave/serverless-ses-template": "^4.0.0",
+    "serverless-dotenv-plugin": "^3.12.2"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.1068.0"
+  }
+}
