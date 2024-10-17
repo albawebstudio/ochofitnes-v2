@@ -14,11 +14,12 @@ export default defineNuxtConfig({
     ssr: false,
 
     modules: [
-      '@nuxtjs/tailwindcss',
-      '@nuxt/image',
-      'nuxt-keen-slider',
-      '@nuxtjs/google-fonts',
-      'nuxt-svgo',
+        '@nuxtjs/tailwindcss',
+        '@nuxt/image',
+        'nuxt-keen-slider',
+        '@nuxtjs/google-fonts',
+        'nuxt-svgo',
+        'nuxt-security',
     ],
 
     css: [
@@ -42,4 +43,12 @@ export default defineNuxtConfig({
             '@fortawesome/vue-fontawesome'
         ]
     },
+
+    security: {
+        headers: {
+            contentSecurityPolicy: {
+                'img-src': ["'self'", "data:", "https://maps.gstatic.com/", "https://maps.googleapis.com/"],
+            }
+        },
+    }
 })
