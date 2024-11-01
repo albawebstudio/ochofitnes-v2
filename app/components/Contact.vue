@@ -10,7 +10,7 @@ import ContactForm from "~/components/common/ContactForm.vue";
 import LogoSvg from "~/public/logo-monochrome.svg";
 
 const config = useRuntimeConfig()
-const apiKey = config.public.googleMapsApiKey
+const googleMapsApiKey = config.public.googleMapsApiKey
 const apiUrl = config.public.apiUrl
 
 const {
@@ -88,7 +88,7 @@ const clearSuccess = () => {
       <div class="text-center w-2/3 mx-auto">
         <h2 class="text-4xl leading-relaxed font-bold tracking-tight text-primary-700 dark:text-primary-500">{{ contact.title }}</h2>
         <p v-for="content in contact.content" class="mt-3 text-gray-500 dark:text-gray-400" v-html="content"></p>
-        <address v-if="address" class="text-tertiary-700 dark:text-tertiary-500 mt-4">{{ address.address1 }}, {{ address.city }}, {{ address.state }} {{ address.postal_code }}</address>
+        <address class="text-tertiary-700 dark:text-tertiary-500 mt-4">{{ address.address1 }}, {{ address.city }}, {{ address.state }} {{ address.postal_code }}</address>
       </div>
 
       <div class="grid grid-cols-1 gap-12 mt-10 lg:grid-cols-2">
@@ -102,7 +102,7 @@ const clearSuccess = () => {
               </svg>
             </span>
             <p class="mt-2 text-sm text-gray-500 dark:text-gray-400">Our email</p>
-            <p v-if="email" class="mt-2 text-sm text-primary-500 dark:text-primary-400">{{ email.account }}-dot-{{ email.domain }}</p>
+            <p class="mt-2 text-sm text-primary-500 dark:text-primary-400">{{ email.account }}-dot-{{ email.domain}}</p>
           </div>
 
           <div>
@@ -133,7 +133,7 @@ const clearSuccess = () => {
 
         <div class="overflow-hidden rounded-lg h-96 lg:h-auto">
           <GoogleMap
-              api-key="AIzaSyBStzi6rQCxeKaExidKtnCBF8FL4nXJB7Y"
+              :api-key="googleMapsApiKey"
               :styles="mapOptions.styles"
               style="width: 100%; height: 100%"
               :center="mapOptions.center"
@@ -156,7 +156,8 @@ const clearSuccess = () => {
         </div>
       </div>
     </div>
-  </section></template>
+  </section>
+</template>
 
 <style scoped>
 
