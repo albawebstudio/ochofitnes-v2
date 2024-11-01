@@ -2,7 +2,7 @@ import { ref } from 'vue'
 import type {
     AdvancedMarkerOptions,
     MapOptions,
-    MarkerOptions,
+    CustomMarker,
 } from '~/models/map-options'
 
 export function useGoogleMapData() {
@@ -16,7 +16,7 @@ export function useGoogleMapData() {
             },
         mapTypeId: "roadmap",
         disableDefaultUI: true,
-        scrollwheel: false,
+        scrollWheel: false,
         styles:
             [
                 {
@@ -118,14 +118,12 @@ export function useGoogleMapData() {
         title: "Ocho Fitness"
     });
 
-    const markerOptions = ref<MarkerOptions>({
+    const markerOptions = ref<CustomMarker>({
         position: {
             lat: 44.97704417107012,
             lng: -92.68034892375243
         },
         anchorPoint: "BOTTOM_CENTER",
-        label: "OF",
-        title: "Ocho Fitness"
     });
 
     return {

@@ -9,11 +9,13 @@ export interface AdvancedMarkerOptions {
     title:    string;
 }
 
-export interface MarkerOptions {
-    position: Center;
-    anchorPoint: string;
-    label: string;
-    title: string;
+export interface CustomMarker  {
+    position?: Center;
+    map?: google.maps.Map | google.maps.StreetViewPanorama | null;
+    anchorPoint?: "CENTER" | "TOP_CENTER" | "BOTTOM_CENTER" | "LEFT_CENTER" | "RIGHT_CENTER" | "TOP_LEFT" | "TOP_RIGHT" | "BOTTOM_LEFT" | "BOTTOM_RIGHT";
+    offsetX?: number;
+    offsetY?: number;
+    zIndex?: number | null;
 }
 
 export interface MapOptions {
@@ -21,7 +23,7 @@ export interface MapOptions {
     center:           Center;
     mapTypeId:        string;
     disableDefaultUI: boolean;
-    scrollwheel:      boolean;
+    scrollWheel:      boolean;
     styles:           Style[];
 }
 

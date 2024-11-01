@@ -29,5 +29,6 @@
   "devDependencies": {
     "@types/google.maps": "^3.58.1",
     "nuxt-keen-slider": "^1.1.0"
-  }
+  },
+  "packageManager": "pnpm@9.7.0+sha256.b35018fbfa8f583668b2649e407922a721355cd81f61beeb4ac1d4258e585559"
 }

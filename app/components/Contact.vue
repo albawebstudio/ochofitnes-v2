@@ -1,11 +1,13 @@
 <script setup lang="ts">
 import { ref, shallowRef } from 'vue';
+import { GoogleMap, CustomMarker, InfoWindow} from "vue3-google-map";
 import { useGoogleMapData } from "~/composables/useGoogleMapData"
 import { useSiteData } from "~/composables/useSiteData"
 import { useContactData } from "~/composables/useContactData";
 import Spinner from "~/components/common/Spinner.vue";
 import Success from "~/components/common/Success.vue";
 import ContactForm from "~/components/common/ContactForm.vue";
+import LogoSvg from "~/public/logo-monochrome.svg";
 
 const config = useRuntimeConfig()
 const apiKey = config.public.googleMapsApiKey
@@ -86,11 +88,11 @@ const clearSuccess = () => {
       <div class="text-center w-2/3 mx-auto">
         <h2 class="text-4xl leading-relaxed font-bold tracking-tight text-primary-700 dark:text-primary-500">{{ contact.title }}</h2>
         <p v-for="content in contact.content" class="mt-3 text-gray-500 dark:text-gray-400" v-html="content"></p>
-        <address class="text-tertiary-700 dark:text-tertiary-500 mt-4">{{ address.address1 }}, {{ address.city }}, {{ address.state }} {{ address.postal_code }}</address>
+        <address v-if="address" class="text-tertiary-700 dark:text-tertiary-500 mt-4">{{ address.address1 }}, {{ address.city }}, {{ address.state }} {{ address.postal_code }}</address>
       </div>
 
-      <div class="grid grid-cols-1 gap-12 mt-10 lg:grid-cols-3">
-        <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-1">
+      <div class="grid grid-cols-1 gap-12 mt-10 lg:grid-cols-2">
+        <div class="grid grid-cols-1 gap-6">
           <div>
             <span class="inline-block p-3 text-primary-500 rounded-full bg-blue-100/80 dark:bg-gray-800" aria-description="email">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -100,7 +102,7 @@ const clearSuccess = () => {
               </svg>
             </span>
             <p class="mt-2 text-sm text-gray-500 dark:text-gray-400">Our email</p>
-            <p class="mt-2 text-sm text-primary-500 dark:text-primary-400">{{ email.account }}-dot-{{ email.domain}}</p>
+            <p v-if="email" class="mt-2 text-sm text-primary-500 dark:text-primary-400">{{ email.account }}-dot-{{ email.domain }}</p>
           </div>
 
           <div>
@@ -129,9 +131,9 @@ const clearSuccess = () => {
 
         </div>
 
-        <div class="overflow-hidden rounded-lg lg:col-span-2 h-96 lg:h-auto">
+        <div class="overflow-hidden rounded-lg h-96 lg:h-auto">
           <GoogleMap
-              :api-key="apiKey"
+              api-key="AIzaSyBStzi6rQCxeKaExidKtnCBF8FL4nXJB7Y"
               :styles="mapOptions.styles"
               style="width: 100%; height: 100%"
               :center="mapOptions.center"
@@ -140,6 +142,7 @@ const clearSuccess = () => {
             <CustomMarker :options="markerOptions">
               <div style="text-align: center">
                 <div style="font-size: 1.125rem">{{ site.title }}</div>
+                <LogoSvg :fontControlled="false" width="74" height="74" />
               </div>
               <InfoWindow>
                 <div id="content">
@@ -153,8 +156,7 @@ const clearSuccess = () => {
         </div>
       </div>
     </div>
-  </section>
-</template>
+  </section></template>
 
 <style scoped>
 
