@@ -93,7 +93,7 @@ const submitForm = async () => {
     showModal.value = false
     showSuccess.value = true
   } catch (e) {
-    console.log(e);
+    console.error(e);
   }
 }
 const cancelForm = () => {
