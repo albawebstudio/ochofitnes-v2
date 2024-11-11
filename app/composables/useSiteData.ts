@@ -52,35 +52,40 @@ export function useSiteData() {
             to: "/#home",
             external: true,
             icon: null,
-            displayText: "Home"
+            displayText: "Home",
+            className: null
         },
         {
             title: "About Us",
             to: "/#about-us",
             external: true,
             icon: null,
-            displayText: "About Us"
+            displayText: "About Us",
+            className: null
         },
         {
             title: "Services",
             to: "/#services",
             external: false,
             icon: null,
-            displayText: "Services"
+            displayText: "Services",
+            className: null
         },
         {
             title: "Testimonials",
             to: "/#testimonials",
             external: false,
             icon: null,
-            displayText: "Testimonials"
+            displayText: "Testimonials",
+            className: null
         },
         {
             title: "Contact Us",
             to: "/#contact-us",
             external: false,
             icon: null,
-            displayText: "Contact Us"
+            displayText: "Contact Us",
+            className: null
         }
     ])
     const social_links = ref<SocialLink[]> ([
@@ -112,14 +117,16 @@ export function useSiteData() {
             to: "/#about-us",
             external: true,
             icon: null,
-            displayText: "About Us"
+            displayText: "About Us",
+            className: null
         },
         {
             title: "Check out our blog",
             to: "/blog",
             external: false,
             icon: null,
-            displayText: "Blog"
+            displayText: "Blog",
+            className: null
         },
     ]);
     const other_resources = ref<Link[]>([
@@ -128,21 +135,24 @@ export function useSiteData() {
             to: "/terms",
             external: false,
             icon: null,
-            displayText: "Terms & Conditions"
+            displayText: "Terms & Conditions",
+            className: null
         },
         {
             title: "View our privacy policy",
             to: "/privacy",
             external: false,
             icon: null,
-            displayText: "Privacy Policy"
+            displayText: "Privacy Policy",
+            className: null
         },
         {
             title: "Contact Us",
             to: "/#contact-us",
             external: false,
             icon: null,
-            displayText: "Contact Us"
+            displayText: "Contact Us",
+            className: null
         }
     ]);
     const site = ref<Site>({

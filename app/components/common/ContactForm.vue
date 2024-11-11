@@ -6,7 +6,7 @@ interface Props {
   message: string;
 }
 
-const props = defineProps<Props>();
+defineProps<Props>();
 const emit = defineEmits<{
   (e: 'update:name', value: string): void
   (e: 'update:email', value: string): void

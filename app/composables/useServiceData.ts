@@ -126,7 +126,7 @@ export function useServiceData() {
     ])
 
     const service = ref<Service>({
-        title: "Services",
+        title: "Our Services",
         content: [
             "Ocho Fitness offers personalized training, group sessions, and sports massage to help you move better, get stronger, and stay pain-free. Whether in-person or online, we tailor every session to fit your goals. Explore our options below and find the right fit for your fitness journey!",
         ],

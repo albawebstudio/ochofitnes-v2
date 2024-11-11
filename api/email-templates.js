@@ -35,7 +35,7 @@ module.exports = async (serverless, _options) => {
     const {templateId, templateSubject} = templateInfo
     const templatePathHtml = path.join(
       __dirname,
-      `../email/dist/${templateId}.html`
+      `../emails/dist/${templateId}.html`
     )
 
     return {

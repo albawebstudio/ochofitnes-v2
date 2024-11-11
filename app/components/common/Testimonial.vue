@@ -1,9 +1,8 @@
 <script setup lang="ts">
-import { defineProps } from 'vue'
-
-const props = defineProps<{
-  review: object
-}>()
+interface Props {
+  review: object;
+}
+defineProps<Props>();
 </script>
 
 <template>

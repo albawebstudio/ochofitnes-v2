@@ -4,4 +4,5 @@ export interface Link {
     external: boolean;
     icon: string | null;
     displayText: string | null;
+    className: string | null;
 }

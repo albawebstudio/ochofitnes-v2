@@ -12,10 +12,10 @@
     "sesTemplate:deploy:production": "sls ses-template deploy --stage production"
   },
   "devDependencies": {
-    "@haftahave/serverless-ses-template": "^4.0.0",
-    "serverless-dotenv-plugin": "^3.12.2"
+    "@haftahave/serverless-ses-template": "^4.0.0"
   },
   "dependencies": {
-    "aws-sdk": "^2.1068.0"
+    "@aws-sdk/client-ses": "^3.687.0",
+    "serverless": "^4.4.7"
   }
 }

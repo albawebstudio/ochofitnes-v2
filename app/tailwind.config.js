@@ -46,14 +46,21 @@ const ochofitness = {
     },
   }
 }
+
 export default {
-  content: [
-    "./components/**/*.{js,vue,ts}",
-    "./layouts/**/*.vue",
-    "./pages/**/*.vue",
-    "./plugins/**/*.{js,ts}",
-    "./nuxt.config.{js,ts}",
-  ],
+  content: {
+    files: [
+      "./components/**/*.{js,vue,ts}",
+      "./layouts/**/*.vue",
+      "./pages/**/*.vue",
+      "./plugins/**/*.{js,ts}",
+      "./nuxt.config.{js,ts}",
+      './vueform.config.ts',
+      './node_modules/.pnpm/@vueform+vueform@*/node_modules/@vueform/vueform/themes/tailwind/**/*.vue',
+      './node_modules/.pnpm/@vueform+vueform@*/node_modules/@vueform/vueform/themes/tailwind/**/*.js',
+    ]
+  },
+  darkMode: 'class',
   theme: {
     extend: {
       colors: {
@@ -1264,11 +1271,30 @@ export default {
       },
     },
     fontFamily: {
+      'sans': [
+        'Raleway',
+        'Inter',
+        'ui-sans-serif',
+        'system-ui',
+        '-apple-system',
+        'system-ui',
+        'Segoe UI',
+        'Helvetica Neue',
+        'Arial',
+        'Noto Sans',
+        'sans-serif',
+        'Apple Color Emoji',
+        'Segoe UI Emoji',
+        'Segoe UI Symbol',
+        'Noto Color Emoji'
+      ],
       'lato': [
         'Lato',
       ],
     }
   },
-  plugins: [],
+  plugins: [
+    require('@vueform/vueform/tailwind'),
+  ],
 }
 

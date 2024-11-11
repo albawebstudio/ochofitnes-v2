@@ -14,37 +14,40 @@
         <mj-text font-size="29px" font-weight="700" color="#222222" padding-bottom="30px">
           New Session Request
         </mj-text>
-        <mj-text font-size="18px" color="#9798A4" font-weight="700" line-height="27px" padding-bottom="60px">
+        <mj-text font-size="18px" color="#9798A4" font-weight="700" line-height="27px" padding-bottom="30px">
           {{ name }} has sent you a request for a session.
         </mj-text>
-        <mj-raw>
-          <dl font-size="18px" color="#9798A4" font-weight="400" line-height="27px" padding-bottom="60px">
-            <dt>
-              Session Type:
-            </dt>
-            <dd>
-              {{ sessionType }}
-            </dd>
-            <dt>
-              Preferred Days:
-            </dt>
-            <dd>
-              {{ days }}
-            </dd>
-            <dt>
-              Preferred Time:
-            </dt>
-            <dd>
-              {{ times }}
-            </dd>
-            <dt>
-              Injuries or medical conditions:
-            </dt>
-            <dd>
-              {{ conditions }}
-            </dd>
-          </dl>
-        </mj-raw>
+
+        <mj-text align="center" color="#FF9933" font-size="17px" font-family="Ubuntu, Helvetica, Arial, sans-serif" padding-left="25px" padding-right="25px" padding-bottom="0px">
+          <strong>Session Type:</strong>
+        </mj-text>
+        <mj-text align="center" color="#1e293b" font-size="15px" font-family="Helvetica" padding-left="25px" padding-right="25px" padding-bottom="20px" padding-top="10px">
+          {{ sessionType }}
+        </mj-text>
+
+        <mj-text align="center" color="#FF9933" font-size="17px" font-family="Ubuntu, Helvetica, Arial, sans-serif" padding-left="25px" padding-right="25px" padding-bottom="0px">
+          <strong>Preferred Days:</strong>
+        </mj-text>
+        <mj-text align="center" color="#1e293b" font-size="15px" font-family="Helvetica" padding-left="25px" padding-right="25px" padding-bottom="20px" padding-top="10px">
+          {{ dayOptionString }}
+        </mj-text>
+
+        <mj-text align="center" color="#FF9933" font-size="17px" font-family="Ubuntu, Helvetica, Arial, sans-serif" padding-left="25px" padding-right="25px" padding-bottom="0px">
+          <strong>Preferred Time:</strong>
+        </mj-text>
+        <mj-text align="center" color="#1e293b" font-size="15px" font-family="Helvetica" padding-left="25px" padding-right="25px" padding-bottom="20px" padding-top="10px">
+          {{ timeOptionString }}
+        </mj-text>
+
+        <mj-raw>{{#if conditions}}</mj-raw>
+        <mj-text align="center" color="#FF9933" font-size="17px" font-family="Ubuntu, Helvetica, Arial, sans-serif" padding-left="25px" padding-right="25px" padding-bottom="0px">
+          <strong>Injuries or medical conditions:</strong>
+        </mj-text>
+        <mj-text align="center" color="#1e293b" font-size="15px" font-family="Helvetica" padding-left="25px" padding-right="25px" padding-bottom="20px" padding-top="10px">
+          {{ conditions }}
+        </mj-text>
+        <mj-raw>{{/if}}</mj-raw>
+
         <mj-text font-size="18px" color="#9798A4" font-weight="400">{{#if phone}}Phone: <a
           href="tel:{{ phone }}">{{ phone }}</a>{{/if}}
         </mj-text>

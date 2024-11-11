@@ -9,18 +9,14 @@ const { service } = useServiceData()
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-12">
         <h2 class="text-4xl font-extrabold text-white sm:text-5xl">
-          Our Services
+          {{  service.title }}
         </h2>
-        <p class="mt-4 mx-auto w-2/3 text-xl text-gray-50">
-          Ocho Fitness offers personalized training, group sessions, and sports massage to help you move better, get stronger, and stay pain-free. Whether in-person or online, we tailor every session to fit your goals. Explore our options below and find the right fit for your fitness journey!
-        </p>
+        <p v-for="content in service.content" class="mt-4 mx-auto w-2/3 text-xl text-gray-50" v-html="content"></p>
       </div>
 
       <div class="grid grid-cols-1 gap-8 sm:grid-cols-2">
         <template v-for="item in service.items" :key="service.title">
           <div class="bg-white bg-opacity-10 rounded-xl shadow-lg p-6 relative overflow-hidden">
-<!--            <div class="absolute top-0 right-0 m-4">
-            </div>-->
             <LazyNuxtImg :src="item.img.src" :alt="item.img.alt" class="w-full rounded-xl mb-8" />
             <div class="mb-8">
               <h3 class="text-2xl font-semibold text-white">{{ item.title }}</h3>

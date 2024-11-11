@@ -1,7 +1,11 @@
 "use strict"
 
-const AWS = require("aws-sdk")
-const sesClient = new AWS.SES({apiVersion: "2010-12-01"})
+const { SES } = require("@aws-sdk/client-ses");
+const sesClient = new SES({
+  // The key apiVersion is no longer supported in v3, and can be removed.
+  // @deprecated The client uses the "latest" apiVersion.
+  apiVersion: "2010-12-01",
+})
 
 module.exports.contactForm = (event, context, callback) => {
   const data = JSON.parse(event.body)
@@ -44,7 +48,6 @@ const sendContactFormToOchoFitness = (data) => {
       TemplateData: JSON.stringify(data),
       ReplyToAddresses: [process.env.REPLY_TO_EMAIL],
     })
-    .promise()
     .then(function () {
       console.log("sendContactFormToOchoFitness email queued")
     })
@@ -92,7 +95,6 @@ const sendScheduleSessionToOchoFitness = (data) => {
       TemplateData: JSON.stringify(data),
       ReplyToAddresses: [data.email],
     })
-    .promise()
     .then(function () {
       console.log("SignUpConfirmationToUser email queued")
     })
