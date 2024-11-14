@@ -17,5 +17,6 @@ export interface Site {
     navigation: Link[];
     social_links: SocialLink[];
     useful_links: Link[];
-    other_resources: Link[];
+    resources: Link[];
+    legal: Link[];
 }

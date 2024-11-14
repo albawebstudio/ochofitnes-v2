@@ -1295,6 +1295,7 @@ export default {
   },
   plugins: [
     require('@vueform/vueform/tailwind'),
+    require('@tailwindcss/typography'),
   ],
 }
 

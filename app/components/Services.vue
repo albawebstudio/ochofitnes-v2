@@ -11,7 +11,7 @@ const { service } = useServiceData()
         <h2 class="text-4xl font-extrabold text-white sm:text-5xl">
           {{  service.title }}
         </h2>
-        <p v-for="content in service.content" class="mt-4 mx-auto w-2/3 text-xl text-gray-50" v-html="content"></p>
+        <p v-for="content in service.content" class="mt-4 mx-auto w-full sm:w-2/3 text-xl text-gray-50" v-html="content"></p>
       </div>
 
       <div class="grid grid-cols-1 gap-8 sm:grid-cols-2">

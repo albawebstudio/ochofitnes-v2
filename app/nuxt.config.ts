@@ -22,6 +22,7 @@ export default defineNuxtConfig({
         'nuxt-svgo',
         'nuxt-security',
         '@vueform/nuxt',
+        '@nuxt/content',
     ],
 
     css: [
@@ -59,6 +60,18 @@ export default defineNuxtConfig({
                 'img-src': ["'self'", "data:", "https://maps.gstatic.com/", "https://maps.googleapis.com/"],
             }
         },
+    },
+
+    content: {
+        markdown: {
+            toc: {
+                depth: 3,
+                searchDepth: 3
+            },
+            rehypePlugins: [
+                'rehype-external-links'
+            ]
+        }
     },
 
 })

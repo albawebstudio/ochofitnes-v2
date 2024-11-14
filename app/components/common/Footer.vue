@@ -18,16 +18,19 @@ const currentYear = date.getFullYear();
             <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">{{  site.title }}</span>
           </a>
         </div>
-        <div class="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
+        <div class="grid grid-cols-1 gap-8 sm:gap-6 sm:grid-cols-3">
           <div>
             <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Resources</h2>
             <ul class="text-gray-500 dark:text-gray-400 font-medium">
-              <li class="mb-4">
-                <a href="https://albaweb.studio/" class="hover:underline">Alba Web Studio</a>
-              </li>
-              <li>
-                <a href="https://tailwindcss.com/" class="hover:underline">Tailwind CSS</a>
-              </li>
+              <template v-for="(link, idx) in site.resources" :key="idx">
+                <li class="mb-4">
+                  <NuxtLink :to="link.to"
+                            :external="link.external"
+                            :target="link.external ? '_blank' : ''"
+                            :title="link.title"
+                            class="hover:underline">{{ link.displayText }}</NuxtLink>
+                </li>
+              </template>
             </ul>
           </div>
           <div>
@@ -46,12 +49,15 @@ const currentYear = date.getFullYear();
           <div>
             <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Legal</h2>
             <ul class="text-gray-500 dark:text-gray-400 font-medium">
-              <li class="mb-4">
-                <a href="/privacy-policy" class="hover:underline">Privacy Policy</a>
-              </li>
-              <li>
-                <a href="/terms-and-conditions" class="hover:underline">Terms &amp; Conditions</a>
-              </li>
+              <template v-for="(link, idx) in site.legal" :key="idx">
+                <li class="mb-4">
+                  <NuxtLink :to="link.to"
+                            :external="link.external"
+                            :target="link.external ? '_blank' : ''"
+                            :title="link.title"
+                            class="hover:underline">{{ link.displayText }}</NuxtLink>
+                </li>
+              </template>
             </ul>
           </div>
         </div>

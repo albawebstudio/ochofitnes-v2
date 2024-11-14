@@ -102,13 +102,6 @@ export function useSiteData() {
             display_title: "instagram.com/ocho_fitness_8",
             icon: "fa-brands fa-instagram",
             href: "https://www.instagram.com/ocho_fitness_8/"
-        },
-        {
-            label: "x",
-            name: "X",
-            display_title: "x.com/ocho_fitness_8",
-            icon: "fa-brands fa-x-twitter",
-            href: "https://x.com/ocho_fitness_8/"
         }
     ])
     const useful_links = ref<Link[]>([
@@ -129,10 +122,28 @@ export function useSiteData() {
             className: null
         },
     ]);
-    const other_resources = ref<Link[]>([
+    const resources = ref<Link[]>([
+        {
+            title: "Healthy Lifestyle",
+            to: "https://www.mayoclinic.org/healthy-lifestyle/fitness/resources/hlv-20049447?p=1",
+            external: true,
+            icon: null,
+            displayText: "Mayo Clinic Fitness",
+            className: null
+        },
+        {
+            title: "Stretching and Flexibility Exercises",
+            to: "https://www.heart.org/en/health-topics/cardiac-rehab/getting-physically-active/stretching-and-flexibility-exercises",
+            external: true,
+            icon: null,
+            displayText: "Stretching and Flexibility",
+            className: null
+        }
+    ]);
+    const legal = ref<Link[]>([
         {
             title: "Check out our terms and conditions",
-            to: "/terms",
+            to: "/legal/terms-and-conditions",
             external: false,
             icon: null,
             displayText: "Terms & Conditions",
@@ -140,18 +151,10 @@ export function useSiteData() {
         },
         {
             title: "View our privacy policy",
-            to: "/privacy",
+            to: "/legal/privacy-policy",
             external: false,
             icon: null,
             displayText: "Privacy Policy",
-            className: null
-        },
-        {
-            title: "Contact Us",
-            to: "/#contact-us",
-            external: false,
-            icon: null,
-            displayText: "Contact Us",
             className: null
         }
     ]);
@@ -166,7 +169,8 @@ export function useSiteData() {
         navigation: navigation.value,
         social_links: social_links.value,
         useful_links: useful_links.value,
-        other_resources: other_resources.value,
+        resources: resources.value,
+        legal: legal.value,
     })
 
     const getSiteTitle = () => {
@@ -191,7 +195,8 @@ export function useSiteData() {
         navigation,
         social_links,
         useful_links,
-        other_resources,
+        resources,
+        legal,
         getSiteTitle,
         getAddressByLabel,
         getEmailByAccount,
