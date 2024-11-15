@@ -125,7 +125,7 @@ const cancelForm = () => {
     </div>
   </section>
   <BaseModal :show="showModal">
-    <div class="p-12">
+    <div>
       <ScheduleForm
           v-model:name="form.name"
           v-model:email="form.email"
