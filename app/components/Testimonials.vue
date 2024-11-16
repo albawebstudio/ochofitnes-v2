@@ -104,6 +104,7 @@ const [container, slider] = useKeenSlider({
             aria-label="Previous slide"
             id="keen-slider-previous"
             class="rounded-full border border-tertiary-600 p-4 text-tertiary-600 transition hover:bg-tertiary-600 hover:text-white"
+            @click="slider.prev()"
         >
           <svg
               class="size-5 -rotate-180 transform"
@@ -120,6 +121,7 @@ const [container, slider] = useKeenSlider({
             aria-label="Next slide"
             id="keen-slider-next"
             class="rounded-full border border-tertiary-600 p-4 text-tertiary-600 transition hover:bg-tertiary-600 hover:text-white"
+            @click="slider.next()"
         >
           <svg
               class="size-5"
