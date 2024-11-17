@@ -12,8 +12,6 @@ definePageMeta({
 
     <AboutUs />
 
-    <Motivational />
-
     <Services />
 
     <Testimonials />
