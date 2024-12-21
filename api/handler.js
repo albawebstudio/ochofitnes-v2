@@ -28,7 +28,7 @@ module.exports.contactForm = (event, context, callback) => {
   } catch (err) {
     console.error(err)
     response['body'] = JSON.stringify({
-      sucess: false,
+      success: false,
       message: err.message
     })
   }

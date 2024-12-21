@@ -90,7 +90,7 @@ const [container, slider] = useKeenSlider({
           </div>
         </div>
 
-        <div class="-mx-6 lg:col-span-2 lg:mx-0">
+        <div class="mx-0 sm:-mx-6 lg:col-span-2 lg:mx-0">
           <div ref="container" class="keen-slider">
             <template v-for="review in testimonial.reviews">
               <Testimonial :review="review" />
