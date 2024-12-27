@@ -1,9 +1,13 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
     compatibilityDate: '2024-04-03',
-
+    app: {
+        head: {
+            charset: 'utf-8',
+            viewport: 'width=device-width, initial-scale=1',
+        }
+    },
     devtools: {enabled: true},
-
     runtimeConfig: {
         public: {
             apiUrl: process.env.AWS_API_URL,
@@ -11,9 +15,7 @@ export default defineNuxtConfig({
             gtagId: process.env.GAG_ID,
         }
     },
-
     ssr: false,
-
     modules: [
         '@nuxtjs/tailwindcss',
         '@nuxt/image',
@@ -24,36 +26,30 @@ export default defineNuxtConfig({
         '@vueform/nuxt',
         '@nuxt/content',
     ],
-
     css: [
         '@fortawesome/fontawesome-svg-core/styles.css',
     ],
-
     postcss: {
         plugins: {
             tailwindcss: {},
             autoprefixer: {},
         },
     },
-
     plugins: [
         '~/plugins/vue3-google-map',
         '~/plugins/fontawesome',
     ],
-
     googleFonts: {
         families: {
             "Lato": true
         },
         preload: true
     },
-
     build: {
         transpile: [
             '@fortawesome/vue-fontawesome'
         ]
     },
-
     security: {
         headers: {
             contentSecurityPolicy: {
@@ -61,7 +57,6 @@ export default defineNuxtConfig({
             }
         },
     },
-
     content: {
         markdown: {
             toc: {
@@ -73,5 +68,4 @@ export default defineNuxtConfig({
             ]
         }
     },
-
 })
