@@ -181,9 +181,11 @@ const cancelForm = () => {
 
     <CheckboxElement
         name="terms"
-        text="I accept the Terms & Conditions & Privacy Policy"
+        text=""
         rules="required"
-    />
+    >
+      <slots name="customDescription">I accept the <NuxtLink to="/legal/terms-and-conditions" external="true" title="Terms and Conditions">Terms & Conditions</NuxtLink></slots>
+    </CheckboxElement>
 
     <StaticElement
         name="divider_1"
