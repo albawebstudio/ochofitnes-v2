@@ -1,7 +1,4 @@
 <script setup lang="ts">
-import Navigation from "~/components/common/Navigation.vue";
-import Footer from "~/components/common/Footer.vue";
-
 useHead({
   link: [
     {
@@ -58,9 +55,9 @@ useHead({
 
 <template>
   <div>
-    <Navigation />
+    <CommonNavigation />
     <slot></slot>
-    <Footer />
+    <CommonFooter />
     <div id="modals" class="relative z-20"></div>
   </div>
 </template>
