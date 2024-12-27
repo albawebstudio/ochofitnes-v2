@@ -184,7 +184,7 @@ const cancelForm = () => {
         text=""
         rules="required"
     >
-      <slots name="customDescription">I accept the <NuxtLink to="/legal/terms-and-conditions" external="true" title="Terms and Conditions">Terms & Conditions</NuxtLink></slots>
+      <slots name="customDescription">I accept the <NuxtLink to="/legal/terms-and-conditions" :external=true title="Terms and Conditions">Terms & Conditions</NuxtLink></slots>
     </CheckboxElement>
 
     <StaticElement
