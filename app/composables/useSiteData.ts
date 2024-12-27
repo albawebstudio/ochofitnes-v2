@@ -66,7 +66,7 @@ export function useSiteData() {
         {
             title: "Services",
             to: "/#services",
-            external: false,
+            external: true,
             icon: null,
             displayText: "Services",
             className: null
@@ -74,7 +74,7 @@ export function useSiteData() {
         {
             title: "Testimonials",
             to: "/#testimonials",
-            external: false,
+            external: true,
             icon: null,
             displayText: "Testimonials",
             className: null
@@ -82,7 +82,7 @@ export function useSiteData() {
         {
             title: "Contact Us",
             to: "/#contact-us",
-            external: false,
+            external: true,
             icon: null,
             displayText: "Contact Us",
             className: null
@@ -116,7 +116,7 @@ export function useSiteData() {
         {
             title: "Check out our blog",
             to: "/blog",
-            external: false,
+            external: true,
             icon: null,
             displayText: "Blog",
             className: null
@@ -144,7 +144,7 @@ export function useSiteData() {
         {
             title: "Check out our terms and conditions",
             to: "/legal/terms-and-conditions",
-            external: false,
+            external: true,
             icon: null,
             displayText: "Terms & Conditions",
             className: null
@@ -152,7 +152,7 @@ export function useSiteData() {
         {
             title: "View our privacy policy",
             to: "/legal/privacy-policy",
-            external: false,
+            external: true,
             icon: null,
             displayText: "Privacy Policy",
             className: null
