@@ -21,7 +21,7 @@ export function useServiceData() {
                     measure: "minutes",
                     quantity: 30
                 },
-                formattedValue: "$50",
+                formattedValue: "$60",
             },
             list: [
                 "$115 for 60 minutes",
@@ -104,13 +104,13 @@ export function useServiceData() {
                 alt: "Online Training"
             },
             price: {
-                amount: 50.00,
+                amount: 60.00,
                 currency: "USD",
                 unit: {
                     measure: "minutes",
                     quantity: 30
                 },
-                formattedValue: "$50",
+                formattedValue: "$60",
             },
             list: [
                 "Train Anywhere, Anytime",
