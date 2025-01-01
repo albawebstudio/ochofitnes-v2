@@ -104,13 +104,13 @@ export function useServiceData() {
                 alt: "Online Training"
             },
             price: {
-                amount: 60.00,
+                amount: 55.00,
                 currency: "USD",
                 unit: {
                     measure: "minutes",
                     quantity: 30
                 },
-                formattedValue: "$60",
+                formattedValue: "$55",
             },
             list: [
                 "Train Anywhere, Anytime",

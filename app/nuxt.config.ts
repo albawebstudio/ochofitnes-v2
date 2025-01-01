@@ -10,7 +10,7 @@ export default defineNuxtConfig({
     devtools: {enabled: true},
     runtimeConfig: {
         public: {
-            apiUrl: process.env.AWS_API_URL,
+            apiUrl: process.env.API_URL,
             googleMapsApiKey: process.env.GOOGLE_MAPS_API_KEY,
             gtagId: process.env.GAG_ID,
         }
