@@ -5,9 +5,11 @@
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
-    "generate": "nuxt generate",
+    "generate": "NODE_ENV=production nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "deploy": "NODE_ENV=production pnpm run generate && AWS_PROFILE=ochofitness aws s3 cp ./dist s3://ochofitness.com/ --recursive",
+    "invalidateAssets": "AWS_PROFILE=ochofitness aws cloudfront create-invalidation --distribution-id E1XFYU4PWS8EVU --paths '/*'"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.6.0",
