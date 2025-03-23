@@ -54,6 +54,7 @@ export default defineNuxtConfig({
         headers: {
             contentSecurityPolicy: {
                 'img-src': ["'self'", "data:", "https://maps.gstatic.com/", "https://maps.googleapis.com/"],
+                'script-src': ["'self'", "data:", "https://maps.googleapis.com"],
             }
         },
     },
