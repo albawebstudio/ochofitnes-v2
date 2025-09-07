@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { useContactData } from '~/composables/useContactData'
+
 interface Props {
   name: string;
   email: string;
@@ -7,6 +9,9 @@ interface Props {
 }
 
 defineProps<Props>();
+
+const { formLabels } = useContactData()
+
 const emit = defineEmits<{
   (e: 'update:name', value: string): void
   (e: 'update:email', value: string): void
@@ -39,50 +44,59 @@ const submitForm = () => {
 <template>
   <form @submit.prevent="submitForm" class="space-y-8">
     <div>
-      <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Full Name</label>
+      <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+        {{ formLabels?.name?.label || 'Full Name' }}
+      </label>
       <input :value="name"
              @input="updateName"
              type="text"
              id="name"
              autocomplete="on"
              class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light"
-             placeholder="Your Name"
+             :placeholder="formLabels?.name?.placeholder || 'Your Name'"
              required>
     </div>
     <div>
-      <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Your email</label>
+      <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+        {{ formLabels?.email?.label || 'Your email' }}
+      </label>
       <input :value="email"
              @input="updateEmail"
              type="email"
              id="email"
              autocomplete="on"
              class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light"
-             placeholder="Your Email"
+             :placeholder="formLabels?.email?.placeholder || 'Your Email'"
              required>
     </div>
     <div>
-      <label for="subject" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Subject</label>
+      <label for="subject" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+        {{ formLabels?.subject?.label || 'Subject' }}
+      </label>
       <input :value="subject"
              @input="updateSubject"
              type="text"
              id="subject"
              class="block p-3 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 shadow-sm focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light"
-             placeholder="Fitness Consultation, Personal Training, Sports Massage, or Other"
+             :placeholder="formLabels?.subject?.placeholder || 'Fitness Consultation, Personal Training, Sports Massage, or Other'"
              required>
     </div>
     <div class="sm:col-span-2">
-      <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">Your message</label>
+      <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">
+        {{ formLabels?.message?.label || 'Your message' }}
+      </label>
       <textarea :value="message"
                 @input="updateMessage"
                 id="message"
                 rows="6"
                 class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg shadow-sm border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                placeholder="Please describe your fitness goals, any injuries or concerns, and your availability for training sessions."></textarea>
+                :placeholder="formLabels?.message?.placeholder || 'Please describe your fitness goals, any injuries or concerns, and your availability for training sessions.'"></textarea>
     </div>
-    <button type="submit" class="py-3 px-5 text-sm font-medium text-center text-white rounded-lg bg-primary-700 sm:w-fit hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Send message</button>
+    <button type="submit" class="py-3 px-5 text-sm font-medium text-center text-white rounded-lg bg-primary-700 sm:w-fit hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
+      {{ formLabels?.submit || 'Send message' }}
+    </button>
   </form>
 </template>
 
 <style scoped>
-
 </style>

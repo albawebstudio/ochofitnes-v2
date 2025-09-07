@@ -12,29 +12,30 @@
     "invalidateAssets": "AWS_PROFILE=ochofitness aws cloudfront create-invalidation --distribution-id E1XFYU4PWS8EVU --paths '/*'"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^6.6.0",
-    "@fortawesome/free-brands-svg-icons": "^6.6.0",
-    "@fortawesome/free-regular-svg-icons": "^6.6.0",
-    "@fortawesome/free-solid-svg-icons": "^6.6.0",
-    "@fortawesome/vue-fontawesome": "^3.0.8",
+    "@fortawesome/fontawesome-svg-core": "^6.7.2",
+    "@fortawesome/free-brands-svg-icons": "^6.7.2",
+    "@fortawesome/free-regular-svg-icons": "^6.7.2",
+    "@fortawesome/free-solid-svg-icons": "^6.7.2",
+    "@fortawesome/vue-fontawesome": "^3.1.1",
     "@nuxt/content": "^2.13.4",
-    "@nuxt/image": "^1.8.1",
+    "@nuxt/image": "^1.11.0",
     "@nuxtjs/google-fonts": "^3.2.0",
-    "@nuxtjs/tailwindcss": "^6.12.1",
-    "@tailwindcss/typography": "^0.5.15",
-    "@vueform/nuxt": "^1.7.0",
-    "nuxt": "^3.13.0",
-    "nuxt-security": "^2.0.0",
-    "nuxt-svgo": "^4.0.6",
+    "@nuxtjs/i18n": "^10.0.6",
+    "@nuxtjs/tailwindcss": "^6.14.0",
+    "@tailwindcss/typography": "^0.5.16",
+    "@vueform/nuxt": "^1.20.0",
+    "nuxt": "^3.19.1",
+    "nuxt-security": "^2.4.0",
+    "nuxt-svgo": "^4.2.6",
     "rehype-external-links": "^3.0.0",
     "vue": "latest",
     "vue-router": "latest",
-    "vue3-google-map": "^0.21.0"
+    "vue3-google-map": "^0.21.1"
   },
   "devDependencies": {
     "@types/google.maps": "^3.58.1",
-    "nuxt-keen-slider": "^1.1.0",
-    "tailwindcss": "^3.4.14"
+    "nuxt-keen-slider": "^1.1.1",
+    "tailwindcss": "^3.4.17"
   },
   "packageManager": "pnpm@9.7.0+sha256.b35018fbfa8f583668b2649e407922a721355cd81f61beeb4ac1d4258e585559"
 }

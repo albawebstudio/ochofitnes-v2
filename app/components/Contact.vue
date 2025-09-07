@@ -1,7 +1,5 @@
 <script setup lang="ts">
 import { ref, shallowRef } from 'vue';
-import { GoogleMap, CustomMarker, InfoWindow} from "vue3-google-map";
-import { useGoogleMapData } from "~/composables/useGoogleMapData"
 import { useSiteData } from "~/composables/useSiteData"
 import { useContactData } from "~/composables/useContactData";
 import Spinner from "~/components/common/Spinner.vue";
@@ -10,14 +8,9 @@ import ContactForm from "~/components/common/ContactForm.vue";
 import LogoSvg from "~/public/logo-monochrome.svg";
 
 const config = useRuntimeConfig()
-const googleMapsApiKey = config.public.googleMapsApiKey
 const apiUrl = config.public.apiUrl
 
-const {
-  mapOptions,
-  markerOptions
-} = useGoogleMapData()
-const { contact } = useContactData()
+const { contact, labels } = useContactData()
 const { site, phone, getEmailByAccount, getAddressByLabel } = useSiteData()
 const email = getEmailByAccount('jovani')
 const address = getAddressByLabel("work")
@@ -84,37 +77,33 @@ const clearSuccess = () => {
 
 <template>
   <section id="contact-us" class="bg-white dark:bg-gray-900">
-    <div class="container px-6 py-12 mx-auto">
-      <div class="text-center w-full sm:w-2/3 mx-auto">
-        <h2 class="text-4xl leading-relaxed font-bold tracking-tight text-primary-700 dark:text-primary-500">{{ contact.title }}</h2>
-        <p v-for="content in contact.content" class="mt-3 text-gray-500 dark:text-gray-400" v-html="content"></p>
-        <address class="text-tertiary-700 dark:text-tertiary-500 mt-4">{{ address.address1 }}, {{ address.city }}, {{ address.state }} {{ address.postal_code }}</address>
-      </div>
-
-      <div class="grid grid-cols-1 gap-12 mt-10 lg:grid-cols-2">
-        <div class="grid grid-cols-1 gap-6">
-          <div>
-            <span class="inline-block p-3 text-primary-500 rounded-full bg-blue-100/80 dark:bg-gray-800" aria-description="email">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                     stroke="currentColor" class="w-5 h-5">
-                <path stroke-linecap="round" stroke-linejoin="round"
-                        d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/>
-              </svg>
-            </span>
-            <p class="mt-2 text-sm text-gray-500 dark:text-gray-400">Our email</p>
-            <p class="mt-2 text-sm text-primary-500 dark:text-primary-400">{{ email.account }}-dot-{{ email.domain}}</p>
+    <div class="my-6">
+      <div class="grid sm:grid-cols-2 items-center gap-16 p-8 mx-auto max-w-4xl bg-white shadow-[0_2px_10px_-3px_rgba(6,81,237,0.3)] rounded-md text-[#333] font-[sans-serif]">
+        <div>
+          <h1 class="text-3xl font-extrabold">{{ contact.title }}</h1>
+          <p v-for="content in contact.content" class="text-sm text-gray-400 mt-3" v-html="content"></p>
+          <div class="mt-12">
+            <h2 class="text-lg font-extrabold">{{ labels.email }}</h2>
+            <ul class="mt-3">
+              <li class="flex items-center">
+                <div class="bg-[#e6e6e6cf] h-10 w-10 rounded-full flex items-center justify-center shrink-0">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill='#007bff'
+                       viewBox="0 0 479.058 479.058">
+                    <path
+                        d="M434.146 59.882H44.912C20.146 59.882 0 80.028 0 104.794v269.47c0 24.766 20.146 44.912 44.912 44.912h389.234c24.766 0 44.912-20.146 44.912-44.912v-269.47c0-24.766-20.146-44.912-44.912-44.912zm0 29.941c2.034 0 3.969.422 5.738 1.159L239.529 264.631 39.173 90.982a14.902 14.902 0 0 1 5.738-1.159zm0 299.411H44.912c-8.26 0-14.971-6.71-14.971-14.971V122.615l199.778 173.141c2.822 2.441 6.316 3.655 9.81 3.655s6.988-1.213 9.81-3.655l199.778-173.141v251.649c-.001 8.26-6.711 14.97-14.971 14.97z"
+                        data-original="#000000" />
+                  </svg>
+                </div>
+                <div class="ml-4">
+                  <small class="block">{{ labels.email }}</small>
+                  <strong>{{ email.account }}-dot-{{ email.domain}}</strong>
+                </div>
+              </li>
+            </ul>
           </div>
+        </div>
 
-          <div>
-            <span class="inline-block p-3 text-primary-500 rounded-full bg-blue-100/80 dark:bg-gray-800">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/>
-              </svg>
-            </span>
-            <p class="mt-2 text-sm text-gray-500 dark:text-gray-400">Our Phone</p>
-            <p class="mt-2 text-sm text-primary-500 dark:text-primary-400"><NuxtLink :to="'tel:' + phone.raw" external>{{ phone.formatted }}</NuxtLink></p>
-          </div>
-
+        <div>
           <Spinner v-if="showSpinner" />
 
           <ContactForm
@@ -128,32 +117,23 @@ const clearSuccess = () => {
 
           <Success @updateClearSuccess="clearSuccess"
                    v-if="showSuccess" />
-
         </div>
 
-        <div class="overflow-hidden rounded-lg h-96 lg:h-auto">
-          <GoogleMap
-              :api-key="googleMapsApiKey"
-              :styles="mapOptions.styles"
-              style="width: 100%; height: 100%"
-              :center="mapOptions.center"
-              :zoom="mapOptions.zoom"
-          >
-            <CustomMarker :options="markerOptions">
-              <div style="text-align: center">
-                <div style="font-size: 1.125rem">{{ site.title }}</div>
-                <LogoSvg :fontControlled="false" width="74" height="74" />
-              </div>
-              <InfoWindow>
-                <div id="content">
-                  <div id="siteNotice"></div>
-                  <h4>{{ site.title }}</h4>
-                  <p>{{ site.tagLine }}</p>
-                </div>
-              </InfoWindow>
-            </CustomMarker>
-          </GoogleMap>
-        </div>
+<!--        <form action="https://fabform.io/f/xxxxx" method="post" class="ml-auo space-y-4">
+          <input type='text' name ="name" placeholder='Name'
+                 class="w-full rounded-md py-2.5 px-4 border text-sm outline-[#007bff]" />
+          <input type='email'
+                 name='email'
+                 placeholder='Email'
+                 class="w-full rounded-md py-2.5 px-4 border text-sm outline-[#007bff]" />
+          <input type='text' placeholder='Subject'
+                 name='subject'                         class="w-full rounded-md py-2.5 px-4 border text-sm outline-[#007bff]" />
+          <textarea placeholder='Message' rows="6"
+                    name='message'
+                    class="w-full rounded-md px-4 border text-sm pt-2.5 outline-[#007bff]"></textarea>
+          <button type='button' type="submit"
+                  class="text-white bg-[#007bff] hover:bg-blue-600 font-semibold rounded-md text-sm px-4 py-2.5 w-full">Send</button>
+        </form>-->
       </div>
     </div>
   </section>

@@ -1,0 +1,280 @@
+{
+  "site": {
+    "title": "Ocho Fitness",
+    "legalName": "Ocho Fitness LLC",
+    "tagLine": "Entrena Inteligente, Vive Fuerte.",
+    "url": "https://www.ochofitness.com"
+  },
+  "navigation": {
+    "home": "Inicio",
+    "aboutUs": "Acerca de Nosotros",
+    "services": "Servicios",
+    "testimonials": "Testimonios",
+    "contactUs": "Contáctanos"
+  },
+  "jumbotron": {
+    "title": "Ocho Fitness",
+    "description": "Bienvenido a la familia",
+    "getStarted": "Comenzar",
+    "learnMore": "Saber más"
+  },
+  "started": {
+    "title": "¿Nuevo en el ejercicio?",
+    "content": [
+      "Ya sea que apenas empieces a hacer ejercicio o que lleves tiempo haciéndolo, ¡puedo ayudarte!"
+    ],
+    "cta": "Programa una sesión hoy",
+    "subtitle": "¿Cómo puedo ayudarte?",
+    "list": [
+      "Entrenamientos que se adaptan a tus necesidades y nivel de condición física.",
+      "Aumentar la fuerza",
+      "Desarrollar músculo",
+      "Mejorar la flexibilidad"
+    ]
+  },
+  "about": {
+    "title": "¡Hola, soy Jovani. ¡Bienvenido a mi sitio!",
+    "content": [
+      "Soy un Entrenador Personal Certificado y Terapeuta de Masaje Deportivo Certificado.",
+      "Ayudar a las personas a moverse bien es mi pasión. No solo te animaré a ser lo mejor que puedas ser, sino que también te mostraré lo capaz que eres y te ayudaré a mantenerte libre de dolor, ¡para que puedas continuar con las actividades que AMAS hacer!",
+      "Comencé mi viaje de salud como Asistente Quiropráctico en California hace más de 14 años. La experiencia me mostró los beneficios del trabajo corporal correctivo, la rehabilitación y los ejercicios, encendiendo mi pasión por el entrenamiento y ayudar a las personas. Este camino de mejora continúa; con aquellos con quienes he tenido la bendición de trabajar y conmigo mismo.",
+      "A través de estos muchos años de experiencia, he desarrollado un estilo de entrenamiento que incluye una mezcla de levantamiento de pesas, cardio y trabajo de core, todo diseñado para dirigirse a un perfil de fitness completo que será diseñado personalmente basado en tus necesidades únicas. No hay enfoque \"de talla única\" aquí.",
+      "Espero responder cualquier pregunta que puedas tener. Siéntete libre de explorar los muchos servicios disponibles y contáctame a través de este sitio web para comenzar."
+    ],
+    "profile": {
+      "name": "Jovani Morales",
+      "certifications": "NASM CPT, CES, PES Terapeuta de masaje certificado",
+      "imageAlt": "Tu entrenador, Jovani Morales"
+    }
+  },
+  "services": {
+    "title": "Nuestros Servicios",
+    "content": [
+      "¡Ocho Fitness ofrece entrenamiento personalizado, sesiones grupales y masaje deportivo para ayudarte a moverte mejor, ponerte más fuerte y mantenerte libre de dolor. Ya sea en persona o en línea, adaptamos cada sesión para ajustarse a tus objetivos. ¡Explora nuestras opciones a continuación y encuentra la adecuada para tu viaje de fitness!"
+    ],
+    "sportsMassage": {
+      "title": "Masaje Deportivo",
+      "content": [
+        "El masaje deportivo ayuda a aliviar el dolor muscular de aparición tardía (DOMS) después de entrenamientos intensos, afloja músculos tensos y mejora la movilidad articular y aumenta la circulación para promover una curación más rápida de los tejidos musculares."
+      ],
+      "imageAlt": "Masaje Deportivo",
+      "price": "$60",
+      "duration": "30 minutos",
+      "list": [
+        "$115 por 60 minutos",
+        "Reduce el Dolor Muscular",
+        "Mejora la Flexibilidad y Rango de Movimiento",
+        "Acelera la Recuperación",
+        "Previene Lesiones",
+        "Alivia el Estrés y la Tensión",
+        "Mejora el Rendimiento Atlético",
+        "Aumenta la Circulación",
+        "Reduce el Tejido Cicatricial y Adherencias"
+      ]
+    },
+    "smallGroup": {
+      "title": "Grupo Pequeño",
+      "content": [
+        "Obtén los beneficios del coaching individual mientras entrenas con otros. El entrenamiento en grupo pequeño te permite mantenerte motivado trabajando junto con personas de ideas afines con objetivos similares."
+      ],
+      "imageAlt": "Clases de Grupo Pequeño",
+      "price": "$50",
+      "duration": "60 minutos",
+      "list": [
+        "Atención Personalizada en un Entorno Grupal",
+        "Motivación y Responsabilidad",
+        "Entrenamientos Divertidos y Atractivos",
+        "Coaching Asequible",
+        "Entrenamiento Variado y Equilibrado",
+        "Construir Comunidad",
+        "Adaptable para Todos los Niveles",
+        "Aumenta la Consistencia"
+      ]
+    },
+    "individualTraining": {
+      "title": "Entrenamiento Individual",
+      "content": [
+        "Programas diseñados a medida para cumplir con tus objetivos y necesidades específicas de fitness. Recibe atención indivisa y orientación de un entrenador certificado. Mantente en curso con retroalimentación personalizada y ajustes de objetivos."
+      ],
+      "imageAlt": "Entrenamiento Individual",
+      "price": "$60",
+      "duration": "30 minutos",
+      "list": [
+        "$100 por 60 minutos",
+        "Entrenamientos Personalizados",
+        "Coaching Uno a Uno",
+        "Seguimiento del Progreso",
+        "Entrenamientos Eficientes",
+        "Prevención y Recuperación de Lesiones",
+        "Horarios Flexibles",
+        "Aumenta la Confianza",
+        "Responsabilidad y Motivación"
+      ]
+    },
+    "onlineTraining": {
+      "title": "Entrenamiento en Línea",
+      "content": [
+        "Disfruta la flexibilidad de entrenar desde la comodidad de tu hogar o mientras viajas. Obtén programas personalizados adaptados a tus objetivos y nivel de fitness, igual que en las sesiones presenciales. Recibe orientación y correcciones en tiempo real durante las sesiones virtuales."
+      ],
+      "imageAlt": "Entrenamiento en Línea",
+      "price": "$55",
+      "duration": "30 minutos",
+      "list": [
+        "Entrena en Cualquier Lugar, en Cualquier Momento",
+        "Entrenamientos Personalizados",
+        "Coaching y Retroalimentación en Vivo",
+        "Costo-Efectivo",
+        "Monitoreo del Progreso",
+        "Mayor Responsabilidad",
+        "Acceso a Coaching Experto",
+        "Conveniente para Horarios Ocupados"
+      ]
+    }
+  },
+  "testimonial": {
+    "title": "Lo que dicen nuestros clientes",
+    "content": [
+      "En Ocho Fitness, nos enorgullece ayudar a nuestros clientes a moverse mejor, sentirse más fuertes y mantenerse libres de dolor. Ya sea a través del entrenamiento personal, el masaje deportivo o el entrenamiento en línea, nuestra meta es apoyar el camino único de cada persona. Pero no tienes que tomar solo nuestra palabra—¡aquí está lo que nuestros clientes dicen sobre su experiencia con nosotros!"
+    ],
+    "reviews": [
+      {
+        "id": 1,
+        "title": "¡Me siento mejor y me muevo libremente otra vez!",
+        "content": "Desde que he estado yendo con Jovani para masajes he notado cambios positivos. Mi espalda ya no está tan rígida. Mi cuerpo simplemente se siente mejor. Puedo moverme con más facilidad. Recomiendo mucho a Jovani."
+      },
+      {
+        "id": 2,
+        "title": "Entrenamiento transformador para una vida más saludable",
+        "content": "He tenido el placer de entrenar con Jovani por cuatro años, y la decisión ha sido una de las más importantes que he tomado para mi salud en general. La cualidad más valiosa que Jovani tiene como entrenador es que me conoce. Sabe cómo ajustar los entrenamientos en la sesión según sea necesario, pero lo más importante, sabe cómo motivarme para sacar lo mejor de mí. Entrenar con Jovani me ha dado una base para un estilo de vida más saludable, y estoy muy agradecido de tener la oportunidad de trabajar con él."
+      },
+      {
+        "id": 3,
+        "title": "Más fuertes, saludables y sin dolor en nuestros 60s",
+        "content": "He estado entrenando con Jovani Morales por ocho años. Mi esposa se unió hace cuatro años. Entrenamos con él tres días a la semana. La educación y experiencia previa de Jovani trabajando con un quiropráctico se traducen en una comprensión completa de la anatomía humana al dar masajes. Adapta sus entrenamientos a nuestras necesidades individuales y toma en cuenta los dolores, molestias o problemas que podamos tener esa semana o mes. Su conocimiento de los grupos musculares y de los ejercicios que necesitamos es impresionante. Estaba físicamente en mal estado cuando empecé con él, y hoy en mis 60s tengo mucha más flexibilidad y fuerza. Jovani es un entrenador único y talentoso que siempre tiene una actitud positiva y motivadora. ¡Por si no quedó claro, lo recomendamos mucho!"
+      },
+      {
+        "id": 4,
+        "title": "Un camino de regreso a la salud y la positividad",
+        "content": "Conocí a Jovani Morales en 2016 cuando se convirtió en mi entrenador personal en la YMCA en Woodbury, MN. Él fue responsable de ayudarme a recuperar mi salud física después de años de descuido de mi parte. Esto incluyó ejercicio con masaje terapéutico después. Jovani me dio una nueva actitud mental positiva que me ha guiado conforme he envejecido. Lo recomiendo mucho a quienes desean recuperar una buena salud física."
+      },
+      {
+        "id": 5,
+        "title": "Entrenamiento experto con un toque personalizado",
+        "content": "Jovani es un entrenador excepcional. No solo se asegura de que los ejercicios se hagan correctamente para maximizar los beneficios, también toma en cuenta las lesiones o limitaciones de cada cliente al planear el entrenamiento del día."
+      },
+      {
+        "id": 6,
+        "title": "Entrenamientos motivadores, bien diseñados y siempre diferentes",
+        "content": "He conocido y trabajado con Jovani por más de 4 años. Llega a cada sesión con un plan de entrenamiento bien pensado. Sabe cómo motivarte para sacar lo mejor de cada sesión, lo cual ayuda a progresar. Los entrenamientos son una buena combinación de cardio y fuerza, y varían para evitar el aburrimiento."
+      },
+      {
+        "id": 7,
+        "title": "Entrenamiento personalizado con motivación y amistad",
+        "content": "Trabajar con Jovani ha sido una experiencia fantástica. Escucha mis inquietudes y me da un entrenamiento adaptado a mis necesidades. Su motivación constante me inspira. Jovani sigue haciéndome más fuerte y en el proceso se ha convertido en un amigo."
+      }
+    ]
+  },
+  "contact": {
+    "title": "Siéntete libre de preguntar cualquier cosa",
+    "content": [
+      "¡Transforma tu fitness y bienestar con Ocho Fitness! Ya sea que necesites entrenamiento personal, masaje deportivo o coaching en línea, Jovani Morales te ayudará a desarrollar fuerza, mantenerte flexible y moverte libre de dolor—¡alcancemos tus objetivos juntos!"
+    ],
+    "labels": {
+      "email": "Correo",
+      "socials": "Redes sociales"
+    }
+  },
+  "footer": {
+    "usefulLinks": {
+      "title": "Enlaces Útiles",
+      "aboutUs": "Acerca de Nosotros",
+      "blog": "Blog"
+    },
+    "resources": {
+      "title": "Recursos",
+      "mayoClinic": "Fitness de Mayo Clinic",
+      "stretching": "Estiramiento y Flexibilidad"
+    },
+    "legal": {
+      "title": "Legal",
+      "terms": "Términos y Condiciones",
+      "privacy": "Política de Privacidad"
+    }
+  },
+  "common": {
+    "language": "Idioma",
+    "selectLanguage": "Seleccionar Idioma"
+  },
+  "forms": {
+    "schedule": {
+      "title": "Formulario de programación de sesión",
+      "close": "Cerrar modal",
+      "name": {
+        "label": "Nombre completo",
+        "placeholder": null
+      },
+      "email": {
+        "label": "Tu correo electrónico",
+        "placeholder": null
+      },
+      "phone": {
+        "label": "Tu teléfono",
+        "placeholder": "Tu número de teléfono"
+      },
+      "session_type": {
+        "label": "Tipo de sesión",
+        "placeholder": "Selecciona un tipo de sesión"
+      },
+      "day_option": {
+        "label": "Elige dos o tres días posibles para la sesión.",
+        "placeholder": null
+      },
+      "time_option": {
+        "label": "Elige hasta cinco horarios posibles para la sesión.",
+        "placeholder": null
+      },
+      "conditions": {
+        "label": "Haznos saber si tienes alguna lesión o condición médica.",
+        "placeholder": "Lesiones o condiciones médicas"
+      },
+      "accept_terms": "Acepto los Términos y Condiciones",
+      "cancel": "Cancelar",
+      "submit": "Programar sesión",
+      "session_types": {
+        "sports_massage": "Masaje deportivo",
+        "individual_training": "Entrenamiento individual",
+        "online_training": "Entrenamiento en línea",
+        "group_training": "Entrenamiento en grupo"
+      },
+      "days": {
+        "sunday": "Domingo",
+        "monday": "Lunes",
+        "tuesday": "Martes",
+        "wednesday": "Miércoles",
+        "thursday": "Jueves",
+        "friday": "Viernes",
+        "saturday": "Sábado"
+      }
+    },
+    "contact": {
+      "close": "Cerrar modal",
+      "name": {
+        "label": "Nombre completo",
+        "placeholder": "Tu nombre"
+      },
+      "email": {
+        "label": "Tu correo electrónico",
+        "placeholder": "Tu correo electrónico"
+      },
+      "subject": {
+        "label": "Asunto",
+        "placeholder": "Consulta de fitness, entrenamiento personal, masaje deportivo u otro"
+      },
+      "message": {
+        "label": "Tu mensaje",
+        "placeholder": "Por favor describe tus objetivos de acondicionamiento físico, cualquier lesión o inquietud, y tu disponibilidad para las sesiones de entrenamiento."
+      },
+      "submit": "Enviar mensaje"
+    }
+  }
+}

@@ -1,21 +1,18 @@
 import { ref } from 'vue'
+import { useI18n } from 'vue-i18n'
+import { getI18nArray } from "~/composables/useI18nContent"
 
 import type { GetStarted } from '~/models/get-started'
 
 export function useGetStartedData() {
+    const { t } = useI18n()
+
     const getStarted = ref<GetStarted>({
-        title: "New to working out?",
-        content: [
-            "Whether you are new to exercise or have been exercising for some time, I can help!"
-        ],
-        cta: "Schedule A Session Today",
-        subtitle: "How can I help you?",
-        list: [
-            "Workouts that meet your needs and level of fitness.",
-            "Increase strength",
-            "Build muscle",
-            "Improve flexibility",
-        ]
+        title: t('started.title'),
+        content: getI18nArray('started.content'),
+        cta: t('started.cta'),
+        subtitle: t('started.subtitle'),
+        list: getI18nArray('started.list'),
     })
 
     return {

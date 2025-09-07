@@ -1,18 +1,18 @@
-import { ref } from 'vue'
+import { computed } from 'vue'
 
 import type { Service } from '~/models/service'
 import type { ServiceItem } from '~/models/service-item'
+import { getI18nArray } from "~/composables/useI18nContent"
 
 export function useServiceData() {
-    const service_items = ref<ServiceItem[]>([
+    const { t } = useI18n()
+    const service_items = computed<ServiceItem[]>(() => [
         {
-            title: "Sports Massage",
-            content: [
-                "Sports massage helps alleviate delayed onset muscle soreness (DOMS) after intense workouts, loosens tight muscles and enhances joint mobility and boosts circulation to promote faster healing of muscle tissues."
-            ],
+            title: t('services.sportsMassage.title'),
+            content: getI18nArray('services.sportsMassage.content'),
             img: {
                 src: "/class/sports-massage.jpg",
-                alt: "Sports Massage"
+                alt: t('services.sportsMassage.imageAlt')
             },
             price: {
                 amount: 60.00,
@@ -21,28 +21,16 @@ export function useServiceData() {
                     measure: "minutes",
                     quantity: 30
                 },
-                formattedValue: "$60",
+                formattedValue: t('services.sportsMassage.price'),
             },
-            list: [
-                "$115 for 60 minutes",
-                "Reduces Muscle Soreness",
-                "Improves Flexibility and Range of Motion",
-                "Speeds Up Recovery",
-                "Prevents Injuries",
-                "Relieves Stress and Tension",
-                "Enhances Athletic Performance",
-                "Boosts Circulation",
-                "Reduces Scar Tissue and Adhesions"
-            ]
+            list: getI18nArray('services.sportsMassage.list')
         },
         {
-            title: "Small Group",
-            content: [
-                "Get the benefits of individual coaching while training with others. Small group training allows you to stay motivated by working alongside like-minded individuals with similar goals."
-            ],
+            title: t('services.smallGroup.title'),
+            content: getI18nArray('services.smallGroup.content'),
             img: {
                 src: "/class/small-group-class.jpg",
-                alt: "Small Group Classes"
+                alt: t('services.smallGroup.imageAlt')
             },
             price: {
                 amount: 50.00,
@@ -51,27 +39,16 @@ export function useServiceData() {
                     measure: "minutes",
                     quantity: 60
                 },
-                formattedValue: "$50",
+                formattedValue: t('services.smallGroup.price'),
             },
-            list: [
-                "Personalized Attention in a Group Setting",
-                "Motivation and Accountability",
-                "Fun and Engaging Workouts",
-                "Affordable Coaching",
-                "Varied and Balanced Training ",
-                "Build Community",
-                "Adaptable for All Levels",
-                "Boosts Consistency"
-            ]
+            list: getI18nArray('services.smallGroup.list')
         },
         {
-            title: "Individual Training",
-            content: [
-                "Tailored programs designed to meet your specific fitness goals and needs. Receive undivided attention and guidance from a certified trainer. Stay on course with personalized feedback and goal adjustments."
-            ],
+            title: t('services.individualTraining.title'),
+            content: getI18nArray('services.individualTraining.content'),
             img: {
                 src: "/class/sports-specific-class.jpg",
-                alt: "Individual Training"
+                alt: t('services.individualTraining.imageAlt')
             },
             price: {
                 amount: 60.00,
@@ -80,28 +57,16 @@ export function useServiceData() {
                     measure: "minutes",
                     quantity: 30
                 },
-                formattedValue: "$60",
+                formattedValue: t('services.individualTraining.price'),
             },
-            list: [
-                "$100 for 60 minutes",
-                "Customized Workouts",
-                "One-on-One Coaching",
-                "Progress Tracking",
-                "Efficient Workouts",
-                "Injury Prevention and Recovery",
-                "Flexible Scheduling",
-                "Boosts Confidence",
-                "Accountability and Motivation"
-            ]
+            list: getI18nArray('services.individualTraining.list')
         },
         {
-            title: "Online Training",
-            content: [
-                "Enjoy the flexibility of training from the comfort of your home or while traveling. Get customized programs tailored to your goals and fitness level, just like in-person sessions. Receive real-time guidance and corrections during virtual sessions."
-            ],
+            title: t('services.onlineTraining.title'),
+            content: getI18nArray('services.onlineTraining.content'),
             img: {
                 src: "/class/online-training.jpg",
-                alt: "Online Training"
+                alt: t('services.onlineTraining.imageAlt')
             },
             price: {
                 amount: 55.00,
@@ -110,28 +75,17 @@ export function useServiceData() {
                     measure: "minutes",
                     quantity: 30
                 },
-                formattedValue: "$55",
+                formattedValue: t('services.onlineTraining.price'),
             },
-            list: [
-                "Train Anywhere, Anytime",
-                "Personalized Workouts",
-                "Live Coaching and Feedback",
-                "Cost-Effective",
-                "Progress Monitoring",
-                "Increased Accountability",
-                "Access to Expert Coaching",
-                "Convenient for Busy Schedules"
-            ]
+            list: getI18nArray('services.onlineTraining.list')
         }
     ])
 
-    const service = ref<Service>({
-        title: "Our Services",
-        content: [
-            "Ocho Fitness offers personalized training, group sessions, and sports massage to help you move better, get stronger, and stay pain-free. Whether in-person or online, we tailor every session to fit your goals. Explore our options below and find the right fit for your fitness journey!",
-        ],
+    const service = computed<Service>(() => ({
+        title: t('services.title'),
+        content: getI18nArray('services.content'),
         items: service_items.value
-    })
+    }))
 
     return {
         service

@@ -12,6 +12,8 @@ import type {
 
 
 export function useSiteData() {
+    const { t } = useI18n()
+    
     const addresses = ref<Address[]> ([
         {
             label: "work",
@@ -46,13 +48,13 @@ export function useSiteData() {
         raw: "+17157056361",
         formatted: "(715) 705-6361"
     })
-    const navigation = ref<Link[]> ([
+    const navigation = computed<Link[]> (() => [
         {
             title: "Home",
             to: "/#home",
             external: true,
             icon: null,
-            displayText: "Home",
+            displayText: t('navigation.home'),
             className: null
         },
         {
@@ -60,7 +62,7 @@ export function useSiteData() {
             to: "/#about-us",
             external: true,
             icon: null,
-            displayText: "About Us",
+            displayText: t('navigation.aboutUs'),
             className: null
         },
         {
@@ -68,7 +70,7 @@ export function useSiteData() {
             to: "/#services",
             external: true,
             icon: null,
-            displayText: "Services",
+            displayText: t('navigation.services'),
             className: null
         },
         {
@@ -76,7 +78,7 @@ export function useSiteData() {
             to: "/#testimonials",
             external: true,
             icon: null,
-            displayText: "Testimonials",
+            displayText: t('navigation.testimonials'),
             className: null
         },
         {
@@ -84,7 +86,7 @@ export function useSiteData() {
             to: "/#contact-us",
             external: true,
             icon: null,
-            displayText: "Contact Us",
+            displayText: t('navigation.contactUs'),
             className: null
         }
     ])
@@ -158,11 +160,11 @@ export function useSiteData() {
             className: null
         }
     ]);
-    const site = ref<Site>({
-        title: "Ocho Fitness",
-        legalName: "Ocho Fitness LLC",
-        tagLine: "Train Smart, Live Strong.",
-        url: "https://www.ochofitness.com",
+    const site = computed<Site>(() => ({
+        title: t('site.title'),
+        legalName: t('site.legalName'),
+        tagLine: t('site.tagLine'),
+        url: t('site.url'),
         addresses: addresses.value,
         email: emails.value,
         phone: phone.value,
@@ -171,7 +173,7 @@ export function useSiteData() {
         useful_links: useful_links.value,
         resources: resources.value,
         legal: legal.value,
-    })
+    }))
 
     const getSiteTitle = () => {
         return site.value.title;

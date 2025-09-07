@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useSiteData } from "~/composables/useSiteData"
 import NavLogo from "/public/logo-monochrome.svg"
+import LanguageSwitcher from "~/components/common/LanguageSwitcher.vue";
 
 const { site, navigation } = useSiteData()
 
@@ -38,6 +39,9 @@ const toggleNav = () => (showMenu.value = !showMenu.value);
               </NuxtLink>
             </li>
           </template>
+          <li class="flex items-center md:ml-4">
+            <LanguageSwitcher />
+          </li>
         </ul>
       </div>
     </div>
