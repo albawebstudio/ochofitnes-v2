@@ -9,9 +9,12 @@ import type {
     Phone,
     SocialLink,
 } from '~/models/common/'
-
+import { useI18n } from "vue-i18n";
 
 export function useSiteData() {
+    const { t } = useI18n()
+    const localePath = useLocalePath() // Add this to make links locale-aware
+
     const addresses = ref<Address[]> ([
         {
             label: "work",
@@ -46,48 +49,51 @@ export function useSiteData() {
         raw: "+17157056361",
         formatted: "(715) 705-6361"
     })
-    const navigation = ref<Link[]> ([
+
+    // Make navigation links locale-aware and ensure they navigate to homepage with hash
+    const navigation = computed<Link[]> (() => [
         {
-            title: "Home",
-            to: "/#home",
+            title: t('navigation.home'),
+            to: localePath('/#home'),
             external: true,
             icon: null,
-            displayText: "Home",
+            displayText: t('navigation.home'),
             className: null
         },
         {
-            title: "About Us",
-            to: "/#about-us",
+            title: t('navigation.aboutUs'),
+            to: localePath('/#about-us'),
             external: true,
             icon: null,
-            displayText: "About Us",
+            displayText: t('navigation.aboutUs'),
             className: null
         },
         {
-            title: "Services",
-            to: "/#services",
+            title: t('navigation.services'),
+            to: localePath('/#services'),
             external: true,
             icon: null,
-            displayText: "Services",
+            displayText: t('navigation.services'),
             className: null
         },
         {
-            title: "Testimonials",
-            to: "/#testimonials",
+            title: t('navigation.testimonials'),
+            to: localePath('/#testimonials'),
             external: true,
             icon: null,
-            displayText: "Testimonials",
+            displayText: t('navigation.testimonials'),
             className: null
         },
         {
-            title: "Contact Us",
-            to: "/#contact-us",
+            title: t('navigation.contactUs'),
+            to: localePath('/#contact-us'),
             external: true,
             icon: null,
-            displayText: "Contact Us",
+            displayText: t('navigation.contactUs'),
             className: null
         }
     ])
+
     const social_links = ref<SocialLink[]> ([
         {
             label: "facebook",
@@ -97,81 +103,90 @@ export function useSiteData() {
             href: "https://www.facebook.com/jovani.morales.142"
         },
         {
-            label: "instagram",
-            name: "Instagram",
-            display_title: "instagram.com/ocho_fitness_8",
-            icon: "fa-brands fa-instagram",
-            href: "https://www.instagram.com/ocho_fitness_8/"
+            label: "whatsapp",
+            name: "WhatsApp",
+            display_title: "wa.link/dwngg9",
+            icon: "fa-brands fa-whatsapp",
+            href: "https://wa.link/dwngg9"
         }
     ])
-    const useful_links = ref<Link[]>([
+
+    // Update useful_links to also use localePath for consistency
+    const useful_links = computed<Link[]>(() => [
         {
-            title: "More about us",
-            to: "/#about-us",
+            title: t('site.usefulLinks.aboutUs.title'),
+            to: localePath('/#about-us'),
             external: true,
             icon: null,
-            displayText: "About Us",
+            displayText: t('site.usefulLinks.aboutUs.displayText'),
             className: null
         },
         {
-            title: "Check out our blog",
-            to: "/blog",
+            title: t('site.usefulLinks.blog.title'),
+            to: localePath('/blog'),
             external: true,
             icon: null,
-            displayText: "Blog",
+            displayText: t('site.usefulLinks.blog.displayText'),
             className: null
         },
-    ]);
+    ])
+
     const resources = ref<Link[]>([
         {
-            title: "Healthy Lifestyle",
+            title: t('site.resources.mayo.title'),
             to: "https://www.mayoclinic.org/healthy-lifestyle/fitness/resources/hlv-20049447?p=1",
             external: true,
             icon: null,
-            displayText: "Mayo Clinic Fitness",
+            displayText: t('site.resources.mayo.displayText'),
             className: null
         },
         {
-            title: "Stretching and Flexibility Exercises",
+            title: t('site.resources.exercises.title'),
             to: "https://www.heart.org/en/health-topics/cardiac-rehab/getting-physically-active/stretching-and-flexibility-exercises",
             external: true,
             icon: null,
-            displayText: "Stretching and Flexibility",
+            displayText: t('site.resources.exercises.displayText'),
             className: null
         }
     ]);
-    const legal = ref<Link[]>([
+
+    // Make legal links locale-aware using computed
+    const legal = computed<Link[]>(() => [
         {
-            title: "Check out our terms and conditions",
-            to: "/legal/terms-and-conditions",
-            external: true,
+            title: t('site.legal.terms.title'),
+            to: localePath('/legal/terms-and-conditions'), // ← Now locale-aware!
+            external: false,
             icon: null,
-            displayText: "Terms & Conditions",
+            displayText: t('site.legal.terms.displayText'),
             className: null
         },
         {
-            title: "View our privacy policy",
-            to: "/legal/privacy-policy",
-            external: true,
+            title: t('site.legal.privacy.title'),
+            to: localePath('/legal/privacy-policy'), // ← Now locale-aware!
+            external: false,
             icon: null,
-            displayText: "Privacy Policy",
+            displayText: t('site.legal.privacy.displayText'),
             className: null
         }
     ]);
-    const site = ref<Site>({
-        title: "Ocho Fitness",
-        legalName: "Ocho Fitness LLC",
-        tagLine: "Train Smart, Live Strong.",
-        url: "https://www.ochofitness.com",
+
+    const site = computed<Site>(() => ({
+        title: t('site.title'),
+        legalName: t('site.legalName'),
+        tagLine: t('site.tagLine'),
+        url: t('site.url'),
         addresses: addresses.value,
         email: emails.value,
         phone: phone.value,
         navigation: navigation.value,
+        social_title: t('site.social_title'),
         social_links: social_links.value,
         useful_links: useful_links.value,
+        resources_title: t('site.resources_title'),
         resources: resources.value,
-        legal: legal.value,
-    })
+        legal_title: t('site.legal_title'),
+        legal: legal.value, // Now uses the computed legal links
+    }))
 
     const getSiteTitle = () => {
         return site.value.title;

@@ -1,9 +1,11 @@
 <script setup lang="ts">
+import { useI18n } from 'vue-i18n'
 const emit = defineEmits(['updateClearSuccess'])
 
 const callClearSuccess = () => {
   emit('updateClearSuccess');
 }
+const { t } = useI18n()
 </script>
 
 <template>
@@ -18,9 +20,9 @@ const callClearSuccess = () => {
           </div>
         </div>
       </div>
-      <h3 class="my-4 text-center text-3xl font-semibold text-slate-100">Congratuation!!!</h3>
-      <p class="w-[230px] text-center font-normal text-slate-300">Your message have been submitted and will be reviewed shortly.</p>
-      <button @click="callClearSuccess" class="mx-auto mt-10 block rounded-xl border-4 border-transparent bg-orange-600 px-6 py-3 text-center text-base font-medium text-orange-100 outline-8 hover:outline hover:duration-300">Clear Message</button>
+      <h3 class="my-4 text-center text-3xl font-semibold text-slate-100">{{ t('success.title') }}</h3>
+      <p class="w-[230px] text-center font-normal text-slate-300">{{ t('success.message') }}</p>
+      <button @click="callClearSuccess" class="mx-auto mt-10 block rounded-xl border-4 border-transparent bg-orange-600 px-6 py-3 text-center text-base font-medium text-orange-100 outline-8 hover:outline hover:duration-300">{{ t('success.clear') }}</button>
     </div>
   </div>
 </template>

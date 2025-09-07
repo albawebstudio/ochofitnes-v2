@@ -3,6 +3,9 @@ export default defineNuxtConfig({
     compatibilityDate: '2024-04-03',
     app: {
         head: {
+            htmlAttrs: {
+                lang: 'en' // default
+            },
             charset: 'utf-8',
             viewport: 'width=device-width, initial-scale=1',
         }
@@ -10,9 +13,9 @@ export default defineNuxtConfig({
     devtools: {enabled: true},
     runtimeConfig: {
         public: {
-            apiUrl: process.env.API_URL,
-            googleMapsApiKey: process.env.GOOGLE_MAPS_API_KEY,
-            gtagId: process.env.GAG_ID,
+            apiUrl: '',
+            googleMapsApiKey: '',
+            gtagId: '',
         }
     },
     ssr: false,
@@ -25,6 +28,7 @@ export default defineNuxtConfig({
         'nuxt-security',
         '@vueform/nuxt',
         '@nuxt/content',
+        '@nuxtjs/i18n',
     ],
     css: [
         '@fortawesome/fontawesome-svg-core/styles.css',
@@ -67,6 +71,29 @@ export default defineNuxtConfig({
             rehypePlugins: [
                 'rehype-external-links'
             ]
+        }
+    },
+    i18n: {
+        locales: [
+            {
+                code: 'en',
+                name: 'English',
+                file: 'en-US.json'
+            },
+            {
+                code: 'es',
+                name: 'Español',
+                file: 'es-MX.json'
+            }
+        ],
+        langDir: 'locales/',
+        defaultLocale: 'en',
+        detectBrowserLanguage: {
+            useCookie: true,
+            cookieKey: 'i18n_redirected',
+            redirectOn: 'root',
+            alwaysRedirect: false,
+            fallbackLocale: 'en'
         }
     },
 })
