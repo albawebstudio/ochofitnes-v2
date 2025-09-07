@@ -11,6 +11,7 @@ export function useGetStartedData() {
         title: t('started.title'),
         content: getI18nArray('started.content'),
         cta: t('started.cta'),
+        ctaSuccess: t('started.ctaSuccess'),
         subtitle: t('started.subtitle'),
         list: getI18nArray('started.list'),
     })

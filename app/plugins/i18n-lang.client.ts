@@ -1,5 +1,5 @@
 export default defineNuxtPlugin((nuxtApp) => {
-    const i18n = nuxtApp.$i18n
+    const i18n: any = nuxtApp.$i18n
 
     // mapping between i18n codes and full lang codes
     const localeMap: Record<string, string> = {
@@ -11,7 +11,7 @@ export default defineNuxtPlugin((nuxtApp) => {
         document.documentElement.setAttribute('lang', localeMap[loc] || loc)
     }
 
-    // set immediately on load
+    // set immediately on a load
     setLang(i18n.locale.value)
 
     // watch for changes

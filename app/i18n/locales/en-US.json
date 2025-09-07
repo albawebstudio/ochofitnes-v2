@@ -3,7 +3,40 @@
     "title": "Ocho Fitness",
     "legalName": "Ocho Fitness LLC",
     "tagLine": "Train Smart, Live Strong.",
-    "url": "https://www.ochofitness.com"
+    "url": "https://www.ochofitness.com",
+    "usefulLinks": {
+      "aboutUs": {
+        "title": "More about us",
+        "displayText": "About Us"
+      },
+      "blog": {
+        "title": "Check out our blog",
+        "displayText": "Blog"
+      }
+    },
+    "social_title": "Follow Us",
+    "resources_title": "Resources",
+    "resources": {
+      "mayo": {
+        "title": "Healthy Lifestyle",
+        "displayText": "Mayo Clinic Fitness"
+      },
+      "exercises": {
+        "title": "Stretching and Flexibility Exercises",
+        "displayText": "Stretching and Flexibility"
+      }
+    },
+    "legal_title": "Legal",
+    "legal": {
+      "terms": {
+        "title": "Check out our terms and conditions",
+        "displayText": "Terms & Conditions"
+      },
+      "privacy": {
+        "title": "View our privacy policy",
+        "displayText": "Privacy Policy"
+      }
+    }
   },
   "navigation": {
     "home": "Home",
@@ -24,6 +57,7 @@
       "Whether you are new to exercise or have been exercising for some time, I can help!"
     ],
     "cta": "Schedule A Session Today",
+    "ctaSuccess": "Schedule Sent Successfully!",
     "subtitle": "How can I help you?",
     "list": [
       "Workouts that meet your needs and level of fitness.",
@@ -31,6 +65,11 @@
       "Build muscle",
       "Improve flexibility"
     ]
+  },
+  "success": {
+    "title": "Congratuation!!!",
+    "message": "Your message have been submitted and will be reviewed shortly.",
+    "clear": "Clear Message"
   },
   "about": {
     "title": "Hello, I'm Jovani. Welcome to my site!",

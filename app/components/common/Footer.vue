@@ -20,7 +20,7 @@ const currentYear = date.getFullYear();
         </div>
         <div class="grid grid-cols-1 gap-8 sm:gap-6 sm:grid-cols-3">
           <div>
-            <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Resources</h2>
+            <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">{{ site.resources_title }}</h2>
             <ul class="text-gray-500 dark:text-gray-400 font-medium">
               <template v-for="(link, idx) in site.resources" :key="idx">
                 <li class="mb-4">
@@ -34,7 +34,7 @@ const currentYear = date.getFullYear();
             </ul>
           </div>
           <div>
-            <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Follow us</h2>
+            <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">{{ site.social_title }}</h2>
             <ul class="text-gray-500 dark:text-gray-400 font-medium">
               <template v-for="social in site.social_links" :key="social.label">
                 <li class="mb-4">
@@ -52,11 +52,11 @@ const currentYear = date.getFullYear();
               <template v-for="(link, idx) in site.legal" :key="idx">
                 <li class="mb-4">
                   <NuxtLink :to="link.to"
-                            :external="link.external"
-                            :target="link.external ? '_blank' : ''"
-                            :title="link.title"
-                            class="hover:underline">{{ link.displayText }}</NuxtLink>
-                </li>
+                    :external="link.external"
+                    :target="link.external ? '_blank' : undefined"
+                    :title="link.title"
+                    class="hover:underline">{{ link.displayText }}</NuxtLink>
+        </li>
               </template>
             </ul>
           </div>

@@ -112,7 +112,7 @@ const cancelForm = () => {
             type="submit"
             class="flex-none w-full rounded-md bg-primary px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-primary-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
             @click="showModal = true">{{ getStarted.cta }}</button>
-        <h3 v-if="showSuccess" class="text-green-600 text-lg font-bold"><FontAwesomeIcon icon="fas fa-circle-check" title="success" /> Schedule Sent Successfully!</h3>
+        <h3 v-if="showSuccess" class="text-green-600 text-lg font-bold"><FontAwesomeIcon icon="fas fa-circle-check" title="success" /> {{ getStarted.ctaSuccess }}</h3>
       </div>
       <div v-show="isVisible" class="w-full max-w-md pl-2 lg:col-span-5 lg:pt-2 opacity-0 animate-fadeinup" data-observe>
         <p class="mb-6 font-bold leading-6 text-gray-300">{{ getStarted.subtitle }}</p>

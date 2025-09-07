@@ -3,7 +3,40 @@
     "title": "Ocho Fitness",
     "legalName": "Ocho Fitness LLC",
     "tagLine": "Entrena Inteligente, Vive Fuerte.",
-    "url": "https://www.ochofitness.com"
+    "url": "https://www.ochofitness.com",
+    "usefulLinks": {
+      "aboutUs": {
+        "title": "Más sobre nosotros",
+        "displayText": "Sobre nosotros"
+      },
+      "blog": {
+        "title": "Visita nuestro blog",
+        "displayText": "Blog"
+      }
+    },
+    "social_title": "Síguenos",
+    "resources_title": "Recursos",
+    "resources": {
+      "mayo": {
+        "title": "Estilo de vida saludable",
+        "displayText": "Mayo Clinic Fitness"
+      },
+      "exercises": {
+        "title": "Ejercicios de estiramiento y flexibilidad",
+        "displayText": "Estiramiento y flexibilidad"
+      }
+    },
+    "legal_title": "Legal",
+    "legal": {
+      "terms": {
+        "title": "Consulta nuestros términos y condiciones",
+        "displayText": "Términos y condiciones"
+      },
+      "privacy": {
+        "title": "Consulta nuestra política de privacidad",
+        "displayText": "Política de privacidad"
+      }
+    }
   },
   "navigation": {
     "home": "Inicio",
@@ -24,6 +57,7 @@
       "Ya sea que apenas empieces a hacer ejercicio o que lleves tiempo haciéndolo, ¡puedo ayudarte!"
     ],
     "cta": "Programa una sesión hoy",
+    "ctaSuccess": "¡Horario enviado con éxito!",
     "subtitle": "¿Cómo puedo ayudarte?",
     "list": [
       "Entrenamientos que se adaptan a tus necesidades y nivel de condición física.",
@@ -31,6 +65,11 @@
       "Desarrollar músculo",
       "Mejorar la flexibilidad"
     ]
+  },
+  "success": {
+    "title": "¡Felicidades!",
+    "message": "Tu mensaje ha sido enviado y será revisado en breve.",
+    "clear": "Borrar mensaje"
   },
   "about": {
     "title": "¡Hola, soy Jovani. ¡Bienvenido a mi sitio!",

@@ -4,14 +4,15 @@ import type { Jumbotron } from '~/models/jumbotron'
 
 export const useJumbotronData = () => {
     const { t } = useI18n()
-    
+    const localePath = useLocalePath() // Add this to make links locale-aware
+
     const jumbotron = computed<Jumbotron>(() => ({
         title: t('jumbotron.title'),
         description: t('jumbotron.description'),
         ctas: [
             {
                 title: "Get started now",
-                to: "/#get-started",
+                to: localePath('/#get-started'),
                 external: true,
                 icon: null,
                 displayText: t('jumbotron.getStarted'),
@@ -19,7 +20,7 @@ export const useJumbotronData = () => {
             },
             {
                 title: "Learn more about us",
-                to: "/#about-us",
+                to: localePath('/#about-us'),
                 external: true,
                 icon: null,
                 displayText: t('jumbotron.learnMore'),

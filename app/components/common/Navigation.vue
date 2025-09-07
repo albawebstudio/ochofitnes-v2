@@ -2,11 +2,22 @@
 import { useSiteData } from "~/composables/useSiteData"
 import NavLogo from "/public/logo-monochrome.svg"
 import LanguageSwitcher from "~/components/common/LanguageSwitcher.vue";
+const route = useRoute()
 
 const { site, navigation } = useSiteData()
 
 const showMenu = ref(false);
 const toggleNav = () => (showMenu.value = !showMenu.value);
+
+const getNavigationUrl = (path: string) => {
+  // If it's a hash link, append it to the current route path
+  if (path.startsWith('#')) {
+    return `${route.path}${path}`
+  }
+  // Otherwise, return the original URL
+  return path
+}
+
 </script>
 
 <template>
@@ -31,7 +42,7 @@ const toggleNav = () => (showMenu.value = !showMenu.value);
         <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
           <template v-for="item in navigation" :key="item.title">
             <li>
-              <NuxtLink :to="item.to"
+              <NuxtLink :to="getNavigationUrl(item.to)"
                         :external="item.external"
                         :title="item.title"
                         class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-primary-700 md:p-0 dark:text-white md:dark:hover:text-primary-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">
