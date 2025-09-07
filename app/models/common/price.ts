@@ -2,7 +2,8 @@ export interface Price {
     amount: number,
     currency: string,
     unit: {
-            measure: string,
+        preposition: string,
+        measure: string,
         quantity: number,
     },
     formattedValue: string,
