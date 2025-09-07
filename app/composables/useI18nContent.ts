@@ -25,7 +25,7 @@ function pickPreferredString(obj: Record<string, unknown>): string | undefined {
         if (typeof v === 'string') return v
     }
 
-    // Finally, first string value in the object
+    // Finally, the first string value in the object
     for (const v of Object.values(obj)) {
         if (typeof v === 'string') return v
     }
@@ -99,14 +99,31 @@ export function getI18nArray(key: string): string[] {
     return normalizeI18nContent(i18n.tm(key))
 }
 
-// Helper to extract string from i18n AST object
+// Enhanced helper to extract string from i18n AST object
 function extractI18nString(obj: unknown): string | undefined {
     if (typeof obj === 'string') return obj
 
     if (obj && typeof obj === 'object') {
-        const astObj = obj as { body?: { static?: string } }
-        if (astObj.body?.static) {
+        const astObj = obj as any
+
+        // Handle vue-i18n AST format: { b: { s: "string" } }
+        if (astObj.b?.s && typeof astObj.b.s === 'string') {
+            return astObj.b.s
+        }
+
+        // Handle another AST format: { body: { static: "string" } }
+        if (astObj.body?.static && typeof astObj.body.static === 'string') {
             return astObj.body.static
+        }
+
+        // Handle direct static property
+        if (astObj.static && typeof astObj.static === 'string') {
+            return astObj.static
+        }
+
+        // Handle 's' property directly (sometimes the structure varies)
+        if (astObj.s && typeof astObj.s === 'string') {
+            return astObj.s
         }
     }
 
@@ -135,7 +152,7 @@ function normalizeI18nObject(obj: unknown): any {
     return obj
 }
 
-// Updated function for structured i18n objects that handles AST format
+// Updated function for structured i18n objects that handles an AST format
 export function useI18nObject<T = any>(key: string): ComputedRef<T> {
     const i18n = useI18n() as unknown as { tm: (k: string) => any }
     return computed(() => {
@@ -150,4 +167,3 @@ export function getI18nObject<T = any>(key: string): T {
     const rawData = i18n.tm(key)
     return normalizeI18nObject(rawData) as T
 }
-

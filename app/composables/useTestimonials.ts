@@ -1,4 +1,4 @@
-import { ref } from 'vue'
+import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { getI18nArray, useI18nObject } from "~/composables/useI18nContent"
 
@@ -44,11 +44,12 @@ export function useTestimonialsData() {
         })
     })
 
-    const testimonial = ref<Testimonial>({
+    // Make testimonial computed to maintain reactivity
+    const testimonial = computed<Testimonial>(() => ({
         title: t('testimonial.title'),
         content: getI18nArray('testimonial.content'),
         reviews: reviews.value
-    })
+    }))
 
     const getTestimonialById = (id: number) => {
         return reviews.value.find(review => review.id === id)
