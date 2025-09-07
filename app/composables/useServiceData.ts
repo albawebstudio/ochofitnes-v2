@@ -18,7 +18,7 @@ export function useServiceData() {
                 amount: 60.00,
                 currency: "USD",
                 unit: {
-                    measure: "minutes",
+                    measure: t('services.unitOfMeasure.minute'),
                     quantity: 30
                 },
                 formattedValue: t('services.sportsMassage.price'),
@@ -36,7 +36,7 @@ export function useServiceData() {
                 amount: 50.00,
                 currency: "USD",
                 unit: {
-                    measure: "minutes",
+                    measure: t('services.unitOfMeasure.minute'),
                     quantity: 60
                 },
                 formattedValue: t('services.smallGroup.price'),
@@ -54,7 +54,7 @@ export function useServiceData() {
                 amount: 60.00,
                 currency: "USD",
                 unit: {
-                    measure: "minutes",
+                    measure: t('services.unitOfMeasure.minute'),
                     quantity: 30
                 },
                 formattedValue: t('services.individualTraining.price'),
@@ -72,7 +72,7 @@ export function useServiceData() {
                 amount: 55.00,
                 currency: "USD",
                 unit: {
-                    measure: "minutes",
+                    measure: t('services.unitOfMeasure.minute'),
                     quantity: 30
                 },
                 formattedValue: t('services.onlineTraining.price'),
