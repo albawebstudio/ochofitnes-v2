@@ -122,16 +122,24 @@ export function useSiteData() {
             className: null
         },
         {
-            title: t('site.usefulLinks.blog.title'),
-            to: localePath('/blog'),
+            title: t('site.usefulLinks.newsletter.title'),
+            to: localePath('/newsletter'),
             external: true,
             icon: null,
-            displayText: t('site.usefulLinks.blog.displayText'),
+            displayText: t('site.usefulLinks.newsletter.displayText'),
             className: null
         },
     ])
 
     const resources = ref<Link[]>([
+        {
+            title: t('site.resources.newsletter.title'),
+            to: "/newsletter",
+            external: false,
+            icon: null,
+            displayText: t('site.resources.newsletter.displayText'),
+            className: null
+        },
         {
             title: t('site.resources.mayo.title'),
             to: "https://www.mayoclinic.org/healthy-lifestyle/fitness/resources/hlv-20049447?p=1",

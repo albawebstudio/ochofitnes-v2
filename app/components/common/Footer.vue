@@ -6,6 +6,8 @@ import FooterLogo from "/public/logo-monochrome.svg"
 const { site } = useSiteData()
 const date = new Date();
 const currentYear = date.getFullYear();
+
+const localePath = useLocalePath();
 </script>
 
 <template>
@@ -24,7 +26,8 @@ const currentYear = date.getFullYear();
             <ul class="text-gray-500 dark:text-gray-400 font-medium">
               <template v-for="(link, idx) in site.resources" :key="idx">
                 <li class="mb-4">
-                  <NuxtLink :to="link.to"
+                  <!-- Use localePath for internal links only -->
+                  <NuxtLink :to="link.external ? link.to : localePath(link.to)"
                             :external="link.external"
                             :target="link.external ? '_blank' : ''"
                             :title="link.title"
@@ -51,12 +54,13 @@ const currentYear = date.getFullYear();
             <ul class="text-gray-500 dark:text-gray-400 font-medium">
               <template v-for="(link, idx) in site.legal" :key="idx">
                 <li class="mb-4">
-                  <NuxtLink :to="link.to"
+                  <!-- Use localePath for internal links only -->
+                  <NuxtLink :to="link.external ? link.to : localePath(link.to)"
                     :external="link.external"
                     :target="link.external ? '_blank' : undefined"
                     :title="link.title"
                     class="hover:underline">{{ link.displayText }}</NuxtLink>
-        </li>
+                </li>
               </template>
             </ul>
           </div>
