@@ -1,4 +1,9 @@
 <script setup lang="ts">
+// Add page meta to ensure this route is properly registered
+definePageMeta({
+  layout: "default",
+});
+
 import { format } from "date-fns";
 import { enUS, es } from "date-fns/locale";
 import type { Locale } from "date-fns";
@@ -15,24 +20,45 @@ const localeMap: Record<string, string> = {
 };
 
 const currentLocale = localeMap[locale.value as string] || 'en';
-const lang = route.params.lang as string; // Get language from route
-const year = route.params.year as string;
-const id = route.params.id as string;
 
-// Use the language from the route if available, otherwise use the current locale
-const contentLocale = lang || currentLocale;
+const year = route.params.year; // "2025"
+const id = route.params.id;     // "10"
 
+// Use localePath for generating links
+const localePath = useLocalePath();
+
+// Query content using the specified structure
 const { data: article, error } = await useAsyncData(
-    `article-${contentLocale}-${year}-${id}`,
-    () =>
-        queryContent(`/newsletter/${contentLocale}/${year}/${id}`).findOne()
+    `article-${currentLocale}-${year}-${id}`,
+    async () => {
+      try {
+        // Use the primary content path structure: /[lang]/newsletter/[year]/[id]
+        const contentPath = `/${currentLocale}/newsletter/${year}/${id}`;
+        const result = await queryContent(contentPath).findOne();
+        return result;
+      } catch (e) {
+        // If not found and not in English, try the English version as fallback
+        if (currentLocale !== 'en') {
+          try {
+            const fallbackPath = `/en/newsletter/${year}/${id}`;
+            const fallbackResult = await queryContent(fallbackPath).findOne();
+            return fallbackResult;
+          } catch (fallbackError) {
+            console.warn(`English fallback content not found at: /en/newsletter/${year}/${id}`);
+          }
+        }
+        console.warn(`Newsletter not found for ${currentLocale}/newsletter/${year}/${id}`);
+        return null;
+      }
+    }
 );
 
-// Optional: handle missing content
+// Handle missing content
 if (error.value || !article.value) {
-  console.warn(
-      `Newsletter not found for ${contentLocale}/${year}/${id}`
-  );
+  throw createError({
+    statusCode: 404,
+    statusMessage: `Newsletter not found: ${year}/${id}`
+  });
 }
 
 function formatDate(dateString: string) {
@@ -41,8 +67,8 @@ function formatDate(dateString: string) {
     es: es
   };
 
-  // Use the computed contentLocale
-  const dfLocale = localeMap[contentLocale] || enUS; // fallback to English
+  // Use the computed currentLocale from outer scope
+  const dfLocale = localeMap[currentLocale] || enUS; // fallback to English
 
   return format(new Date(`${dateString}T00:00:00`), "MMMM yyyy", { locale: dfLocale });
 }
@@ -55,9 +81,9 @@ function formatDate(dateString: string) {
     </div>
     <div class="bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-100 max-w-7xl rounded-3xl flex flex-col items-center shadow-md -mt-20 mx-auto p-10 gap-10">
       <img
-          :src="`/newsletter/${article?.image}`"
+          :src="`/newsletter/${article.image}`"
           class="max-w-3xl rounded-2xl"
-          :alt="`image for ${article?.title} article`"
+          :alt="`image for ${article.title} article`"
       />
       <div class="flex items-center justify-center gap-4 mt-7.5">
         <div class="flex w-16 h-16 rounded-full overflow-hidden">
@@ -76,6 +102,11 @@ function formatDate(dateString: string) {
         </div>
       </div>
       <ContentRenderer :value="article" class="prose lg:prose-lg dark:prose-invert max-w-5xl"/>
+
+      <!-- Add a link back to the newsletter index using localePath -->
+      <NuxtLink :to="localePath('/newsletter')" class="mt-10 inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+        Back to Newsletter
+      </NuxtLink>
     </div>
   </section>
 </template>
