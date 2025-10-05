@@ -1,7 +1,7 @@
-import { GoogleMap, AdvancedMarker, Marker, CustomMarker, InfoWindow } from "vue3-google-map";
+// import { GoogleMap, AdvancedMarker, Marker, CustomMarker, InfoWindow } from "vue3-google-map";
 
 export default defineNuxtPlugin((nuxtApp) => {
-    nuxtApp.vueApp.component('GoogleMap', GoogleMap)
+    /*nuxtApp.vueApp.component('GoogleMap', GoogleMap)
     nuxtApp.vueApp.component('AdvancedMarker', AdvancedMarker)
     nuxtApp.vueApp.component('Marker', Marker)
     nuxtApp.vueApp.component('CustomMarker', CustomMarker)
@@ -15,5 +15,5 @@ export default defineNuxtPlugin((nuxtApp) => {
             CustomMarker,
             InfoWindow,
         },
-    }
+    }*/
 })

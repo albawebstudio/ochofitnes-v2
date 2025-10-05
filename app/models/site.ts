@@ -15,8 +15,11 @@ export interface Site {
     phone: Phone;
     email: Email[];
     navigation: Link[];
+    social_title: string;
     social_links: SocialLink[];
     useful_links: Link[];
+    resources_title: string;
     resources: Link[];
+    legal_title: string;
     legal: Link[];
 }

@@ -24,7 +24,7 @@ const { service } = useServiceData()
             </div>
             <div class="mb-8">
               <span class="text-5xl font-extrabold text-white">{{  item.price.formattedValue }}</span>
-              <span class="text-xl font-medium text-purple-200 ml-2">per {{ item.price.unit.quantity }} {{ item.price.unit.measure }}</span>
+              <span class="text-xl font-medium text-purple-200 ml-2">{{ item.price.unit.preposition }} {{ item.price.unit.quantity }} {{ item.price.unit.measure }}</span>
             </div>
             <ul class="mb-8 space-y-4 text-purple-200">
               <template v-for="feature in item.list" :key="feature">

@@ -1,0 +1,323 @@
+{
+  "site": {
+    "title": "Ocho Fitness",
+    "legalName": "Ocho Fitness LLC",
+    "tagLine": "Train Smart, Live Strong.",
+    "url": "https://www.ochofitness.com",
+    "usefulLinks": {
+      "aboutUs": {
+        "title": "More about us",
+        "displayText": "About Us"
+      },
+      "blog": {
+        "title": "Check out our blog",
+        "displayText": "Blog"
+      }
+    },
+    "social_title": "Follow Us",
+    "resources_title": "Resources",
+    "resources": {
+      "mayo": {
+        "title": "Healthy Lifestyle",
+        "displayText": "Mayo Clinic Fitness"
+      },
+      "exercises": {
+        "title": "Stretching and Flexibility Exercises",
+        "displayText": "Stretching and Flexibility"
+      }
+    },
+    "legal_title": "Legal",
+    "legal": {
+      "terms": {
+        "title": "Check out our terms and conditions",
+        "displayText": "Terms & Conditions"
+      },
+      "privacy": {
+        "title": "View our privacy policy",
+        "displayText": "Privacy Policy"
+      }
+    }
+  },
+  "navigation": {
+    "home": "Home",
+    "aboutUs": "About Us",
+    "services": "Services",
+    "testimonials": "Testimonials",
+    "contactUs": "Contact Us"
+  },
+  "jumbotron": {
+    "title": "Ocho Fitness",
+    "description": "Welcome to the family",
+    "getStarted": "Get started",
+    "learnMore": "Learn more"
+  },
+  "started": {
+    "title": "New to working out?",
+    "content": [
+      "Whether you are new to exercise or have been exercising for some time, I can help!"
+    ],
+    "cta": "Schedule A Session Today",
+    "ctaSuccess": "Schedule Sent Successfully!",
+    "subtitle": "How can I help you?",
+    "list": [
+      "Workouts that meet your needs and level of fitness.",
+      "Increase strength",
+      "Build muscle",
+      "Improve flexibility"
+    ]
+  },
+  "success": {
+    "title": "Congratuation!!!",
+    "message": "Your message have been submitted and will be reviewed shortly.",
+    "clear": "Clear Message"
+  },
+  "about": {
+    "title": "Hello, I'm Jovani. Welcome to my site!",
+    "content": [
+      "I'm a certified Personal Trainer and Certified Sports Massage Therapist.",
+      "Helping people move well is my passion. Not only will I encourage you to be the best you can be, but I will also show you just how capable you are and help you stay out of pain, so you can continue with the activities you LOVE to do!",
+      "I started my health journey as a Chiropractic Assistant in California over 14 years ago. The experience showed me the benefits of corrective bodywork, rehabilitation, and exercises, igniting my passion for training and helping people. This path of improvement continues; with those with who I have been blessed to work and with myself.",
+      "Through these many years of experience, I have developed a training style that includes a mix of weightlifting, cardio, and core work – all designed to target an entire fitness profile that will be custom designed based on your unique needs. No \"cookie-cutter\" approach here",
+      "I look forward to answering any questions you may have. Feel free to browse the many services available and contact me through this website to get started."
+    ],
+    "profile": {
+      "name": "Jovani Morales",
+      "certifications": "NASM CPT, CES, PES Certified massage therapist",
+      "imageAlt": "Your trainer, Jovani Morales"
+    }
+  },
+  "services": {
+    "title": "Our Services",
+    "content": [
+      "Ocho Fitness offers personalized training, group sessions, and sports massage to help you move better, get stronger, and stay pain-free. Whether in-person or online, we tailor every session to fit your goals. Explore our options below and find the right fit for your fitness journey!"
+    ],
+    "unitOfMeasure": {
+      "preposition": "per",
+      "minute": "minutes"
+    },
+    "sportsMassage": {
+      "title": "Sports Massage",
+      "content": [
+        "Sports massage helps alleviate delayed onset muscle soreness (DOMS) after intense workouts, loosens tight muscles and enhances joint mobility and boosts circulation to promote faster healing of muscle tissues."
+      ],
+      "imageAlt": "Sports Massage",
+      "price": "$60",
+      "duration": "30 minutes",
+      "list": [
+        "$115 for 60 minutes",
+        "Reduces Muscle Soreness",
+        "Improves Flexibility and Range of Motion",
+        "Speeds Up Recovery",
+        "Prevents Injuries",
+        "Relieves Stress and Tension",
+        "Enhances Athletic Performance",
+        "Boosts Circulation",
+        "Reduces Scar Tissue and Adhesion's"
+      ]
+    },
+    "smallGroup": {
+      "title": "Small Group",
+      "content": [
+        "Get the benefits of individual coaching while training with others. Small group training allows you to stay motivated by working alongside like-minded individuals with similar goals."
+      ],
+      "imageAlt": "Small Group Classes",
+      "price": "$50",
+      "duration": "60 minutes",
+      "list": [
+        "Personalized Attention in a Group Setting",
+        "Motivation and Accountability",
+        "Fun and Engaging Workouts",
+        "Affordable Coaching",
+        "Varied and Balanced Training",
+        "Build Community",
+        "Adaptable for All Levels",
+        "Boosts Consistency"
+      ]
+    },
+    "individualTraining": {
+      "title": "Individual Training",
+      "content": [
+        "Tailored programs designed to meet your specific fitness goals and needs. Receive undivided attention and guidance from a certified trainer. Stay on course with personalized feedback and goal adjustments."
+      ],
+      "imageAlt": "Individual Training",
+      "price": "$60",
+      "duration": "30 minutes",
+      "list": [
+        "$100 for 60 minutes",
+        "Customized Workouts",
+        "One-on-One Coaching",
+        "Progress Tracking",
+        "Efficient Workouts",
+        "Injury Prevention and Recovery",
+        "Flexible Scheduling",
+        "Boosts Confidence",
+        "Accountability and Motivation"
+      ]
+    },
+    "onlineTraining": {
+      "title": "Online Training",
+      "content": [
+        "Enjoy the flexibility of training from the comfort of your home or while traveling. Get customized programs tailored to your goals and fitness level, just like in-person sessions. Receive real-time guidance and corrections during virtual sessions."
+      ],
+      "imageAlt": "Online Training",
+      "price": "$55",
+      "duration": "30 minutes",
+      "list": [
+        "Train Anywhere, Anytime",
+        "Personalized Workouts",
+        "Live Coaching and Feedback",
+        "Cost-Effective",
+        "Progress Monitoring",
+        "Increased Accountability",
+        "Access to Expert Coaching",
+        "Convenient for Busy Schedules"
+      ]
+    }
+  },
+  "testimonial": {
+    "title": "What Our Clients Are Saying",
+    "content": [
+      "At Ocho Fitness, we take pride in helping our clients move better, feel stronger, and stay pain-free. Whether through personal training, sports massage, or online coaching, our goal is to support each person’s unique journey. But don’t just take our word for it—here’s what our clients have to say about their experience with us!"
+    ],
+    "reviews": [
+      {
+        "id": 1,
+        "title": "Feeling Better and Moving Freely Again!",
+        "content": "Since I have been going to Jovani for a massage I have notice positive changes. My back is not so stiff. My body just feels better. I am able to move more easily. I strongly recommend Jovani."
+      },
+      {
+        "id": 2,
+        "title": "Transformative Training for a Healthier Life",
+        "content": "I've had the pleasure of training with Jovani for four years now, and the decision has been one of the more impactful decisions I've made for my overall health. The most valuable trait Jovani possesses as an effective trainer is that he knows me. He knows how to adjust workouts within the session as necessary, but most importantly, how to push to get the most out of me. Training with Jovani has provided me with a framework for a healthier lifestyle, and I am so thankful to have the opportunity to work with him."
+      },
+      {
+        "id": 3,
+        "title": "Stronger, Healthier, and Pain-Free in Our 60s",
+        "content": "I have been training with Jovani Morales for eight years. My wife joined the training four years ago. We train with him three days per week. Jovani's education and previous experience working with a chiropractor translate to a thorough understanding of the human anatomy when giving messages. He tailors his workouts to our individual needs and accommodates pains, ailments, or issues we may have that week or month. His knowledge of muscle groups and the exercises we need to address our issues is astounding. I was physically a mess when I started with him, and today in my 60's I have much more flexibility and strength. Jovani is a unique and gifted trainer who always has an upbeat and encouraging attitude. If you cannot tell, we highly recommend him!"
+      },
+      {
+        "id": 4,
+        "title": "A Journey Back to Health and Positivity",
+        "content": "I met Jovani Morales in 2016 when he be became my personal trainer at YMCA in Woodbury, MN. He was responsible for helping me return to good physical health after years of neglect on my part. This included exercise with massage therapy afterwards. Jovani gave me a new positive mental attitude which has helped guide me as I have grown older. I highly recommend him to others who wish to return to good physical health."
+      },
+      {
+        "id": 5,
+        "title": "Expert Training with a Personalized Touch",
+        "content": "Jovani is an exceptional trainer. Not only does he make sure the skills are being done properly to maximize the benefit, he also takes into account a client's injuries/limitations when he sets out the day's workout plan."
+      },
+      {
+        "id": 6,
+        "title": "Motivating, Well-Designed, and Ever-Changing Workouts",
+        "content": "I have known Jovani and worked with him for more than 4 years. He comes to each session with a well thought out workout plan. He understands how to motivate you to get the most out of each session which helps one progress. The workouts are a good combination of aerobic and strength training and varies to keep from getting board!"
+      },
+      {
+        "id": 7,
+        "title": "Personalized Training with Encouragement and Friendship",
+        "content": "Working with Jovani has been a fantastic experience. He listens to my concerns and provides a workout tailored to my needs. His constant encouragement motivates me. Jovani continues to make me stronger and in the process has become a friend."
+      }
+    ]
+  },
+  "contact": {
+    "title": "Feel free to ask anything",
+    "content": [
+      "Transform your fitness and well-being with Ocho Fitness! Whether you need personal training, sports massage, or online coaching, Jovani Morales will help you build strength, stay flexible, and move pain-free—let's reach your goals together!"
+    ],
+    "labels": {
+      "email": "Email",
+      "socials": "Socials"
+    }
+  },
+  "footer": {
+    "usefulLinks": {
+      "title": "Useful Links",
+      "aboutUs": "About Us",
+      "blog": "Blog"
+    },
+    "resources": {
+      "title": "Resources",
+      "mayoClinic": "Mayo Clinic Fitness",
+      "stretching": "Stretching and Flexibility"
+    },
+    "legal": {
+      "title": "Legal",
+      "terms": "Terms & Conditions",
+      "privacy": "Privacy Policy"
+    }
+  },
+  "common": {
+    "language": "Language",
+    "selectLanguage": "Select Language"
+  },
+  "forms":{
+    "schedule": {
+      "title": "Session Schedule Form",
+      "close": "Close modal",
+      "name": {
+        "label": "Full Name",
+        "placeholder": null
+      },
+      "email": {
+        "label": "Your Email",
+        "placeholder": null
+      },
+      "phone": {
+        "label": "Your Telephone",
+        "placeholder": "Your Phone Number"
+      },
+      "session_type": {
+        "label": "Session Type",
+        "placeholder": "Select a session type"
+      },
+      "day_option": {
+        "label": "Choose two or three possible days for session.",
+        "placeholder": null
+      },
+      "time_option": {
+        "label": "Choose up to five possible times for session.",
+        "placeholder": null
+      },
+      "conditions": {
+        "label": "Let us know if you have any injuries or medical conditions.",
+        "placeholder": "Injuries or Medical Conditions"
+      },
+      "accept_terms": "I accept the Terms & Conditions",
+      "cancel": "Cancel",
+      "submit": "Schedule Session",
+      "session_types": {
+        "sports_massage": "Sports Massage",
+        "individual_training": "Individual Training",
+        "online_training": "Online Training",
+        "group_training": "Group Training"
+      },
+      "days": {
+        "sunday": "Sunday",
+        "monday": "Monday",
+        "tuesday": "Tuesday",
+        "wednesday": "Wednesday",
+        "thursday": "Thursday",
+        "friday": "Friday",
+        "saturday": "Saturday"
+      }
+    },
+    "contact": {
+      "close": "Close modal",
+      "name": {
+        "label": "Full Name",
+        "placeholder": "Your Name"
+      },
+      "email": {
+        "label": "Your Email",
+        "placeholder": "Your Email"
+      },
+      "subject": {
+        "label": "Subject",
+        "placeholder": "Fitness Consultation, Personal Training, Sports Massage, or Other"
+      },
+      "message": {
+        "label": "Your Message",
+        "placeholder": "Please describe your fitness goals, any injuries or concerns, and your availability for training sessions."
+      },
+      "submit": "Send message"
+    }
+  }
+}

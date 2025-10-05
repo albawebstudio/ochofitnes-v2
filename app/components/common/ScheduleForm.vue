@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { useScheduleData } from '~/composables/useScheduleFormData'
+
 interface Props {
   name: string;
   email: string;
@@ -10,21 +12,7 @@ interface Props {
 }
 defineProps<Props>()
 
-const sessionTypeOptions = [
-  { value: 'sports massage', label: 'Sports Massage' },
-  { value: 'individual training', label: 'Individual Training' },
-  { value: 'online training', label: 'Online Training' },
-  { value: 'group training', label: 'Group Training' }
-]
-const dayOptions = [
-  { value: 'Sunday', label: 'Sunday' },
-  { value: 'Monday', label: 'Monday' },
-  { value: 'Tuesday', label: 'Tuesday' },
-  { value: 'Wednesday', label: 'Wednesday' },
-  { value: 'Thursday', label: 'Thursday' },
-  { value: 'Friday', label: 'Friday' },
-  { value: 'Saturday', label: 'Saturday' },
-]
+const { scheduleLabels, sessionTypeOptions, dayOptions } = useScheduleData()
 
 const buildTimes = () => {
   const interval = 30,
@@ -91,18 +79,18 @@ const submitForm = () => {
   emit('submit');
 };
 const cancelForm = () => {
-    emit('cancel');
+  emit('cancel');
 };
 </script>
 
 <template>
   <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
-    <h2 class="text-3xl font-bold">Session Schedule Form</h2>
+    <h2 class="text-3xl font-bold">{{ scheduleLabels?.title || 'Session Schedule Form' }}</h2>
     <button @click="cancelForm" type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="default-modal">
       <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
       </svg>
-      <span class="sr-only">Close modal</span>
+      <span class="sr-only">{{ scheduleLabels?.close || 'Close modal' }}</span>
     </button>
   </div>
 
@@ -112,7 +100,7 @@ const cancelForm = () => {
         :value="name"
         @input="updateName"
         name="name"
-        label="Full Name"
+        :label="scheduleLabels?.name?.label || 'Full Name'"
         rules="required"
         autocomplete="on"
     />
@@ -121,7 +109,7 @@ const cancelForm = () => {
         :value="email"
         @input="updateEmail"
         name="email"
-        label="Your Email"
+        :label="scheduleLabels?.email?.label || 'Your Email'"
         rules="required"
         autocomplete="on"
     />
@@ -130,8 +118,8 @@ const cancelForm = () => {
         :value="telephone"
         @input="updateTelephone"
         name="telephone"
-        label="Your Telephone"
-        placeholder="Your Phone Number"
+        :label="scheduleLabels?.phone?.label || 'Your Telephone'"
+        :placeholder="scheduleLabels?.phone?.placeholder || 'Your Phone Number'"
         rules="required"
     />
 
@@ -139,12 +127,12 @@ const cancelForm = () => {
         :value="sessionType"
         @change="updateSessionType"
         name="sessionType"
-        label="Session Type"
+        :label="scheduleLabels?.session_type?.label || 'Session Type'"
         :search="true"
         :native="false"
         input-type="search"
         autocomplete="disabled"
-        placeholder="Select a session type"
+        :placeholder="scheduleLabels?.session_type?.placeholder || 'Select a session type'"
         :items="sessionTypeOptions"
         :rules="['required',]"
     />
@@ -153,7 +141,7 @@ const cancelForm = () => {
         :value="dayOption"
         @change="updateDayOption"
         name="dayOption"
-        label="Choose two or three possible days for session."
+        :label="scheduleLabels?.day_option?.label || 'Choose two or three possible days for session.'"
         rules="required|max:3"
         description="Select up to 3"
         :search="true"
@@ -164,7 +152,7 @@ const cancelForm = () => {
         :value="timeOption"
         @change="updateTimeOption"
         name="timeOption"
-        label="Choose up to five possible times for session."
+        :label="scheduleLabels?.time_option?.label || 'Choose up to five possible times for session.'"
         rules="required|max:5"
         description="Select up to 5"
         :search="true"
@@ -175,8 +163,8 @@ const cancelForm = () => {
         :value="conditions"
         @input="updateConditions"
         name="conditions"
-        label="Let us know if you have any injuries or medical conditions."
-        placeholder="Injuries or Medical Conditions"
+        :label="scheduleLabels?.conditions?.label || 'Let us know if you have any injuries or medical conditions.'"
+        :placeholder="scheduleLabels?.conditions?.placeholder || 'Injuries or Medical Conditions'"
     />
 
     <CheckboxElement
@@ -184,7 +172,7 @@ const cancelForm = () => {
         text=""
         rules="required"
     >
-      <slots name="customDescription">I accept the <NuxtLink to="/legal/terms-and-conditions" :external=true title="Terms and Conditions">Terms & Conditions</NuxtLink></slots>
+      <slots name="customDescription">{{ scheduleLabels?.accept_terms }}</slots>
     </CheckboxElement>
 
     <StaticElement
@@ -197,7 +185,7 @@ const cancelForm = () => {
           name="cancel"
           @click="cancelForm"
           secondary
-          button-label="Cancel"
+          :button-label="scheduleLabels?.cancel || 'Cancel'"
           size="lg"
           :columns="{
           container: 6,
@@ -209,7 +197,7 @@ const cancelForm = () => {
       <ButtonElement
           name="schedule"
           :submits="true"
-          button-label="Schedule Session"
+          :button-label="scheduleLabels?.submit || 'Schedule Session'"
           size="lg"
           button-class="bg-primary-500 hover:bg-primary-600 text-white"
           align="right"
@@ -221,10 +209,8 @@ const cancelForm = () => {
       />
     </GroupElement>
 
-
   </Vueform>
 </template>
 
 <style scoped>
-
 </style>
