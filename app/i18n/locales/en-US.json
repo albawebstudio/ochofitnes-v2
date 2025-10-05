@@ -9,14 +9,18 @@
         "title": "More about us",
         "displayText": "About Us"
       },
-      "blog": {
-        "title": "Check out our blog",
-        "displayText": "Blog"
+      "newsletter": {
+        "title": "Check out our newsletter",
+        "displayText": "Our Newsletter"
       }
     },
     "social_title": "Follow Us",
     "resources_title": "Resources",
     "resources": {
+      "newsletter": {
+        "title": "Check out our newsletter",
+        "displayText": "Our Newsletter"
+      },
       "mayo": {
         "title": "Healthy Lifestyle",
         "displayText": "Mayo Clinic Fitness"
@@ -231,10 +235,11 @@
     "usefulLinks": {
       "title": "Useful Links",
       "aboutUs": "About Us",
-      "blog": "Blog"
+      "newsletter": "Our Newsletter"
     },
     "resources": {
       "title": "Resources",
+      "newsletter": "Our Newsletter",
       "mayoClinic": "Mayo Clinic Fitness",
       "stretching": "Stretching and Flexibility"
     },
@@ -319,5 +324,9 @@
       },
       "submit": "Send message"
     }
+  },
+  "newsletter": {
+    "title": "Monthly Newsletter",
+    "cta": "Read Newsletter"
   }
 }

@@ -17,10 +17,6 @@ const localeMap: Record<string, string> = {
 const currentLocale = localeMap[locale.value as string] || 'en';
 const slug = route.params.slug as string;
 
-console.log('Current locale from i18n:', locale.value);
-console.log('Mapped locale:', currentLocale);
-console.log('Looking for slug:', slug);
-
 // Use a more explicit query that forces the correct path
 const { data: content } = await useAsyncData(`legal-${slug}-${currentLocale}`, async () => {
   const searchPath = `/legal/${currentLocale}/${slug}`;
