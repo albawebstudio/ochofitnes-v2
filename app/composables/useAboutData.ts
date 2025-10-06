@@ -1,12 +1,12 @@
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { getI18nArray } from "~/composables/useI18nContent"
-
+import { useI18nContent } from "~/composables/useI18nContent"
 import type { About, Profile } from '~/models/about'
-
 
 export const useAboutData = () => {
     const { t } = useI18n()
+    // Use the composable correctly
+    const { getI18nArray } = useI18nContent()
 
     const profile = computed<Profile>(() => ({
         img: {

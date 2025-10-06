@@ -1,11 +1,12 @@
 import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { getI18nArray } from "~/composables/useI18nContent"
+import { useI18nContent } from "~/composables/useI18nContent"
 
 import type { GetStarted } from '~/models/get-started'
 
 export function useGetStartedData() {
     const { t } = useI18n()
+    const { getI18nArray } = useI18nContent()
 
     const getStarted = ref<GetStarted>({
         title: t('started.title'),
