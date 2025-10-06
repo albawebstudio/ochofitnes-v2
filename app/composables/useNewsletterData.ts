@@ -1,6 +1,5 @@
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { getI18nArray } from "~/composables/useI18nContent"
 
 import type { Newsletter } from '~/models/newsletter'
 

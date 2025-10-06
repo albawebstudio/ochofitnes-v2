@@ -1,11 +1,13 @@
 import { computed, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { getI18nArray, useI18nObject } from '~/composables/useI18nContent'
+import { useI18nContent } from "~/composables/useI18nContent"
 
 import type { Contact, Labels, ContactFormLabels } from '~/models/contact'
 
 export function useContactData() {
     const { t } = useI18n()
+    // Use the composable correctly
+    const { getI18nArray, useI18nObject } = useI18nContent()
 
     const contact = computed<Contact>(() => ({
         title: t('contact.title'),
