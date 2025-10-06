@@ -1,11 +1,12 @@
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { useI18nObject } from '~/composables/useI18nContent'
+import { useI18nContent } from "~/composables/useI18nContent"
 
 import type { ScheduleField, ScheduleLabels } from "~/models/schedule";
 
 export function useScheduleData() {
     const { t } = useI18n()
+    const { useI18nObject } = useI18nContent()
 
     // Get the structured schedule object from i18n
     const scheduleLabels = useI18nObject<ScheduleLabels>('forms.schedule')

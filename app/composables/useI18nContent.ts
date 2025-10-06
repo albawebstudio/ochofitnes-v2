@@ -1,105 +1,7 @@
-import { computed, type ComputedRef } from 'vue'
-import { useI18n } from 'vue-i18n'
+import { computed } from 'vue'
+import type { ComputedRef } from 'vue'
 
-// Helpers to recognize common shapes
-function isArrayOfStrings(v: unknown): v is string[] {
-    return Array.isArray(v) && v.every((x) => typeof x === 'string')
-}
-
-type StaticBodyItem = { body?: { static?: unknown } | undefined }
-function isArrayOfStaticBody(v: unknown): v is StaticBodyItem[] {
-    return Array.isArray(v) && v.every(
-        (x) => x && typeof x === 'object' && 'body' in (x as object)
-    )
-}
-
-function pickPreferredString(obj: Record<string, unknown>): string | undefined {
-    // Prefer the specific path first
-    const body = obj.body as Record<string, unknown> | undefined
-    const staticStr = body?.static
-    if (typeof staticStr === 'string') return staticStr
-
-    // Then try some common keys
-    for (const key of ['text', 'value', 'content', 'description', 'html']) {
-        const v = obj[key]
-        if (typeof v === 'string') return v
-    }
-
-    // Finally, the first string value in the object
-    for (const v of Object.values(obj)) {
-        if (typeof v === 'string') return v
-    }
-
-    return undefined
-}
-
-export function normalizeI18nContent(input: unknown): string[] {
-    // Fast lanes for common shapes, without over-traversal
-    if (isArrayOfStrings(input)) {
-        return [...new Set(input)] // dedupe while preserving order
-    }
-
-    if (isArrayOfStaticBody(input)) {
-        const out: string[] = []
-        const seen = new Set<string>()
-        for (const item of input) {
-            const str = pickPreferredString(item as Record<string, unknown>)
-            if (str && !seen.has(str)) {
-                seen.add(str)
-                out.push(str)
-            }
-        }
-        return out
-    }
-
-    // Conservative fallback: walk shallowly and dedupe
-    const out: string[] = []
-    const seen = new Set<string>()
-
-    const visit = (v: unknown, depth: number) => {
-        if (typeof v === 'string') {
-            if (!seen.has(v)) {
-                seen.add(v)
-                out.push(v)
-            }
-            return
-        }
-        if (Array.isArray(v)) {
-            for (const item of v) visit(item, depth)
-            return
-        }
-        if (v && typeof v === 'object' && depth < 2) {
-            const picked = pickPreferredString(v as Record<string, unknown>)
-            if (picked) {
-                if (!seen.has(picked)) {
-                    seen.add(picked)
-                    out.push(picked)
-                }
-                return
-            }
-            for (const val of Object.values(v as Record<string, unknown>)) {
-                visit(val, depth + 1)
-            }
-        }
-    }
-
-    visit(input, 0)
-    return out
-}
-
-// Reactive: updates when locale/messages change
-export function useI18nArray(key: string): ComputedRef<string[]> {
-    const i18n = useI18n() as unknown as { tm: (k: string) => unknown }
-    return computed(() => normalizeI18nContent(i18n.tm(key)))
-}
-
-// Non-reactive: snapshot lookup
-export function getI18nArray(key: string): string[] {
-    const i18n = useI18n() as unknown as { tm: (k: string) => unknown }
-    return normalizeI18nContent(i18n.tm(key))
-}
-
-// Enhanced helper to extract string from i18n AST object
+// Function to extract string from i18n AST formats
 function extractI18nString(obj: unknown): string | undefined {
     if (typeof obj === 'string') return obj
 
@@ -125,45 +27,102 @@ function extractI18nString(obj: unknown): string | undefined {
         if (astObj.s && typeof astObj.s === 'string') {
             return astObj.s
         }
+
+        // Handle complex objects with type, start, end, loc, body structure
+        if (astObj.type !== undefined && astObj.body) {
+            return extractI18nString(astObj.body)
+        }
     }
 
     return undefined
 }
 
-// Helper to normalize i18n objects that may contain AST structures
-function normalizeI18nObject(obj: unknown): any {
+// Function to normalize i18n content from various formats
+function normalizeI18nContent(content: any): string[] {
+    if (!content) return []
+
+    // If already an array, map each item through the extractor
+    if (Array.isArray(content)) {
+        return content.map(item => extractI18nString(item) || '').filter(Boolean)
+    }
+
+    // Handle single object case
+    const extracted = extractI18nString(content)
+    return extracted ? [extracted] : []
+}
+
+// Function to normalize i18n objects
+function normalizeI18nObject<T = any>(obj: any): T {
+    if (!obj) return {} as T
+
+    // If it's not an object, return as is
+    if (typeof obj !== 'object') return obj as T
+
+    // Special case for string-like objects with complex structure
+    if (obj.type !== undefined && obj.body && obj.loc) {
+        const extractedString = extractI18nString(obj)
+        if (extractedString) return extractedString as unknown as T
+    }
+
+    // For arrays, recursively normalize each item
     if (Array.isArray(obj)) {
-        return obj.map(normalizeI18nObject)
+        return obj.map(item => normalizeI18nObject(item)) as unknown as T
     }
 
-    if (obj && typeof obj === 'object') {
-        const result: any = {}
-        for (const [key, value] of Object.entries(obj)) {
-            const stringValue = extractI18nString(value)
-            if (stringValue !== undefined) {
-                result[key] = stringValue
-            } else {
-                result[key] = normalizeI18nObject(value)
+    // For objects, recursively normalize each property
+    const result: any = {}
+    for (const key in obj) {
+        if (typeof obj[key] === 'object' && obj[key] !== null) {
+            // Special case for AST-like objects
+            if (obj[key].type !== undefined && obj[key].body) {
+                const extractedValue = extractI18nString(obj[key])
+                if (extractedValue) {
+                    result[key] = extractedValue
+                    continue
+                }
             }
+
+            // Recursively normalize nested objects
+            result[key] = normalizeI18nObject(obj[key])
+        } else {
+            // Keep primitive values as is
+            result[key] = obj[key]
         }
-        return result
     }
 
-    return obj
+    return result as T
 }
 
-// Updated function for structured i18n objects that handles an AST format
-export function useI18nObject<T = any>(key: string): ComputedRef<T> {
-    const i18n = useI18n() as unknown as { tm: (k: string) => any }
-    return computed(() => {
-        const rawData = i18n.tm(key)
+// Create a composable that can be used within components
+export const useI18nContent = () => {
+    // useI18n must be called inside the composable
+    const { tm } = useI18n()
+
+    // Helper functions that use the i18n instance
+    const getI18nArray = (key: string): string[] => {
+        return normalizeI18nContent(tm(key))
+    }
+
+    const useI18nArray = (key: string): ComputedRef<string[]> => {
+        return computed(() => normalizeI18nContent(tm(key)))
+    }
+
+    const getI18nObject = <T = any>(key: string): T => {
+        const rawData = tm(key)
         return normalizeI18nObject(rawData) as T
-    })
-}
+    }
 
-// Non-reactive version
-export function getI18nObject<T = any>(key: string): T {
-    const i18n = useI18n() as unknown as { tm: (k: string) => any }
-    const rawData = i18n.tm(key)
-    return normalizeI18nObject(rawData) as T
+    const useI18nObject = <T = any>(key: string): ComputedRef<T> => {
+        return computed(() => {
+            const rawData = tm(key)
+            return normalizeI18nObject(rawData) as T
+        })
+    }
+
+    return {
+        getI18nArray,
+        useI18nArray,
+        getI18nObject,
+        useI18nObject
+    }
 }

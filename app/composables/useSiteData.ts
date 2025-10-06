@@ -50,7 +50,7 @@ export function useSiteData() {
         formatted: "(715) 705-6361"
     })
 
-    // Make navigation links locale-aware and ensure they navigate to homepage with hash
+    // Make navigation links locale-aware and ensure they navigate to the homepage with hash
     const navigation = computed<Link[]> (() => [
         {
             title: t('navigation.home'),
@@ -131,7 +131,8 @@ export function useSiteData() {
         },
     ])
 
-    const resources = ref<Link[]>([
+    // Convert resources from ref to compute for reactivity-to-locale changes
+    const resources = computed<Link[]>(() => [
         {
             title: t('site.resources.newsletter.title'),
             to: "/newsletter",

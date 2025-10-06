@@ -15,7 +15,7 @@ const { service } = useServiceData()
       </div>
 
       <div class="grid grid-cols-1 gap-8 sm:grid-cols-2">
-        <template v-for="item in service.items" :key="service.title">
+        <template v-for="(item, idx) in service.items" :key="idx">
           <div class="bg-white bg-opacity-10 rounded-xl shadow-lg p-6 relative overflow-hidden">
             <LazyNuxtImg :src="item.img.src" :alt="item.img.alt" class="w-full rounded-xl mb-8" />
             <div class="mb-8">
@@ -27,7 +27,7 @@ const { service } = useServiceData()
               <span class="text-xl font-medium text-purple-200 ml-2">{{ item.price.unit.preposition }} {{ item.price.unit.quantity }} {{ item.price.unit.measure }}</span>
             </div>
             <ul class="mb-8 space-y-4 text-purple-200">
-              <template v-for="feature in item.list" :key="feature">
+              <template v-for="(feature, idx) in item.list" :key="idx">
                 <li class="flex items-center">
                   <svg class="h-6 w-6 text-green-400 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />

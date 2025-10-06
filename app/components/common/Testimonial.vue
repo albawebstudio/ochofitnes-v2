@@ -1,6 +1,12 @@
 <script setup lang="ts">
 interface Props {
-  review: object;
+  review: {
+    id: number,
+    title: string,
+    content: string,
+    author: string,
+    image: object
+  };
 }
 defineProps<Props>();
 </script>
