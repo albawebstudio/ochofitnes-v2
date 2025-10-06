@@ -1,8 +1,41 @@
 <script setup lang="ts">
 interface Props {
-  review: object;
+  review: {
+    id: number,
+    title: string | any,
+    content: string | any,
+    author: string,
+    image: object | null
+  };
 }
-defineProps<Props>();
+const props = defineProps<Props>();
+
+// Helper function to ensure we display strings properly even if objects are passed
+function ensureString(value: string | any): string {
+  if (typeof value === 'string') return value;
+
+  // If it's an object, try to extract the text
+  if (value && typeof value === 'object') {
+    // Common message formats
+    if (value.b?.s) return value.b.s;
+    if (value.body?.static) return value.body.static;
+    if (value.static) return value.static;
+    if (value.s) return value.s;
+
+    // Try to stringify as a last resort
+    try {
+      const str = JSON.stringify(value);
+      // Look for typical patterns in the stringified JSON
+      const matches = str.match(/"s":"([^"]+)"/) || str.match(/"static":"([^"]+)"/);
+      if (matches && matches[1]) return matches[1];
+    } catch (e) {
+      console.error("Failed to process review data:", e);
+    }
+  }
+
+  // Fallback to a placeholder
+  return "Review content unavailable";
+}
 </script>
 
 <template>
@@ -26,10 +59,10 @@ defineProps<Props>();
         </div>
 
         <div class="mt-4">
-          <p class="text-2xl font-bold text-primary-600 sm:text-3xl">{{ review.title }}</p>
+          <p class="text-2xl font-bold text-primary-600 sm:text-3xl">{{ ensureString(review.title) }}</p>
 
           <p class="mt-4 leading-relaxed font-lato text-gray-700">
-            {{ review.content }}
+            {{ ensureString(review.content) }}
           </p>
         </div>
       </div>
@@ -40,7 +73,3 @@ defineProps<Props>();
     </blockquote>
   </div>
 </template>
-
-<style scoped>
-
-</style>

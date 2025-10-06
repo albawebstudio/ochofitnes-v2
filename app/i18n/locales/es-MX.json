@@ -3,20 +3,24 @@
     "title": "Ocho Fitness",
     "legalName": "Ocho Fitness LLC",
     "tagLine": "Entrena Inteligente, Vive Fuerte.",
-    "url": "https://www.ochofitness.com",
+    "url": "https://www.ochofitness.com/es",
     "usefulLinks": {
       "aboutUs": {
         "title": "Más sobre nosotros",
         "displayText": "Sobre nosotros"
       },
-      "blog": {
-        "title": "Visita nuestro blog",
-        "displayText": "Blog"
+      "newsletter": {
+        "title": "Consulta nuestro boletín",
+        "displayText": "Boletín"
       }
     },
     "social_title": "Síguenos",
     "resources_title": "Recursos",
     "resources": {
+      "newsletter": {
+        "title": "Consulta nuestro boletín",
+        "displayText": "Boletín"
+      },
       "mayo": {
         "title": "Estilo de vida saludable",
         "displayText": "Mayo Clinic Fitness"
@@ -231,10 +235,11 @@
     "usefulLinks": {
       "title": "Enlaces Útiles",
       "aboutUs": "Acerca de Nosotros",
-      "blog": "Blog"
+      "newsletter": "Nuestro boletín"
     },
     "resources": {
       "title": "Recursos",
+      "newsletter": "Nuestro boletín",
       "mayoClinic": "Fitness de Mayo Clinic",
       "stretching": "Estiramiento y Flexibilidad"
     },
@@ -319,5 +324,9 @@
       },
       "submit": "Enviar mensaje"
     }
+  },
+  "newsletter": {
+    "title": "Boletín Mensual",
+    "cta": "Leer Boletín."
   }
 }

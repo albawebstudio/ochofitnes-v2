@@ -1,5 +1,5 @@
 import { computed } from 'vue'
-
+// Use type import for the type
 import type { Jumbotron } from '~/models/jumbotron'
 
 export const useJumbotronData = () => {

@@ -1,11 +1,13 @@
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { getI18nArray, useI18nObject } from "~/composables/useI18nContent"
+import { useI18nContent } from "~/composables/useI18nContent"
 
 import type { Review, Testimonial, I18nReview } from '~/models/testimonial'
 
 export function useTestimonialsData() {
     const { t } = useI18n()
+    const { getI18nArray, useI18nObject  } = useI18nContent()
+
 
     const reviewsAuthorData = [
         { id: 1, author: "Kathi", image: null },
