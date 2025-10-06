@@ -97,7 +97,7 @@ function normalizeI18nContent(content: any): string[] {
         return content.map(item => extractI18nString(item) || '').filter(Boolean)
     }
 
-    // Handle single object case
+    // Handle a single object case
     const extracted = extractI18nString(content)
     return extracted ? [extracted] : []
 }
@@ -113,7 +113,7 @@ function normalizeI18nObject<T = any>(obj: any): T {
     if (typeof obj === 'object') {
         // Try the extractI18nString function first for the whole object
         const simpleString = extractI18nString(obj)
-        if (simpleString && typeof simpleString === 'string') {
+        if (simpleString) {
             // If this is supposed to be just a string, return it
             if (typeof {} as T === 'string') {
                 return simpleString as unknown as T
