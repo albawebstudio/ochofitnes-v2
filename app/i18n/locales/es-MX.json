@@ -96,6 +96,7 @@
       "¡Ocho Fitness ofrece entrenamiento personalizado, sesiones grupales y masaje deportivo para ayudarte a moverte mejor, ponerte más fuerte y mantenerte libre de dolor. Ya sea en persona o en línea, adaptamos cada sesión para ajustarse a tus objetivos. ¡Explora nuestras opciones a continuación y encuentra la adecuada para tu viaje de fitness!"
     ],
     "unitOfMeasure": {
+      "currency": "MXD",
       "preposition": "por cada",
       "minute": "minutos"
     },
@@ -105,10 +106,10 @@
         "El masaje deportivo ayuda a aliviar el dolor muscular de aparición tardía (DOMS) después de entrenamientos intensos, afloja músculos tensos y mejora la movilidad articular y aumenta la circulación para promover una curación más rápida de los tejidos musculares."
       ],
       "imageAlt": "Masaje Deportivo",
-      "price": "$60",
+      "price": "$550",
       "duration": "30 minutos",
       "list": [
-        "$115 por 60 minutos",
+        "$900 por 60 minutos",
         "Reduce el Dolor Muscular",
         "Mejora la Flexibilidad y Rango de Movimiento",
         "Acelera la Recuperación",
@@ -125,7 +126,7 @@
         "Obtén los beneficios del coaching individual mientras entrenas con otros. El entrenamiento en grupo pequeño te permite mantenerte motivado trabajando junto con personas de ideas afines con objetivos similares."
       ],
       "imageAlt": "Clases de Grupo Pequeño",
-      "price": "$50",
+      "price": "$300",
       "duration": "60 minutos",
       "list": [
         "Atención Personalizada en un Entorno Grupal",
@@ -144,10 +145,10 @@
         "Programas diseñados a medida para cumplir con tus objetivos y necesidades específicas de fitness. Recibe atención individual y orientación de un entrenador certificado. Mantente en curso con retroalimentación personalizada y ajustes de objetivos."
       ],
       "imageAlt": "Entrenamiento Individual",
-      "price": "$60",
+      "price": "$550",
       "duration": "30 minutos",
       "list": [
-        "$100 por 60 minutos",
+        "$800 por 60 minutos",
         "Entrenamientos Personalizados",
         "Coaching Uno a Uno",
         "Seguimiento del Progreso",
@@ -164,7 +165,7 @@
         "Disfruta la flexibilidad de entrenar desde la comodidad de tu hogar o mientras viajas. Obtén programas personalizados adaptados a tus objetivos y nivel de fitness, igual que en las sesiones presenciales. Recibe orientación y correcciones en tiempo real durante las sesiones virtuales."
       ],
       "imageAlt": "Entrenamiento en Línea",
-      "price": "$55",
+      "price": "$550",
       "duration": "30 minutos",
       "list": [
         "Entrena en Cualquier Lugar, en Cualquier Momento",
