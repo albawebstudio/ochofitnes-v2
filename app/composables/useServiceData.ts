@@ -18,7 +18,7 @@ export function useServiceData() {
             },
             price: {
                 amount: 60.00,
-                currency: "USD",
+                currency: t('services.unitOfMeasure.currency'),
                 unit: {
                     preposition: t('services.unitOfMeasure.preposition'),
                     measure: t('services.unitOfMeasure.minute'),
@@ -37,7 +37,7 @@ export function useServiceData() {
             },
             price: {
                 amount: 50.00,
-                currency: "USD",
+                currency: t('services.unitOfMeasure.currency'),
                 unit: {
                     preposition: t('services.unitOfMeasure.preposition'),
                     measure: t('services.unitOfMeasure.minute'),
@@ -56,7 +56,7 @@ export function useServiceData() {
             },
             price: {
                 amount: 60.00,
-                currency: "USD",
+                currency: t('services.unitOfMeasure.currency'),
                 unit: {
                     preposition: t('services.unitOfMeasure.preposition'),
                     measure: t('services.unitOfMeasure.minute'),
@@ -75,7 +75,7 @@ export function useServiceData() {
             },
             price: {
                 amount: 55.00,
-                currency: "USD",
+                currency: t('services.unitOfMeasure.currency'),
                 unit: {
                     preposition: t('services.unitOfMeasure.preposition'),
                     measure: t('services.unitOfMeasure.minute'),
