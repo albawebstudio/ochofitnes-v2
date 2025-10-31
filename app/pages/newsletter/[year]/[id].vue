@@ -1,5 +1,7 @@
 <script setup lang="ts">
 // Add page meta to ensure this route is properly registered
+import QRCode from "~/components/common/QRCode.vue";
+
 definePageMeta({
   layout: "default",
 });
@@ -10,6 +12,7 @@ import type { Locale } from "date-fns";
 
 const route = useRoute();
 const { locale } = useI18n();
+const qrCodeRef = ref<HTMLElement | null>(null)
 
 // Updated locale mapping to handle both formats
 const localeMap: Record<string, string> = {
@@ -72,6 +75,17 @@ function formatDate(dateString: string) {
 
   return format(new Date(`${dateString}T00:00:00`), "MMMM yyyy", { locale: dfLocale });
 }
+
+onMounted(() => {
+  if (qrCodeRef.value) {
+    qrCodeRef.value.addEventListener('codeRendered', () => {
+      if (qrCodeRef.value) {
+        // Type assertion for the custom method
+        (qrCodeRef.value as any).animateQRCode('MaterializeIn')
+      }
+    })
+  }
+})
 </script>
 
 <template>
@@ -102,6 +116,17 @@ function formatDate(dateString: string) {
         </div>
       </div>
       <ContentRenderer :value="article" class="prose lg:prose-lg dark:prose-invert max-w-5xl"/>
+
+      <QRCode
+          contents="https://wa.me/qr/ZDQNX3FAJV3AC1"
+          module-color="#25D366"
+          position-ring-color="#075E54"
+          position-center-color="#25D366"
+          width="300px"
+          height="300px"
+          margin="0 auto"
+          animate
+      />
 
       <!-- Add a link back to the newsletter index using localePath -->
       <NuxtLink :to="localePath('/newsletter')" class="mt-10 inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">

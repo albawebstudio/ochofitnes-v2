@@ -54,11 +54,21 @@ export default defineNuxtConfig({
             '@fortawesome/vue-fontawesome'
         ]
     },
+    vue: {
+        compilerOptions: {
+            isCustomElement: (tag) => tag === 'qr-code'
+        }
+    },
     security: {
         headers: {
             contentSecurityPolicy: {
                 'img-src': ["'self'", "data:", "https://maps.gstatic.com/", "https://maps.googleapis.com/"],
-                // 'script-src': ["'self'", "data:", "https://maps.googleapis.com"],
+                'script-src': [
+                    "'self'",
+                    "'unsafe-eval'",  // Required for the QR code library
+                    'https:',
+                    "'unsafe-inline'"
+                ],
             }
         },
     },
