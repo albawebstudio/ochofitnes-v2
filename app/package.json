@@ -37,5 +37,9 @@
     "nuxt-keen-slider": "^1.1.1",
     "tailwindcss": "^3.4.17"
   },
+  "bugs": {
+    "url": "https://github.com/albawebstudio/ochofitnes-v2/issues",
+    "email": "support@albawebstudio.com"
+  },
   "packageManager": "pnpm@10.20.0"
 }
