@@ -2,6 +2,7 @@
   "name": "ochofitness-v2",
   "private": true,
   "type": "module",
+  "homepage": "https://github.com/albawebstudio/ochofitnes-v2",
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
