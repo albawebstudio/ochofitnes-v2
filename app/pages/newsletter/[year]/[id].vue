@@ -140,4 +140,29 @@ onMounted(() => {
 .container p {
 
 }
+:deep(table) {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 30px;
+}
+:deep(th), :deep(td) {
+  border: 1px solid #333;
+  padding: 10px;
+  text-align: left;
+}
+:deep(th) {
+  background-color: #4fa3d1;
+  color: #fff;
+}
+:deep(.section-title) {
+  background-color: #e6f3fb;
+  font-weight: bold;
+}
+:deep(caption) {
+  caption-side: top;
+  font-weight: bold;
+  font-size: 1.2em;
+  margin-bottom: 8px;
+  text-align: left;
+}
 </style>

@@ -37,23 +37,23 @@ module.exports.contactForm = (event, context, callback) => {
 }
 
 const sendContactFormToOchoFitness = (data) => {
-  // massage data
-  sesClient
-    .sendTemplatedEmail({
-      Destination: {
-        ToAddresses: process.env.TO_EMAIL.split(","),
-      },
-      Source: process.env.SOURCE_EMAIL,
-      Template: `ocho-fitness-contact-form_${process.env.STAGE}`,
-      TemplateData: JSON.stringify(data),
-      ReplyToAddresses: [process.env.REPLY_TO_EMAIL],
-    })
-    .then(function () {
-      console.log("sendContactFormToOchoFitness email queued")
-    })
-    .catch(function (err) {
-      console.error(err, err.stack)
-    })
+    // message data
+    sesClient
+        .sendTemplatedEmail({
+            Destination: {
+                ToAddresses: process.env.TO_EMAIL.split(","),
+            },
+            Source: process.env.SOURCE_EMAIL,
+            Template: `ocho-fitness-contact-form_${process.env.STAGE}`,
+            TemplateData: JSON.stringify(data),
+            ReplyToAddresses: [data.email ?? process.env.REPLY_TO_EMAIL],
+        })
+        .then(function () {
+            console.log("sendContactFormToOchoFitness email queued")
+        })
+        .catch(function (err) {
+            console.error(err, err.stack)
+        })
 }
 
 module.exports.scheduleSession = async (event, context, callback) => {
@@ -85,20 +85,20 @@ module.exports.scheduleSession = async (event, context, callback) => {
 }
 
 const sendScheduleSessionToOchoFitness = (data) => {
-  sesClient
-    .sendTemplatedEmail({
-      Destination: {
-        ToAddresses: process.env.TO_EMAIL.split(","),
-      },
-      Source: process.env.SOURCE_EMAIL,
-      Template: `ocho-fitness-schedule-session_${process.env.STAGE}`,
-      TemplateData: JSON.stringify(data),
-      ReplyToAddresses: [data.email],
-    })
-    .then(function () {
-      console.log("SignUpConfirmationToUser email queued")
-    })
-    .catch(function (err) {
-      console.error(err, err.stack)
-    })
+    sesClient
+        .sendTemplatedEmail({
+            Destination: {
+                ToAddresses: process.env.TO_EMAIL.split(","),
+            },
+            Source: process.env.SOURCE_EMAIL,
+            Template: `ocho-fitness-schedule-session_${process.env.STAGE}`,
+            TemplateData: JSON.stringify(data),
+            ReplyToAddresses: [data.email ?? process.env.REPLY_TO_EMAIL],
+        })
+        .then(function () {
+            console.log("SignUpConfirmationToUser email queued")
+        })
+        .catch(function (err) {
+            console.error(err, err.stack)
+        })
 }
