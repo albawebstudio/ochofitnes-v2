@@ -40,19 +40,19 @@ aws ssm put-parameter \
 ```shell
 aws ssm get-parameter \
 --region us-east-1 \
---name /ocho-fitness/api/.env.production \
+--name /ocho-fitness/api/env.production.json \
 --profile ochofitness \
 --query Parameter.Value \
 --with-decryption \
---output text > .env.production
+--output text > env.production.json
 ```
 
 ```shell
 aws ssm put-parameter \
 --region us-east-1 \
---name /ocho-fitness/api/.env.production \
+--name /ocho-fitness/api/env.production.json \
 --profile ochofitness \
---value file://.env.production \
+--value file://env.production.json \
 --type "SecureString" \
 --overwrite
 ```
@@ -101,9 +101,45 @@ or
 sls deploy --stage staging
 ```
 
-## Testing Functions
+## Testing
 
-You can use the following commands along with the JSON data found in the `/test/*` directory locally.
+If after deployment, you experience issues with ability to deliver emails successfully,
+you can use the following command line to test the SES template.
+Be sure to replace the `<template-name>` with the name of the template you are testing.
+Also be sure to replace the `template-data` with the data you want to test.
+
+```
+aws ses test-render-template --template-name "<template-name>" --template-data '{"foo":"bar"}'
+```
+
+```shell
+aws ses test-render-template \
+    --template-name "ocho-fitness-contact-form_development" \
+    --template-data file://tests/ses/contact_form_development.json
+```
+
+You can use the following to send a test email to the destination `ToAddress`:
+
+```shell
+aws ses send-templated-email \
+  --source "source@email.com" \
+  --destination '{"ToAddresses":["to@email.com"]}' \
+  --template "ocho-fitness-contact-form_development" \
+  --template-data file://tests/ses/contact_form_development.jsonfile://tests/ses/contact_form_development.json
+```
+
+To delete a template, use the following command.
+Be sure to replace the `<template-name>` with the name of the template you are deleting.
+
+```
+aws ses delete-template --template-name <template-name>
+```
+
+```
+aws ses delete-template --template-name ocho-fitness-contact-form_development
+```
+
+You can also use the following commands along with the JSON data found in the `/test/*` directory locally.
 
 Note that the `event-admin-confirmation.json` file uses a signature, so you will need to use the values generated in the
 confirmation email.
