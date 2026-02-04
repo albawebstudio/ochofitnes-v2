@@ -7,12 +7,15 @@ package:
   exclude:
     - node_modules/**
     - test/**
+    - .env
+    - .env*
+    - env.*
 
 provider:
   name: aws
   profile: ${self:custom.profiles.${opt:stage, self:provider.stage, 'development'}}
   stage: ${opt:stage, 'development'}
-  runtime: nodejs20.x
+  runtime: nodejs22.x
   iam:
     role: arn:aws:iam::401327758731:role/ocho-fitness-api
 
