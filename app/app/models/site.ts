@@ -4,7 +4,7 @@ import type {
     Email,
     Link,
     SocialLink,
-} from "~/models/common";
+} from "~/app/models/common";
 
 export interface Site {
     title: string;

@@ -1,4 +1,4 @@
-import type { ServiceItem } from "~/models/service-item";
+import type { ServiceItem } from "~/app/models/service-item";
 
 export interface Service {
     title: string;

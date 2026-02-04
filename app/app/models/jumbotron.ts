@@ -1,4 +1,4 @@
-import type { Link } from '~/models/common'
+import type { Link } from '~/app/models/common'
 
 export interface Jumbotron {
     title: string;
