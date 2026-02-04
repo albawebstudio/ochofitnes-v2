@@ -8,7 +8,7 @@ import type {
     Link,
     Phone,
     SocialLink,
-} from '~/models/common/'
+} from '~/models/common'
 import { useI18n } from "vue-i18n";
 
 export function useSiteData() {

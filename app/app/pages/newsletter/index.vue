@@ -2,7 +2,7 @@
 definePageMeta({
   layout: "default",
 });
-import { useNewsletterData } from "~/composables/useNewsletterData";
+import { useNewsletterData } from "~/app/composables/useNewsletterData";
 
 const { newsletter } = useNewsletterData();
 const { locale } = useI18n();
