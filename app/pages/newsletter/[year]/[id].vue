@@ -37,15 +37,13 @@ const { data: article, error } = await useAsyncData(
       try {
         // Use the primary content path structure: /[lang]/newsletter/[year]/[id]
         const contentPath = `/${currentLocale}/newsletter/${year}/${id}`;
-        const result = await queryContent(contentPath).findOne();
-        return result;
+        return await queryContent(contentPath).findOne();
       } catch (e) {
         // If not found and not in English, try the English version as fallback
         if (currentLocale !== 'en') {
           try {
             const fallbackPath = `/en/newsletter/${year}/${id}`;
-            const fallbackResult = await queryContent(fallbackPath).findOne();
-            return fallbackResult;
+            return await queryContent(fallbackPath).findOne();
           } catch (fallbackError) {
             console.warn(`English fallback content not found at: /en/newsletter/${year}/${id}`);
           }
@@ -91,13 +89,13 @@ onMounted(() => {
 <template>
   <section :id="'article-' + year + '-' + id" class="bg-white dark:bg-gray-900 w-full pb-24 mb-0">
     <div class="w-full pb-40 pt-20 bg-gray-100 dark:bg-black px-4">
-      <h1 class="text-6xl font-bold text-center text-gray-700 dark:text-white">{{ article.title }}</h1>
+      <h1 class="text-6xl font-bold text-center text-gray-700 dark:text-white">{{ article?.title }}</h1>
     </div>
     <div class="bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-100 max-w-7xl rounded-3xl flex flex-col items-center shadow-md -mt-20 mx-auto p-10 gap-10">
       <img
-          :src="`/newsletter/${article.image}`"
+          :src="`/newsletter/${article?.image}`"
           class="max-w-3xl rounded-2xl"
-          :alt="`image for ${article.title} article`"
+          :alt="`image for ${article?.title} article`"
       />
       <div class="flex items-center justify-center gap-4 mt-7.5">
         <div class="flex w-16 h-16 rounded-full overflow-hidden">
