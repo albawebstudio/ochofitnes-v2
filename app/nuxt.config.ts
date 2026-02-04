@@ -1,4 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+import { process } from "std-env";
+
 export default defineNuxtConfig({
     compatibilityDate: '2024-04-03',
     app: {
@@ -12,10 +14,10 @@ export default defineNuxtConfig({
     },
     devtools: {enabled: true},
     runtimeConfig: {
+        apiUrl: process.env.API_URL ?? '',
         public: {
-            apiUrl: '',
-            // googleMapsApiKey: '',
-            gtagId: '',
+            gtagId: process.env.GTAG_ID ?? '',
+            honeypotThreshold: process.env.HONEYPOT_THRESHOLD ?? "5",
         }
     },
     ssr: false,
@@ -31,6 +33,7 @@ export default defineNuxtConfig({
         '@nuxtjs/i18n',
     ],
     css: [
+        '~/assets/css/tailwind.css',
         '@fortawesome/fontawesome-svg-core/styles.css',
     ],
     postcss: {
@@ -56,7 +59,7 @@ export default defineNuxtConfig({
     },
     vue: {
         compilerOptions: {
-            isCustomElement: (tag) => tag === 'qr-code'
+            isCustomElement: (tag: string) => tag === 'qr-code'
         }
     },
     security: {
@@ -71,17 +74,6 @@ export default defineNuxtConfig({
                 ],
             }
         },
-    },
-    content: {
-        markdown: {
-            toc: {
-                depth: 3,
-                searchDepth: 3
-            },
-            rehypePlugins: [
-                'rehype-external-links'
-            ]
-        }
     },
     i18n: {
         locales: [
