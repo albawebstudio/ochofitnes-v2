@@ -2,7 +2,7 @@ import { computed } from 'vue'
 
 import type { Service } from '~/models/service'
 import type { ServiceItem } from '~/models/service-item'
-import { useI18nContent } from "~/app/composables/useI18nContent"
+import { useI18nContent } from '~/composables/useI18nContent'
 
 export function useServiceData() {
     const { t } = useI18n()

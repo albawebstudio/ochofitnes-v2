@@ -1,6 +1,6 @@
 import { computed, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { useI18nContent } from "~/app/composables/useI18nContent"
+import { useI18nContent } from '~/composables/useI18nContent'
 
 import type { Contact, Labels, ContactFormLabels } from '~/models/contact'
 
