@@ -73,3 +73,27 @@ bun run preview
 ```
 
 Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+
+## Fetch ENV vars
+
+```shell
+aws ssm get-parameter --region us-east-1 \
+	--name /ochofitness/app/.env.<envrironment> \
+	--profile default \
+	--query Parameter.Value \
+	--with-decryption \
+	--output text > ./.env.<envrironment>
+```
+
+If you need to make changes to the file, be sure to push the changes back to AWS. You can modify this command to push a
+new revision to AWS SSM.
+
+```shell
+aws ssm put-parameter \
+    --region us-east-1 \
+    --name /ochofitness/app/.env.<enviornment> \
+    --profile default \
+    --value file://.env.<enviornment> \
+--type "SecureString" \
+--overwrite
+```
