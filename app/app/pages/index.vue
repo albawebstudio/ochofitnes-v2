@@ -5,19 +5,17 @@ definePageMeta({
 </script>
 
 <template>
-  <div>
-    <Jumbotron />
+  <Jumbotron />
 
-    <GetStarted />
+  <GetStarted />
 
-    <AboutUs />
+  <AboutUs />
 
-    <Services />
+  <Services />
 
-    <Testimonials />
+  <Testimonials />
 
-    <Contact />
-  </div>
+  <Contact />
 </template>
 
 <style scoped>

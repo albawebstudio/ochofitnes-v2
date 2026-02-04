@@ -22,34 +22,32 @@ const { data: content } = await useAsyncData(`legal-${slug}-${currentLocale}`, a
   const searchPath = `/legal/${currentLocale}/${slug}`;
   console.log('Searching path:', searchPath);
 
-  try {
-    const result = await queryContent()
-      .where({ _path: searchPath })
-      .findOne();
+  const result = await queryCollection('content')
+      .where('path', '=', searchPath)
+      .first();
 
+  if (result) {
     console.log('Found content for locale:', currentLocale);
     return result;
-  } catch (error) {
-    console.log('Failed to find content for locale:', currentLocale);
-
-    if (currentLocale !== 'en') {
-      try {
-        const fallbackPath = `/legal/en/${slug}`;
-        console.log('Trying fallback path:', fallbackPath);
-
-        const fallbackResult = await queryContent()
-          .where({ _path: fallbackPath })
-          .findOne();
-
-        console.log('Using English fallback');
-        return fallbackResult;
-      } catch (fallbackError) {
-        console.log('Fallback failed too:', fallbackError);
-      }
-    }
-
-    return null;
   }
+
+  console.log('Failed to find content for locale:', currentLocale);
+
+  if (currentLocale !== 'en') {
+    const fallbackPath = `/legal/en/${slug}`;
+    console.log('Trying fallback path:', fallbackPath);
+
+    const fallbackResult = await queryCollection('content')
+        .where('path', '=', fallbackPath)
+        .first();
+
+    if (fallbackResult) {
+      console.log('Using English fallback');
+      return fallbackResult;
+    }
+  }
+
+  return null;
 });
 
 if (!content.value) {

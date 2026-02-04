@@ -23,7 +23,6 @@ const localeMap: Record<string, string> = {
 };
 
 const currentLocale = localeMap[locale.value as string] || 'en';
-
 const year = route.params.year; // "2025"
 const id = route.params.id;     // "10"
 
@@ -34,23 +33,19 @@ const localePath = useLocalePath();
 const { data: article, error } = await useAsyncData(
     `article-${currentLocale}-${year}-${id}`,
     async () => {
-      try {
-        // Use the primary content path structure: /[lang]/newsletter/[year]/[id]
-        const contentPath = `/${currentLocale}/newsletter/${year}/${id}`;
-        return await queryContent(contentPath).findOne();
-      } catch (e) {
-        // If not found and not in English, try the English version as fallback
-        if (currentLocale !== 'en') {
-          try {
-            const fallbackPath = `/en/newsletter/${year}/${id}`;
-            return await queryContent(fallbackPath).findOne();
-          } catch (fallbackError) {
-            console.warn(`English fallback content not found at: /en/newsletter/${year}/${id}`);
-          }
-        }
-        console.warn(`Newsletter not found for ${currentLocale}/newsletter/${year}/${id}`);
-        return null;
-      }
+      const contentPath = `/${currentLocale}/newsletter/${year}/${id}`;
+      const fallbackPath = `/en/newsletter/${year}/${id}`;
+
+      const found =
+          (await queryCollection("newsletter")
+              .where("path", "=", contentPath)
+              .first()) ||
+          (currentLocale !== "en"
+              ? await queryCollection("newsletter").where("path", "=", fallbackPath).first()
+              : null);
+
+      if (!found) return null;
+      return found;
     }
 );
 
