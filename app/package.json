@@ -29,6 +29,7 @@
     "nuxt": "^4.3.0",
     "nuxt-security": "^2.5.1",
     "nuxt-svgo": "^4.2.6",
+    "sqlite3": "^5.1.7",
     "std-env": "^3.10.0",
     "vue": "latest",
     "vue-router": "latest",
