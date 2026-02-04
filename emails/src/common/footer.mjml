@@ -1,0 +1,9 @@
+<mj-section>
+
+  <mj-column>
+    <mj-text>
+      &copy; 2001 - {{ currentYear }} DingoBytes
+    </mj-text>
+  </mj-column>
+
+</mj-section>
