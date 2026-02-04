@@ -1,4 +1,4 @@
-# Andrew Alba / MJML 
+# Ocho Fitness / MJML 
 
 Look at the [MJML Responsive Email Framework](https://mjml.io/) to learn more.
 
