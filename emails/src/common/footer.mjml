@@ -2,7 +2,7 @@
 
   <mj-column>
     <mj-text>
-      &copy; 2001 - {{ currentYear }} DingoBytes
+      &copy; 2021 - {{ currentYear }} OchoFitness
     </mj-text>
   </mj-column>
 

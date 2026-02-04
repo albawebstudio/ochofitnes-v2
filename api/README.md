@@ -109,13 +109,17 @@ Be sure to replace the `<template-name>` with the name of the template you are t
 Also be sure to replace the `template-data` with the data you want to test.
 
 ```
-aws ses test-render-template --template-name "<template-name>" --template-data '{"foo":"bar"}'
+aws ses test-render-template \
+    --template-name "<template-name>" \
+    --template-data file://path/data.json \
+    --profile ochofitness
 ```
 
 ```shell
 aws ses test-render-template \
     --template-name "ocho-fitness-contact-form_development" \
-    --template-data file://tests/ses/contact_form_development.json
+    --template-data file://test/ses/contact-form.json \
+    --profile ochofitness
 ```
 
 You can use the following to send a test email to the destination `ToAddress`:
@@ -125,7 +129,8 @@ aws ses send-templated-email \
   --source "source@email.com" \
   --destination '{"ToAddresses":["to@email.com"]}' \
   --template "ocho-fitness-contact-form_development" \
-  --template-data file://tests/ses/contact_form_development.jsonfile://tests/ses/contact_form_development.json
+  --template-data file://test/ses/contact-form.json \
+  --profile ochofitness
 ```
 
 To delete a template, use the following command.
