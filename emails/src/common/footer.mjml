@@ -1,0 +1,9 @@
+<mj-section>
+
+  <mj-column>
+    <mj-text>
+      &copy; 2021 - {{ currentYear }} OchoFitness
+    </mj-text>
+  </mj-column>
+
+</mj-section>
