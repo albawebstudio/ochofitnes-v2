@@ -5,7 +5,7 @@
   "homepage": "https://github.com/albawebstudio/ochofitnes-v2",
   "scripts": {
     "build": "nuxt build",
-    "dev": "nuxt dev",
+    "dev": "nuxt dev --mode development",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"
@@ -43,5 +43,14 @@
     "url": "https://github.com/albawebstudio/ochofitnes-v2/issues",
     "email": "support@albawebstudio.com"
   },
-  "packageManager": "pnpm@10.20.0"
+  "packageManager": "pnpm@10.20.0",
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "@parcel/watcher",
+      "better-sqlite3",
+      "esbuild",
+      "sqlite3",
+      "sharp"
+    ]
+  }
 }
