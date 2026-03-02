@@ -1294,7 +1294,7 @@ export default {
         }
     },
     plugins: [
-        require('@vueform/nuxt/tailwind'),
+        require('@vueform/vueform/tailwind'),
         require('@tailwindcss/typography'),
     ],
 }
