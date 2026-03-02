@@ -1,0 +1,16 @@
+{
+  "name": "ochofitness-translator",
+  "version": "1.0.0",
+  "description": "Translate Ocho Fitness content files using Google Cloud Translate API",
+  "main": "translate.js",
+  "scripts": {
+    "translate": "node translate.js"
+  },
+  "dependencies": {
+    "@google-cloud/translate": "^8.0.0",
+    "dotenv": "^16.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
