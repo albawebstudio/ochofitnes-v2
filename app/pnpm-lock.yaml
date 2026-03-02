@@ -47,6 +47,9 @@ importers:
       '@vueform/nuxt':
         specifier: ^1.25.0
         version: 1.25.0(magicast@0.5.1)
+      '@vueform/vueform':
+        specifier: ^1.13.10
+        version: 1.13.10
       better-sqlite3:
         specifier: ^12.6.2
         version: 12.6.2
@@ -2170,8 +2173,8 @@ packages:
   '@vueform/toggle@2.1.4':
     resolution: {integrity: sha512-tEITFf5wlqIWoCYZXJdoXvCnrc97weOu2csR/BEoROVvFu1zRsoK0wY1pJG7BR+g5zpGJneGSdLhMUsbx8y1yw==}
 
-  '@vueform/vueform@1.13.7':
-    resolution: {integrity: sha512-EuQm/U2SQC9+bw9wddOKTb7wD96pjhiUs4dO+AQHrAaLwuGUl32cUvusTtA5S5TKrf4OOUZDDh7svCPyECTtTg==}
+  '@vueform/vueform@1.13.10':
+    resolution: {integrity: sha512-AVuNwDxqakWmqUy2lZowREkTvnG+vKKEWwTvXxaHXve4fvH+GWDIjc1ueogDNi0n1nTEtMJX1o293Lu2spYYwQ==}
 
   '@webcontainer/env@1.1.1':
     resolution: {integrity: sha512-6aN99yL695Hi9SuIk1oC88l9o0gmxL1nGWWQ/kNy81HigJ0FoaoTXpytCj6ItzgyCEwA9kF1wixsTuv5cjsgng==}
@@ -8031,7 +8034,7 @@ snapshots:
   '@vueform/nuxt@1.25.0(magicast@0.5.1)':
     dependencies:
       '@nuxt/kit': 3.21.0(magicast@0.5.1)
-      '@vueform/vueform': 1.13.7
+      '@vueform/vueform': 1.13.10
       pathe: 1.1.2
     transitivePeerDependencies:
       - debug
@@ -8041,7 +8044,7 @@ snapshots:
 
   '@vueform/toggle@2.1.4': {}
 
-  '@vueform/vueform@1.13.7':
+  '@vueform/vueform@1.13.10':
     dependencies:
       '@popperjs/core': 2.11.8
       '@vueform/country-phones': 1.0.4

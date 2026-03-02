@@ -30,7 +30,7 @@ export default defineNuxtConfig({
         '@nuxtjs/i18n',
     ],
     css: [
-        '~/app/assets/css/tailwind.css',
+        '~/assets/css/tailwind.css',
         '@fortawesome/fontawesome-svg-core/styles.css',
     ],
     postcss: {
@@ -40,7 +40,7 @@ export default defineNuxtConfig({
         },
     },
     plugins: [
-        '~/app/plugins/fontawesome',
+        '~/plugins/fontawesome.js',
     ],
     googleFonts: {
         families: {
