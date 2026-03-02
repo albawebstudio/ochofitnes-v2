@@ -57,9 +57,8 @@ export default {
             "./content/**/*.md",
             "./nuxt.config.{js,ts}",
             './vueform.config.ts',
-            './node_modules/.pnpm/@vueform+vueform@*/node_modules/@vueform/vueform/themes/tailwind/**/*.vue',
-            './node_modules/.pnpm/@vueform+vueform@*/node_modules/@vueform/vueform/themes/tailwind/**/*.js',
-
+            './node_modules/@vueform/vueform/themes/tailwind/**/*.vue',
+            './node_modules/@vueform/vueform/themes/tailwind/**/*.js',
         ]
     },
     theme: {
@@ -1295,7 +1294,7 @@ export default {
         }
     },
     plugins: [
-        require('@vueform/vueform/tailwind'),
+        require('@vueform/nuxt/tailwind'),
         require('@tailwindcss/typography'),
     ],
 }

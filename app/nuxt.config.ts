@@ -1,6 +1,3 @@
-// https://nuxt.com/docs/api/configuration/nuxt-config
-import { process } from "std-env";
-
 export default defineNuxtConfig({
     compatibilityDate: '2024-04-03',
     app: {
@@ -33,7 +30,7 @@ export default defineNuxtConfig({
         '@nuxtjs/i18n',
     ],
     css: [
-        '~/assets/css/tailwind.css',
+        '~/app/assets/css/tailwind.css',
         '@fortawesome/fontawesome-svg-core/styles.css',
     ],
     postcss: {
@@ -43,8 +40,7 @@ export default defineNuxtConfig({
         },
     },
     plugins: [
-        // '~/plugins/vue3-google-map',
-        '~/plugins/fontawesome',
+        '~/app/plugins/fontawesome',
     ],
     googleFonts: {
         families: {
