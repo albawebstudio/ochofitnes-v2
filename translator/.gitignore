@@ -4,5 +4,3 @@ node_modules/
 !.env.example
 *.json.key
 *-key.json
-development-433600*.json
-application-credentials/*

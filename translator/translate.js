@@ -51,21 +51,122 @@ function serializeFrontmatter(meta) {
 
 // ─── Translation helpers ─────────────────────────────────────────────────────
 
+// Return the value of a named attribute from an HTML tag string, or undefined.
+function parseAttr(tagStr, name) {
+  const m = tagStr.match(new RegExp(`\\b${name}="([^"]*)"`));
+  return m ? m[1] : undefined;
+}
+
 async function translateText(client, text, targetLang) {
   if (!text || !text.trim()) return text;
 
-  // The API's 'html' format treats newlines as insignificant whitespace and
-  // collapses them, breaking markdown structure. Encoding every newline as a
-  // <br> tag forces the API to preserve line breaks, and we restore them after.
-  const encoded = text.replace(/\n/g, '<br>');
+  let encoded = text;
 
+  // ── Step 1: Protect list-marker spaces ────────────────────────────────────
+  // Replace the space after a line-leading "* " or "- " with a non-breaking
+  // space so the API cannot strip it. This must be done before newline encoding
+  // so the multiline anchors work correctly.
+  encoded = encoded.replace(/^([ \t]*[-*]) /gm, '$1\u00A0');
+
+  // ── Step 2: Convert markdown structures to HTML ───────────────────────────
+  // We tag every conversion with data-md so we can identify them during the
+  // restore step and avoid accidentally converting raw HTML <img>/<a> tags
+  // that were already in the source.
+  // All & in URLs are encoded as &amp; — bare & in an HTML-mode payload is
+  // treated as a malformed entity reference and can cause the parser to corrupt
+  // or drop the surrounding structure entirely.
+
+  // Linked images: [![alt](img "title")](link)
+  encoded = encoded.replace(
+    /\[!\[([^\]]*)\]\(([^\s)]+)(?:\s+"([^"]*)")?\)\]\(([^)]+)\)/g,
+    (_, alt, imgSrc, imgTitle, linkHref) => {
+      const safeHref = linkHref.replace(/&(?!amp;)/g, '&amp;');
+      const titleAttr = imgTitle ? ` title="${imgTitle}"` : '';
+      return `<a href="${safeHref}" data-md="img-link"><img src="${imgSrc}" alt="${alt}"${titleAttr}></a>`;
+    }
+  );
+
+  // Plain images: ![alt](url "title")
+  encoded = encoded.replace(
+    /!\[([^\]]*)\]\(([^\s)]+)(?:\s+"([^"]*)")?\)/g,
+    (_, alt, src, title) => {
+      const titleAttr = title ? ` title="${title}"` : '';
+      return `<img src="${src}" alt="${alt}"${titleAttr} data-md="img">`;
+    }
+  );
+
+  // Markdown links: [text](url)
+  encoded = encoded.replace(
+    /\[([^\]]+)\]\(([^)]+)\)/g,
+    (_, linkText, href) => {
+      const safeHref = href.replace(/&(?!amp;)/g, '&amp;');
+      return `<a href="${safeHref}" data-md="link">${linkText}</a>`;
+    }
+  );
+
+  // Bold (**) before italic (*) to avoid partial matches.
+  // Using [^*\n]+? for italic so the pattern never crosses a line boundary —
+  // this prevents list markers on adjacent lines from being consumed as a pair.
+  encoded = encoded
+    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+    .replace(/\*([^*\n]+?)\*/g, '<em>$1</em>');
+
+  // ── Step 3: Encode newlines ───────────────────────────────────────────────
+  // Must come after markdown conversion so patterns above don't cross lines.
+  encoded = encoded.replace(/\n/g, '<br>');
+
+  // ── Step 4: Translate ─────────────────────────────────────────────────────
   const [result] = await client.translate(encoded, {
     to: targetLang,
     format: 'html',
   });
 
-  // Restore newlines from any <br> variant the API may return (<br>, <br/>, <br />)
-  return result.replace(/<br\s*\/?>/gi, '\n');
+  // ── Step 5: Restore markdown from HTML ────────────────────────────────────
+
+  let decoded = result
+    // Newlines
+    .replace(/<br\s*\/?>/gi, '\n')
+    // List-marker non-breaking spaces back to regular spaces
+    .replace(/^([ \t]*[-*])\u00A0/gm, '$1 ');
+
+  // Linked images: <a data-md="img-link" href="..."><img ...></a>
+  decoded = decoded.replace(
+    /<a\b(?=[^>]*\bdata-md="img-link")[^>]*>\s*<img\b([^>]*)>\s*<\/a>/gi,
+    (match, imgAttrs) => {
+      const aHref = (match.match(/\bhref="([^"]*)"/) || [])[1] || '';
+      const href = aHref.replace(/&amp;/g, '&');
+      const src = parseAttr(imgAttrs, 'src') || '';
+      const alt = parseAttr(imgAttrs, 'alt') || '';
+      const title = parseAttr(imgAttrs, 'title');
+      const titlePart = title ? ` "${title}"` : '';
+      return `[![${alt}](${src}${titlePart})](${href})`;
+    }
+  );
+
+  // Plain images: <img data-md="img" ...>
+  decoded = decoded.replace(
+    /<img\b(?=[^>]*\bdata-md="img")[^>]*>/gi,
+    (imgTag) => {
+      const src = parseAttr(imgTag, 'src') || '';
+      const alt = parseAttr(imgTag, 'alt') || '';
+      const title = parseAttr(imgTag, 'title');
+      const titlePart = title ? ` "${title}"` : '';
+      return `![${alt}](${src}${titlePart})`;
+    }
+  );
+
+  // Markdown links: <a data-md="link" href="...">text</a>
+  decoded = decoded.replace(
+    /<a\b(?=[^>]*\bdata-md="link")[^>]*\bhref="([^"]*)"[^>]*>([^<]*)<\/a>/gi,
+    (_, href, text) => `[${text}](${href.replace(/&amp;/g, '&')})`
+  );
+
+  // Bold and italic
+  decoded = decoded
+    .replace(/<strong[^>]*>([\s\S]*?)<\/strong>/gi, '**$1**')
+    .replace(/<em[^>]*>([\s\S]*?)<\/em>/gi, '*$1*');
+
+  return decoded;
 }
 
 // ─── Path resolution ─────────────────────────────────────────────────────────
