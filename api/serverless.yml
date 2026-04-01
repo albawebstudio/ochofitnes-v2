@@ -16,6 +16,7 @@ provider:
   profile: ${self:custom.profiles.${opt:stage, self:provider.stage, 'development'}}
   stage: ${opt:stage, 'development'}
   runtime: nodejs22.x
+  endpointType: REGIONAL
   iam:
     role: arn:aws:iam::401327758731:role/ocho-fitness-api
 
