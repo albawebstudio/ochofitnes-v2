@@ -1,10 +1,12 @@
 <script setup lang="ts">
 import { onMounted, computed } from 'vue'
 import * as qr from '@bitjson/qr-code'
-import LogoSvg from "../../../public/whatsapp.svg";
+
+import { useQRCodeData } from "~/composables/useQRCodeData";
+
+const { qrCodes } = useQRCodeData();
 
 interface Props {
-  contents: string
   width?: string
   height?: string
   margin?: string
@@ -25,11 +27,13 @@ const computedStyle = computed(() => ({
   animate: props.animate
 }))
 
-const qrCodeRef = ref<HTMLElement | null>(null)
+const handleCodeRendered = (event: Event) => {
+  const qrCodeElement = event.currentTarget as HTMLElement & {
+    animateQRCode?: (animation: unknown) => void
+  }
 
-const handleCodeRendered = () => {
-  if (props.animate && qrCodeRef.value) {
-    (qrCodeRef.value as any).animateQRCode((targets, _x, _y, _count, entity) => ({
+  if (props.animate && qrCodeElement.animateQRCode) {
+    qrCodeElement.animateQRCode((targets: any, _x: any, _y: any, _count: any, entity: string) => ({
       targets,
       from: entity === 'module' ? Math.random() * 200 : 200,
       duration: 500,
@@ -46,16 +50,26 @@ onMounted(() => {
 </script>
 
 <template>
-  <div>
-    <p>Scan the code below to follow my fitness journey on WhatsApp. <strong>Stay savage!</strong></p>
-    <qr-code
-        ref="qrCodeRef"
-        :contents="contents"
-        :style="computedStyle"
-        v-bind="$attrs"
-        @codeRendered="handleCodeRendered"
+  <div class="flex flex-col items-stretch justify-center gap-8 sm:flex-row sm:items-start">
+    <div
+        v-for="(qrCode, idx) in qrCodes"
+        :key="idx"
+        class="flex flex-1 flex-col items-center text-center"
     >
-      <LogoSvg :fontControlled="false" class="mx-auto h-16 w-auto" slot="icon"/>
-    </qr-code>
+      <template v-for="(paragraph, pIdx) in qrCode.content" :key="pIdx">
+        <p v-html="paragraph"></p>
+      </template>
+      <qr-code
+          v-bind="$attrs"
+          :contents="qrCode.contents"
+          :module-color="qrCode.moduleColor"
+          :position-ring-color="qrCode.positionRingColor"
+          :position-center-color="qrCode.positionCenterColor"
+          :style="computedStyle"
+          @codeRendered="handleCodeRendered"
+      >
+        <component :is="qrCode.logoSvg" :fontControlled="false" class="mx-auto h-16 w-auto" slot="icon"/>
+      </qr-code>
+    </div>
   </div>
 </template>

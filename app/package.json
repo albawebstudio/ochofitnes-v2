@@ -44,14 +44,5 @@
     "url": "https://github.com/albawebstudio/ochofitnes-v2/issues",
     "email": "support@albawebstudio.com"
   },
-  "packageManager": "pnpm@10.20.0",
-  "pnpm": {
-    "onlyBuiltDependencies": [
-      "@parcel/watcher",
-      "better-sqlite3",
-      "esbuild",
-      "sqlite3",
-      "sharp"
-    ]
-  }
+  "packageManager": "pnpm@10.20.0"
 }
