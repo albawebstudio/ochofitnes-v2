@@ -56,9 +56,11 @@ onMounted(() => {
         :key="idx"
         class="flex flex-1 flex-col items-center text-center"
     >
-      <template v-for="(paragraph, pIdx) in qrCode.content" :key="pIdx">
-        <p v-html="paragraph"></p>
-      </template>
+      <div class="flex min-h-[4rem] items-start justify-center">
+        <template v-for="(paragraph, pIdx) in qrCode.content" :key="pIdx">
+          <p v-html="paragraph"></p>
+        </template>
+      </div>
       <qr-code
           v-bind="$attrs"
           :contents="qrCode.contents"
@@ -70,6 +72,9 @@ onMounted(() => {
       >
         <component :is="qrCode.logoSvg" :fontControlled="false" class="mx-auto h-16 w-auto" slot="icon"/>
       </qr-code>
+      <div>
+        <NuxtLink :to="qrCode.contents" class="text-blue-500 hover:underline">{{ qrCode.title }}</NuxtLink>
+      </div>
     </div>
   </div>
 </template>

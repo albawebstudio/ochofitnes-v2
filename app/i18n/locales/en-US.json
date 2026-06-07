@@ -332,11 +332,13 @@
   },
   "qrCode": {
     "whatsApp": {
+      "title": "Connect with WhatsApp",
       "content": [
         "Scan the code below to follow my fitness journey on WhatsApp. <strong>Stay savage!</strong>"
       ]
     },
     "venmo": {
+      "title": "Send with Venmo",
       "content": [
         "Scan the code below to make payments via Venmo."
       ]
