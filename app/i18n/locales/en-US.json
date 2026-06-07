@@ -329,5 +329,17 @@
   "newsletter": {
     "title": "Monthly Newsletter",
     "cta": "Read Newsletter"
+  },
+  "qrCode": {
+    "whatsApp": {
+      "content": [
+        "Scan the code below to follow my fitness journey on WhatsApp. <strong>Stay savage!</strong>"
+      ]
+    },
+    "venmo": {
+      "content": [
+        "Scan the code below to make payments via Venmo."
+      ]
+    }
   }
 }
