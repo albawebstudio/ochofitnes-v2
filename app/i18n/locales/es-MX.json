@@ -329,5 +329,17 @@
   "newsletter": {
     "title": "Boletín Mensual",
     "cta": "Leer Boletín."
+  },
+  "qrCode": {
+    "whatsApp": {
+      "content": [
+        "Escanea el código de abajo para seguir mi recorrido fitness en WhatsApp. <strong>¡Mantente salvaje!</strong>"
+      ]
+    },
+    "venmo": {
+      "content": [
+        "Escanea el código de abajo para realizar pagos por Venmo."
+      ]
+    }
   }
 }

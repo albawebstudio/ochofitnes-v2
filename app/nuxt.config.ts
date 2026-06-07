@@ -93,6 +93,9 @@ export default defineNuxtConfig({
             redirectOn: 'root',
             alwaysRedirect: false,
             fallbackLocale: 'en'
+        },
+        compilation: {
+            strictMessage: false
         }
     },
 })

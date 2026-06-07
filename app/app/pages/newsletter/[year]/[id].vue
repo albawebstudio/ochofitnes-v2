@@ -111,10 +111,6 @@ onMounted(() => {
       <ContentRenderer :value="article" class="prose lg:prose-lg dark:prose-invert max-w-5xl"/>
 
       <QRCode
-          contents="https://wa.me/qr/ZDQNX3FAJV3AC1"
-          module-color="#25D366"
-          position-ring-color="#075E54"
-          position-center-color="#25D366"
           width="300px"
           height="300px"
           margin="0 auto"
