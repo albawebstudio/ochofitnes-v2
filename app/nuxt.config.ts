@@ -98,4 +98,17 @@ export default defineNuxtConfig({
             strictMessage: false
         }
     },
+    vite: {
+        optimizeDeps: {
+            include: [
+                '@bitjson/qr-code',
+                'axios',
+                'date-fns/locale',
+                'lodash',
+                'nouislider',
+                'trix',
+                'wnumb',
+            ]
+        }
+    }
 })

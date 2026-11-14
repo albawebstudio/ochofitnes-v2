@@ -11,6 +11,14 @@ const path = require('path');
 // Frontmatter fields to translate — all others are preserved as-is
 const TRANSLATABLE_FIELDS = ['title', 'description'];
 
+// Google's NMT defaults to feminine agreement when the English source is
+// ambiguous (e.g. "myself" → "mí misma"). Prepending a sentence that
+// establishes a masculine first-person subject nudges the model toward
+// masculine forms throughout the rest of the payload. The span uses a
+// data-md marker so it can be reliably stripped after translation.
+const VOICE_HINT_PREFIX = '<span data-md="voice">I am male and speaking in the first person.</span> ';
+const VOICE_HINT_PATTERN = /<span\b[^>]*\bdata-md="voice"[^>]*>[\s\S]*?<\/span>\s*/i;
+
 // ─── Frontmatter parsing ────────────────────────────────────────────────────
 
 function parseFrontmatter(content) {
@@ -115,6 +123,9 @@ async function translateText(client, text, targetLang) {
   // Must come after markdown conversion so patterns above don't cross lines.
   encoded = encoded.replace(/\n/g, '<br>');
 
+  // ── Step 3.5: Prepend masculine voice hint ────────────────────────────────
+  encoded = VOICE_HINT_PREFIX + encoded;
+
   // ── Step 4: Translate ─────────────────────────────────────────────────────
   const [result] = await client.translate(encoded, {
     to: targetLang,
@@ -124,6 +135,8 @@ async function translateText(client, text, targetLang) {
   // ── Step 5: Restore markdown from HTML ────────────────────────────────────
 
   let decoded = result
+    // Strip the masculine voice hint we prepended before translation
+    .replace(VOICE_HINT_PATTERN, '')
     // Newlines
     .replace(/<br\s*\/?>/gi, '\n')
     // List-marker non-breaking spaces back to regular spaces

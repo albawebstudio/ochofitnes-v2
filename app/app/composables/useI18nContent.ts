@@ -109,6 +109,10 @@ function normalizeI18nObject<T = any>(obj: any): T {
     // If it's not an object, return as is
     if (typeof obj !== 'object') return obj as T
 
+    if (Array.isArray(obj)) {
+        return obj.map(item => normalizeI18nObject(item)) as unknown as T
+    }
+
     // Special case for complex format string objects
     if (typeof obj === 'object') {
         // Try the extractI18nString function first for the whole object
@@ -119,11 +123,6 @@ function normalizeI18nObject<T = any>(obj: any): T {
                 return simpleString as unknown as T
             }
         }
-    }
-
-    // For arrays, recursively normalize each item
-    if (Array.isArray(obj)) {
-        return obj.map(item => normalizeI18nObject(item)) as unknown as T
     }
 
     // For objects, recursively normalize each property
