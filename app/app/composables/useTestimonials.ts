@@ -4,9 +4,22 @@ import { useI18nContent } from '~/composables/useI18nContent'
 
 import type { Review, Testimonial, I18nReview } from '~/models/testimonial'
 
+function resolveI18nMessage(
+    value: unknown,
+    rt: (node: string | Record<string, unknown>) => string,
+): string {
+    if (typeof value === 'string') {
+        return value
+    }
+    if (value == null) {
+        return ''
+    }
+    return rt(value as string | Record<string, unknown>)
+}
+
 export function useTestimonialsData() {
-    const { t } = useI18n()
-    const { getI18nArray, useI18nObject  } = useI18nContent()
+    const { t, tm, rt } = useI18n()
+    const { getI18nArray } = useI18nContent()
 
 
     const reviewsAuthorData = [
@@ -19,18 +32,22 @@ export function useTestimonialsData() {
         { id: 7, author: "Andrew A.", image: { src: "/clients/andrew-a.jpg", alt: "Andrew A." }}
     ];
 
-    // Get structured reviews from i18n
-    const reviewsFromI18n = useI18nObject<I18nReview[]>('testimonial.reviews')
-
-    // Merge i18n reviews with author data
+    // Merge i18n reviews with author data (tm/rt for vue-i18n v9+ message trees)
     const reviews = computed<Review[]>(() => {
-        return reviewsFromI18n.value.map(review => {
+        const raw = tm('testimonial.reviews') as I18nReview[] | unknown
+        const reviewsFromI18n = Array.isArray(raw) ? raw : []
+
+        return reviewsFromI18n.map((review) => {
             const authorData = reviewsAuthorData.find(author => author.id === review.id)
+            const title = resolveI18nMessage(review.title, rt)
+            const content = resolveI18nMessage(review.content, rt)
 
             if (!authorData) {
                 console.warn(`No author data found for review id ${review.id}`)
                 return {
-                    ...review,
+                    id: review.id,
+                    title,
+                    content,
                     author: `Author ${review.id}`,
                     image: null
                 }
@@ -38,8 +55,8 @@ export function useTestimonialsData() {
 
             return {
                 id: review.id,
-                title: review.title,
-                content: review.content,
+                title,
+                content,
                 author: authorData.author,
                 image: authorData.image,
             }
