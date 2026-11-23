@@ -85,6 +85,18 @@ const localePath = useLocalePath();
           </template>
         </div>
       </div>
+      <p class="mt-4 text-sm text-center text-gray-500 dark:text-gray-400">
+        Doing the digital heavy lifting — built & hosted by
+        <NuxtLink
+          to="https://albaweb.studio"
+          :isExternal="true"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-secondary hover:underline"
+        >
+          Alba Web Studio
+        </NuxtLink>.
+      </p>
     </div>
   </footer>
 </template>

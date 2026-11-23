@@ -19,7 +19,7 @@ export default defineNuxtConfig({
     },
     ssr: false,
     modules: [
-        '@nuxtjs/tailwindcss',
+        '@nuxt/ui',
         '@nuxt/image',
         'nuxt-keen-slider',
         '@nuxtjs/google-fonts',
@@ -30,15 +30,10 @@ export default defineNuxtConfig({
         '@nuxtjs/i18n',
     ],
     css: [
-        '~/assets/css/tailwind.css',
+        '~/assets/css/main.css',
+        '@vueform/vueform/themes/vueform/css/index.css',
         '@fortawesome/fontawesome-svg-core/styles.css',
     ],
-    postcss: {
-        plugins: {
-            tailwindcss: {},
-            autoprefixer: {},
-        },
-    },
     plugins: [
         '~/plugins/fontawesome.js',
     ],
