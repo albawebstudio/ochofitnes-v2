@@ -1,0 +1,116 @@
+@import "tailwindcss";
+@import "@nuxt/ui";
+
+@source "../../../content/**/*.{md,vue}";
+
+@plugin "@tailwindcss/typography";
+
+html {
+    scroll-behavior: smooth;
+}
+
+:root, :before, :after, * {
+    --vf-primary: #0066CC;
+    --vf-ring-color: rgb(59 130 246 / 0.5);
+}
+.form-color-btn {
+    background-color: #0066CC;
+}
+
+@theme {
+    --color-primary: var(--color-science-blue);
+    --color-primary-50: var(--color-science-blue-50);
+    --color-primary-100: var(--color-science-blue-100);
+    --color-primary-200: var(--color-science-blue-200);
+    --color-primary-300: var(--color-science-blue-300);
+    --color-primary-400: var(--color-science-blue-400);
+    --color-primary-500: var(--color-science-blue-500);
+    --color-primary-600: var(--color-science-blue-600);
+    --color-primary-700: var(--color-science-blue-700);
+    --color-primary-800: var(--color-science-blue-800);
+    --color-primary-900: var(--color-science-blue-900);
+    --color-primary-950: var(--color-science-blue-950);
+
+    --color-secondary: var(--color-blaze-orange);
+    --color-secondary-50: var(--color-blaze-orange-50);
+    --color-secondary-100: var(--color-blaze-orange-100);
+    --color-secondary-200: var(--color-blaze-orange-200);
+    --color-secondary-300: var(--color-blaze-orange-300);
+    --color-secondary-400: var(--color-blaze-orange-400);
+    --color-secondary-500: var(--color-blaze-orange-500);
+    --color-secondary-600: var(--color-blaze-orange-600);
+    --color-secondary-700: var(--color-blaze-orange-700);
+    --color-secondary-800: var(--color-blaze-orange-800);
+    --color-secondary-900: var(--color-blaze-orange-900);
+    --color-secondary-950: var(--color-blaze-orange-950);
+
+    --color-tertiary: var(--color-neon-carrot);
+    --color-tertiary-50: var(--color-neon-carrot-50);
+    --color-tertiary-100: var(--color-neon-carrot-100);
+    --color-tertiary-200: var(--color-neon-carrot-200);
+    --color-tertiary-300: var(--color-neon-carrot-300);
+    --color-tertiary-400: var(--color-neon-carrot-400);
+    --color-tertiary-500: var(--color-neon-carrot-500);
+    --color-tertiary-600: var(--color-neon-carrot-600);
+    --color-tertiary-700: var(--color-neon-carrot-700);
+    --color-tertiary-800: var(--color-neon-carrot-800);
+    --color-tertiary-900: var(--color-neon-carrot-900);
+    --color-tertiary-950: var(--color-neon-carrot-950);
+
+    --color-science-blue: #0066CC;
+    --color-science-blue-50: #ADD6FF;
+    --color-science-blue-100: #99CCFF;
+    --color-science-blue-200: #70B8FF;
+    --color-science-blue-300: #47A3FF;
+    --color-science-blue-400: #1F8FFF;
+    --color-science-blue-500: #007AF5;
+    --color-science-blue-600: #0066CC;
+    --color-science-blue-700: #004A94;
+    --color-science-blue-800: #002E5C;
+    --color-science-blue-900: #001224;
+    --color-science-blue-950: #000408;
+
+    --color-blaze-orange: #FF6600;
+    --color-blaze-orange-50: #FFD4B8;
+    --color-blaze-orange-100: #FFC8A3;
+    --color-blaze-orange-200: #FFAF7A;
+    --color-blaze-orange-300: #FF9752;
+    --color-blaze-orange-400: #FF7E29;
+    --color-blaze-orange-500: #FF6600;
+    --color-blaze-orange-600: #C75000;
+    --color-blaze-orange-700: #8F3900;
+    --color-blaze-orange-800: #572300;
+    --color-blaze-orange-900: #1F0C00;
+    --color-blaze-orange-950: #030100;
+
+    --color-neon-carrot: #FF9933;
+    --color-neon-carrot-50: #FFF5EB;
+    --color-neon-carrot-100: #FFEBD6;
+    --color-neon-carrot-200: #FFD6AD;
+    --color-neon-carrot-300: #FFC285;
+    --color-neon-carrot-400: #FFAD5C;
+    --color-neon-carrot-500: #FF9933;
+    --color-neon-carrot-600: #FA7D00;
+    --color-neon-carrot-700: #C26100;
+    --color-neon-carrot-800: #8A4500;
+    --color-neon-carrot-900: #522900;
+    --color-neon-carrot-950: #361B00;
+
+    --color-black: #343a40;
+
+    --font-sans: Raleway, Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    --font-lato: Lato, ui-sans-serif, system-ui, sans-serif;
+
+    --animate-fadeinup: fade-in-up 1s ease-in-out 0.25s 1;
+
+    @keyframes fade-in-up {
+        0% {
+            opacity: 0;
+            transform: translate3d(0, 100%, 0);
+        }
+        100% {
+            opacity: 1;
+            transform: translate3d(0, 0, 0);
+        }
+    }
+}

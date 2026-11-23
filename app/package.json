@@ -8,7 +8,11 @@
     "dev": "nuxt dev --mode development",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "typecheck": "nuxt typecheck"
+  },
+  "engines": {
+    "node": ">=26.0.0"
   },
   "dependencies": {
     "@bitjson/qr-code": "^1.0.2",
@@ -17,11 +21,11 @@
     "@fortawesome/free-regular-svg-icons": "^6.7.2",
     "@fortawesome/free-solid-svg-icons": "^6.7.2",
     "@fortawesome/vue-fontawesome": "^3.3.3",
-    "@nuxt/content": "^3.16.2",
+    "@nuxt/content": "^3.17.0",
     "@nuxt/image": "^2.2.1",
+    "@nuxt/ui": "^4.13.0",
     "@nuxtjs/google-fonts": "^3.2.0",
     "@nuxtjs/i18n": "^10.6.0",
-    "@nuxtjs/tailwindcss": "^6.14.0",
     "@tailwindcss/typography": "^0.5.20",
     "@vueform/nuxt": "^1.31.0",
     "@vueform/vueform": "^1.13.13",
@@ -32,13 +36,15 @@
     "nuxt-svgo": "^4.2.6",
     "sqlite3": "^5.1.7",
     "std-env": "^3.10.0",
+    "tailwindcss": "^4.3.5",
     "vue": "latest",
     "vue-router": "latest",
     "zod": "^4.6.7"
   },
   "devDependencies": {
     "nuxt-keen-slider": "^1.1.1",
-    "tailwindcss": "^3.4.19"
+    "typescript": "^5.8.3",
+    "vue-tsc": "^3.3.14"
   },
   "bugs": {
     "url": "https://github.com/albawebstudio/ochofitnes-v2/issues",
