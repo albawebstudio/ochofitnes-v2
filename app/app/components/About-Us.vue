@@ -10,7 +10,7 @@ const { about, profile } = useAboutData();
       <div class="group grid w-full grid-cols-1 sm:grid-cols-2">
         <div>
           <div class="pr-12">
-            <h2 class="text-2xl font-extrabold px-4 py-8">{{ about.title }}</h2>
+            <h2 class="text-2xl font-extrabold px-4 py-8 text-slate-700">{{ about.title }}</h2>
             <p v-for="content in about.content" class="text-justify sm:text-left peer p-4 mb-6 text-gray-600" v-html="content"></p>
           </div>
         </div>

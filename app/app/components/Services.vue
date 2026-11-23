@@ -16,17 +16,17 @@ const { service } = useServiceData()
 
       <div class="grid grid-cols-1 gap-8 sm:grid-cols-2">
         <template v-for="(item, idx) in service.items" :key="idx">
-          <div class="bg-white bg-opacity-10 rounded-xl shadow-lg p-6 relative overflow-hidden">
+          <div class="bg-white/10 rounded-xl shadow-lg p-6 relative overflow-hidden">
             <LazyNuxtImg :src="item.img.src" :alt="item.img.alt" class="w-full rounded-xl mb-8" />
             <div class="mb-8">
               <h3 class="text-2xl font-semibold text-white">{{ item.title }}</h3>
-              <p v-for="content in item.content" class="mt-4 text-purple-200" v-html="content"></p>
+              <p v-for="content in item.content" class="mt-4 text-sky-50" v-html="content"></p>
             </div>
             <div class="mb-8">
               <span class="text-5xl font-extrabold text-white">{{  item.price.formattedValue }}</span>
-              <span class="text-xl font-medium text-purple-200 ml-2">[{{ item.price.currency }}] {{ item.price.unit.preposition }} {{ item.price.unit.quantity }} {{ item.price.unit.measure }}</span>
+              <span class="text-xl font-medium text-sky-50 ml-2">[{{ item.price.currency }}] {{ item.price.unit.preposition }} {{ item.price.unit.quantity }} {{ item.price.unit.measure }}</span>
             </div>
-            <ul class="mb-8 space-y-4 text-purple-200">
+            <ul class="mb-8 space-y-4 text-sky-50">
               <template v-for="(feature, idx) in item.list" :key="idx">
                 <li class="flex items-center">
                   <svg class="h-6 w-6 text-green-400 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
